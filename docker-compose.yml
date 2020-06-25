@@ -1,4 +1,5 @@
 version: '3'
+
 services:
   mariadb:
     environment:
@@ -26,13 +27,15 @@ services:
   vivo:
     build:
       context: ./vivo
+    depends_on:
+      - solr
+      - mariadb
     volumes:
       - ./vivo/applicationSetup.n3:/usr/local/VIVO/home/config/applicationSetup.n3
       - ./vivo/log4j.properties:/usr/local/tomcat/webapps/VIVO/WEB-INF/classes
       - ./vivo/runtime.properties:/usr/local/VIVO/home/config/runtime.properties
     ports:
       - 8080:8080
-
 
 volumes:
   solr-data:

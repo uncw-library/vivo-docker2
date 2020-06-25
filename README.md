@@ -32,6 +32,8 @@ docker-compose up -d
 
  If you get an error indicating that the database was not found, this could be due to a bug where the vivo instance is not waiting on the mariadb instance to initialize.  IF you have this error, try `docker-compose down; docker-compose up -d`.
 
+1. On first startup, log in with user: vivo_root@mydomain.edu password: rootPassword
+
 
 ## VIVO Development
 
@@ -44,8 +46,6 @@ case, your `docker-compose.yml` file would only contain the `solr` and the
    vitro.local.solr.url = http://localhost:8983/solr/vivocore
    ```
 1. Open a browser to: http://localhost:8080/vivo
-
-1. On first startup, log in with user: vivo_root@mydomain.edu password: rootPassword
 
 # Notes
 
