@@ -45,6 +45,7 @@ case, your `docker-compose.yml` file would only contain the `solr` and the
    ```
 1. Open a browser to: http://localhost:8080/vivo
 
+1. On first startup, log in with user: vivo_root@mydomain.edu password: rootPassword
 
 # Notes
 

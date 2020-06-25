@@ -6,7 +6,7 @@ services:
       - MYSQL_PASSWORD=vitrodbPassword
       - MYSQL_ROOT_PASSWORD=rootPassword
       - MYSQL_ROOT_HOST=%
-      - TZ=America/Chicago
+      - TZ=America/New_York
     build:
       context: ./mariadb
     volumes:
@@ -27,7 +27,9 @@ services:
     build:
       context: ./vivo
     volumes:
-      - ./example-config:/usr/local/vivo/home/config
+      - ./vivo/applicationSetup.n3:/usr/local/VIVO/home/config/applicationSetup.n3
+      - ./vivo/log4j.properties:/usr/local/tomcat/webapps/VIVO/WEB-INF/classes
+      - ./vivo/runtime.properties:/usr/local/VIVO/home/config/runtime.properties
     ports:
       - 8080:8080
 
