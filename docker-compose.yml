@@ -2,6 +2,7 @@ version: '3'
 
 services:
   mariadb:
+    container_name: vivo_db
     environment:
       - MYSQL_USER=vitrodbUsername
       - MYSQL_PASSWORD=vitrodbPassword
@@ -12,19 +13,25 @@ services:
       context: ./mariadb
     volumes:
       - maria-data:/var/lib/mysql
-    ports:
-      - 3306:3306
+    restart: always
+    # ports:
+    #   - 33306:3306
 
   solr:
+    container_name: vivo_solr
     build:
       context: ./solr
     ports:
       - 8983:8983
+    depends_on:
+      - mariadb
     volumes:
       - solr-data:/opt/solr/server/solr/ckan/data
     command: solr-create -c vivocore -d /opt/vivocore
+    restart: always
 
   vivo:
+    container_name: vivo
     build:
       context: ./vivo
     depends_on:
@@ -36,6 +43,7 @@ services:
       - ./vivo/runtime.properties:/usr/local/VIVO/home/config/runtime.properties
     ports:
       - 8080:8080
+    restart: always
 
 volumes:
   solr-data:
