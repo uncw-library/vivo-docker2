@@ -2,6 +2,7 @@ version: '3'
 
 services:
   mariadb:
+    image: mysql:10
     container_name: vivo_db
     environment:
       - MYSQL_USER=vitrodbUsername
@@ -9,8 +10,6 @@ services:
       - MYSQL_ROOT_PASSWORD=rootPassword
       - MYSQL_ROOT_HOST=%
       - TZ=America/New_York
-    build:
-      context: ./mariadb
     volumes:
       - db_data:/var/lib/mysql
       - ./db_autoimport:/docker-entrypoint-initdb.d/
@@ -27,7 +26,7 @@ services:
     depends_on:
       - mariadb
     volumes:
-      - solr-data:/opt/solr/server/solr/ckan/data
+      - solr_data:/opt/solr/server/solr/ckan/data
     command: solr-create -c vivocore -d /opt/vivocore
     restart: always
 
@@ -47,5 +46,5 @@ services:
     restart: always
 
 volumes:
-  solr-data:
-  maria-data:
+  solr_data:
+  db_data:
