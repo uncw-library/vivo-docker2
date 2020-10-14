@@ -12,7 +12,8 @@ services:
     build:
       context: ./mariadb
     volumes:
-      - maria-data:/var/lib/mysql
+      - db_data:/var/lib/mysql
+      - ./db_autoimport:/docker-entrypoint-initdb.d/
     restart: always
     # ports:
     #   - 33306:3306
