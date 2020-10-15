@@ -1,8 +1,8 @@
 # WARNING! - Only for development testing! May remove items outside of vivo-docker2 scope.
 
 docker-compose down
-docker rmi vivo-docker2_vivo vivo-docker2_solr vivo-docker2_mariadb
-docker rmi solr mariadb tomcat
-docker volume ls
-docker volume prune
-docker volume ls
+docker image rm vivo-docker2_solr:latest vivo-docker2_vivo:latest 
+docker system prune -f
+docker volume prune  -f
+docker-compose up --build -d && docker-compose down && docker-compose up -d && docker-compose logs -f
+

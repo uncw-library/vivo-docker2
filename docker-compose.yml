@@ -2,7 +2,7 @@ version: '3'
 
 services:
   mariadb:
-    image: mysql:10
+    image: mariadb:10.4
     container_name: vivo_db
     environment:
       - MYSQL_USER=vitrodbUsername
@@ -14,8 +14,6 @@ services:
       - db_data:/var/lib/mysql
       - ./db_autoimport:/docker-entrypoint-initdb.d/
     restart: always
-    # ports:
-    #   - 33306:3306
 
   solr:
     container_name: vivo_solr
@@ -41,6 +39,9 @@ services:
       - ./vivo/applicationSetup.n3:/usr/local/VIVO/home/config/applicationSetup.n3
       - ./vivo/log4j.properties:/usr/local/tomcat/webapps/VIVO/WEB-INF/classes
       - ./vivo/runtime.properties:/usr/local/VIVO/home/config/runtime.properties
+      # surprising that the running theme is in /tomcat/ when the Dockerfile puts it in /webapp/target/
+      # java must be moving the folder during the container build
+      - ./vivo/uncw_theme:/usr/local/tomcat/webapps/vivo/themes/uncw_theme
     ports:
       - 8080:8080
     restart: always
