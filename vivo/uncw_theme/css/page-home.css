@@ -11,6 +11,7 @@
 
 .hero {
     background: #283a4b url(../images/hero-background.jpg) repeat-x 0 0;
+    background-position: center;
 }
 
 .hero form input,
