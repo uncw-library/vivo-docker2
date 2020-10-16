@@ -1,4 +1,6 @@
-# WARNING! - Only for development testing! May remove items outside of vivo-docker2 scope.
+#!/usr/bin/bash
+
+# Removes and rebuilds all vivo images, containers, volumes, etc.
 
 docker-compose down
 docker image rm vivo-docker2_solr:latest vivo-docker2_vivo:latest 
