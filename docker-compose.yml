@@ -1,31 +1,14 @@
 version: '3'
 
 services:
-  # mariadb:
-  #   image: mariadb:10.4
-  #   container_name: vivo_db
-  #   environment:
-  #     - MYSQL_USER=vitrodbUsername
-  #     - MYSQL_PASSWORD=vitrodbPassword
-  #     - MYSQL_ROOT_PASSWORD=rootPassword
-  #     - MYSQL_ROOT_HOST=%
-  #     - TZ=America/New_York
-  #   volumes:
-  #     - db_data:/var/lib/mysql
-  #     - ./db_autoimport:/docker-entrypoint-initdb.d/
-  #   restart: always
-
   solr:
     container_name: vivo_solr
     build:
       context: ./solr
+    image: solr:8
     ports:
       - 8983:8983
-    # depends_on:
-    #   - mariadb
-    # volumes:
-    #   - ./solr_data:/var/solr/data/
-    command: solr-create -c vivocore -d /opt/vivocore
+    command: solr-precreate vivocore /opt/vivocore
     restart: always
 
   vivo:
@@ -34,7 +17,6 @@ services:
       context: ./vivo
     depends_on:
       - solr
-      # - mariadb
     volumes:
       - ./datastore/tdbModels:/usr/local/VIVO/home/tdbModels
       - ./datastore/tdbContentModels:/usr/local/VIVO/home/tdbContentModels
@@ -47,18 +29,3 @@ services:
     ports:
       - 8080:8080
     restart: always
-
-  # phpmyadmin:
-  #   image: phpmyadmin
-  #   container_name: phpmyadmin
-  #   environment:
-  #    - PMA_ARBITRARY=1
-  #   restart: always
-  #   ports:
-  #    - 8081:80
-  #   volumes:
-  #    - /sessions
-
-# volumes:
-  # solr_data:
-  # db_data:
