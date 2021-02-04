@@ -1,19 +1,19 @@
 version: '3'
 
 services:
-  mariadb:
-    image: mariadb:10.4
-    container_name: vivo_db
-    environment:
-      - MYSQL_USER=vitrodbUsername
-      - MYSQL_PASSWORD=vitrodbPassword
-      - MYSQL_ROOT_PASSWORD=rootPassword
-      - MYSQL_ROOT_HOST=%
-      - TZ=America/New_York
-    volumes:
-      - db_data:/var/lib/mysql
-      - ./db_autoimport:/docker-entrypoint-initdb.d/
-    restart: always
+  # mariadb:
+  #   image: mariadb:10.4
+  #   container_name: vivo_db
+  #   environment:
+  #     - MYSQL_USER=vitrodbUsername
+  #     - MYSQL_PASSWORD=vitrodbPassword
+  #     - MYSQL_ROOT_PASSWORD=rootPassword
+  #     - MYSQL_ROOT_HOST=%
+  #     - TZ=America/New_York
+  #   volumes:
+  #     - db_data:/var/lib/mysql
+  #     - ./db_autoimport:/docker-entrypoint-initdb.d/
+  #   restart: always
 
   solr:
     container_name: vivo_solr
@@ -21,10 +21,10 @@ services:
       context: ./solr
     ports:
       - 8983:8983
-    depends_on:
-      - mariadb
-    volumes:
-      - solr_data:/opt/solr/server/solr/ckan/data
+    # depends_on:
+    #   - mariadb
+    # volumes:
+    #   - ./solr_data:/var/solr/data/
     command: solr-create -c vivocore -d /opt/vivocore
     restart: always
 
@@ -34,8 +34,10 @@ services:
       context: ./vivo
     depends_on:
       - solr
-      - mariadb
+      # - mariadb
     volumes:
+      - ./datastore/tdbModels:/usr/local/VIVO/home/tdbModels
+      - ./datastore/tdbContentModels:/usr/local/VIVO/home/tdbContentModels
       - ./vivo/applicationSetup.n3:/usr/local/VIVO/home/config/applicationSetup.n3
       - ./vivo/log4j.properties:/usr/local/tomcat/webapps/VIVO/WEB-INF/classes
       - ./vivo/runtime.properties:/usr/local/VIVO/home/config/runtime.properties
@@ -46,17 +48,17 @@ services:
       - 8080:8080
     restart: always
 
-  phpmyadmin:
-    image: phpmyadmin
-    container_name: phpmyadmin
-    environment:
-     - PMA_ARBITRARY=1
-    restart: always
-    ports:
-     - 8081:80
-    volumes:
-     - /sessions
+  # phpmyadmin:
+  #   image: phpmyadmin
+  #   container_name: phpmyadmin
+  #   environment:
+  #    - PMA_ARBITRARY=1
+  #   restart: always
+  #   ports:
+  #    - 8081:80
+  #   volumes:
+  #    - /sessions
 
-volumes:
-  solr_data:
-  db_data:
+# volumes:
+  # solr_data:
+  # db_data:
