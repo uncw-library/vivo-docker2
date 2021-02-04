@@ -46,6 +46,17 @@ services:
       - 8080:8080
     restart: always
 
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: phpmyadmin
+    environment:
+     - PMA_ARBITRARY=1
+    restart: always
+    ports:
+     - 8081:80
+    volumes:
+     - /sessions
+
 volumes:
   solr_data:
   db_data:
