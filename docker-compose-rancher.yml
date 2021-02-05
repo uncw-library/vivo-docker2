@@ -1,0 +1,13 @@
+version: '2'
+
+services:
+  solr:
+    image: libapps-admin.uncw.edu:8000/randall-dev/vivo-docker2/solr
+
+  vivo:
+    image: libapps-admin.uncw.edu:8000/randall-dev/vivo-docker2/vivo
+    depends_on:
+      - solr
+    volumes:
+      - /home/randall/volumes/vivo/tdbModels:/usr/local/VIVO/home/tdbModels
+      - /home/randall/volumes/vivo/tdbContentModels:/usr/local/VIVO/home/tdbContentModels
