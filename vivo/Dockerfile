@@ -1,9 +1,5 @@
 FROM tomcat:9.0.21-jdk11-openjdk
 
-MAINTAINER Ralph OFlinn <roflinn@uab.edu>
-MAINTAINER Justin Merz <jrmerz@ucdavis.edu>
-MAINTAINER Quinn Hart <qjhart@ucdavis.edu>
-
 RUN apt update && \
 	apt install -y maven git
 
@@ -21,6 +17,7 @@ RUN wget -O Vitro.zip https://github.com/vivo-project/Vitro/releases/download/vi
 
 WORKDIR /usr/local/VIVO/
 
+# insert customizations to image before maven install
 COPY --chown=root:staff ./settings.xml settings.xml
 COPY --chown=root:staff ./uncw_theme /usr/local/VIVO/webapp/target/vivo/themes/uncw_theme
 COPY --chown=root:staff ./initialSiteConfig.rdf /usr/local/VIVO/home/src/main/resources/rdf/applicationMetadata/firsttime/
@@ -31,14 +28,10 @@ RUN mvn install -s settings.xml
 RUN rm -r /usr/local/tomcat/webapps/docs && \
 	rm -r /usr/local/tomcat/webapps/examples
 
-# Set properties
-# Adjust logging, you can mount over this in docker-compose to further adjust
+# insert customizations to image after maven install
 COPY --chown=root:staff ./log4j.properties /usr/local/tomcat/webapps/VIVO/WEB-INF/classes
-
-# WORKDIR /usr/local/VIVO/home/config
-
-COPY --chown=root:staff ./runtime.properties /usr/local/VIVO/home/configruntime.properties
-COPY --chown=root:staff ./applicationSetup.n3 /usr/local/VIVO/home/configapplicationSetup.n3
+COPY --chown=root:staff ./runtime.properties /usr/local/VIVO/home/config/runtime.properties
+COPY --chown=root:staff ./applicationSetup.n3 /usr/local/VIVO/home/config/applicationSetup.n3
 COPY --chown=root:staff ./aboutPage.n3 /usr/local/VIVO/home/rdf/display/firsttime/aboutPage.n3
 
 RUN chmod ugo+w -R /usr/local/tomcat/temp && \
