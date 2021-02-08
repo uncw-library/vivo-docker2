@@ -26,15 +26,18 @@ RUN mvn install -s settings.xml
 
 # clean up
 RUN rm -r /usr/local/tomcat/webapps/docs && \
-	rm -r /usr/local/tomcat/webapps/examples
+	rm -r /usr/local/tomcat/webapps/examples && \
+	rm -r /usr/local/tomcat/webapps/ROOT
 
 # insert customizations to image after maven install
-COPY --chown=root:staff ./configs/log4j.properties /usr/local/tomcat/webapps/VIVO/WEB-INF/classes
 COPY --chown=root:staff ./configs/runtime.properties /usr/local/VIVO/home/config/runtime.properties
 COPY --chown=root:staff ./configs/applicationSetup.n3 /usr/local/VIVO/home/config/applicationSetup.n3
 COPY --chown=root:staff ./configs/aboutPage.n3 /usr/local/VIVO/home/rdf/display/firsttime/aboutPage.n3
 
+
 RUN chmod ugo+w -R /usr/local/tomcat/temp && \
 	chmod ugo+w -R /usr/local/VIVO/home
+
+RUN mv /usr/local/tomcat/webapps/vivo/ /usr/local/tomcat/webapps/ROOT
 
 RUN export CATALINA_OPTS="-Xms512m -Xmx512m -XX:MaxPermSize=128m"
