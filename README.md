@@ -12,7 +12,7 @@ Regardless of the usage, you will need to build the images, which require the fo
 
 1. Linux: [Install](https://docs.docker.com/install/) Docker
 1. Linux: [Install](https://docs.docker.com/compose/install/) Docker Compose
-1. Windows/Mac [Install][https://www.docker.com/products/docker-desktop] Docker Desktop
+1. Windows/Mac [Install](https://www.docker.com/products/docker-desktop) Docker Desktop
 1. Clone this project
 1. Start the containers:
 ```bash
