@@ -225,10 +225,10 @@ footer {
     margin: 0 auto;
     font-size: .7em;
     color: white;
-    background-color: black;
+    background-color: #006666;
 }
 footer .row {
-    background-color: black;
+    background-color: #006666;
 }
 footer p.copyright {
     float: left;
@@ -237,6 +237,9 @@ footer p.copyright {
 }
 footer p.copyright small {
     font-size: 1em;
+}
+footer p.copyright small a {
+    color: white;
 }
 ul#footer-nav {
     float: right;
