@@ -18,7 +18,7 @@
         <j.0:bannerHeight rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</j.0:bannerHeight>
         <j.0:copyrightAnchor rdf:datatype="http://www.w3.org/2001/XMLSchema#string">University of North Carolina Wilmington</j.0:copyrightAnchor>
 	<j.0:copyrightURL rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://uncw.edu/www/copyright.html</j.0:copyrightURL>
-	<j.0:contactMail rdf:datatype="http://www.w3.org/2001/XMLSchema#string">mcrayerl@uncw.edu</j.0:contactMail>
+	<j.0:contactMail rdf:datatype="http://www.w3.org/2001/XMLSchema#string">mcbrayerl@uncw.edu</j.0:contactMail>
         <j.0:aboutText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&lt;p&gt;VIVO is an open source semantic
         web application originally developed and implemented at Cornell. When installed and populated with content at
         an institution, it enables the discovery of research and scholarship across disciplines at that institution.
