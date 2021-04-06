@@ -14,10 +14,17 @@ Regardless of the usage, you will need to build the images, which require the fo
 1. Linux: [Install](https://docs.docker.com/compose/install/) Docker Compose
 1. Windows/Mac: [Install](https://www.docker.com/products/docker-desktop) Docker Desktop
 1. Clone this project
+1. (optional)  Copy the tdbModels & tdbContentModels from your production instance into the matching folders in this repo.  This pulls in any changes made on the production site via the Admin panel to the dev box.
+```bash
+   rsync -avz yourname@servername.com:/path/to/vivo/home/tdbModels .
+   rsync -avz yourname@servername.com:/path/to/vivo/home/tdbContentModels .
+   sudo chown -R root:root tdbModels/ tdbContentModels/
+```
 1. Start the containers:
 ```bash
    docker-compose up --build
 ```
+1. Rebuild the search index via the Admin menu if content is missing.
 
  Then navigate to [localhost:8080](http://localhost:8080)
 
@@ -26,10 +33,9 @@ Regardless of the usage, you will need to build the images, which require the fo
 The example [docker-compose.yml](docker-compose.yml) is a basic VIVO installation in docker. This file has two containers and uses the standard TBD system.  The files in ./vivo configure many of the vivo settings.  There is an example custom theme included. 
 
 1. On first startup, log in with user: vivo_root@mydomain.edu password: rootPassword
-2. Any users/instance data is preserved in docker volumes: tdbModels and tdbContentModels.
+2. Any users/instance data is preserved in docker bind mounted volumes to the tdb* volumes in this repo.
 3. Subsequent `docker-compose down` and `docker-compose up --build` will retain the persistant docker volumes.
 4. If you wish to start clean, `docker volume rm vivo-docker2_tdbContentModels vivo-docker2_tdbModels` will delete the volumes holding user/instance data.
-
 
 ## VIVO Development
 
@@ -37,12 +43,11 @@ Exposing the solr instance to localhost:8983 can be done by adding `ports: 8983:
 
 ## Revising the Theme
 
-You can disable the theme caching in the Site Admin page: "Activate developer Panel", then checking "Defeat the template cache".  You can now edit files in the "uncw_theme" folder and see the changes in real time at localhost:8080.  On the next `docker-compose up --build` the changes will be baked into your vivo image.
-
+You can disable the theme caching in the Site Admin page: "Activate developer Panel" / "Defeat the template cache".  Then, you can edit files in the "uncw_theme" folder and see the changes in real time at localhost:8080.  On the next `docker-compose up --build` the changes will be baked into your vivo image.
 
 ## Production
 
-Data persistance can be accomplished by mapping localhost folders to two container folders:
+Data persistance can be accomplished by bind volume mapping two container folders:
 
  - /usr/local/VIVO/home/tdbContentModels
  - /usr/local/VIVO/home/tdbModels
