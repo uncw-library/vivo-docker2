@@ -16,13 +16,9 @@ services:
     depends_on:
       - solr
     volumes:
-      - tdbModels:/usr/local/VIVO/home/tdbModels
-      - tdbContentModels:/usr/local/VIVO/home/tdbContentModels
+      - ./tdbModels:/usr/local/VIVO/home/tdbModels
+      - ./tdbContentModels:/usr/local/VIVO/home/tdbContentModels
       - ./vivo/uncw_theme:/usr/local/tomcat/webapps/ROOT/themes/uncw_theme
     ports:
       - 8080:8080
     restart: always
-
-volumes:
-  tdbModels:
-  tdbContentModels:
