@@ -84,13 +84,13 @@ body {
 }
 
 .row.title {
-    background: #f3e389;
+    background: #398AAC;
     padding-top: 7px;
     padding-bottom: 3px;
 }
 
 .row.title span {
-    color: #006666;
+    color: #ffffff;
 }
 
 .row.title h1 {
@@ -131,7 +131,7 @@ body {
 /*    width: 970px; */
     height: 114px;
     margin: 0 auto;
-    background: #003366 center 0 no-repeat;
+    background: #006666 url(../images/header-background.png) center 0 no-repeat;
 }
 #branding .row {
     background-color:rgba(255, 255, 255, 0);
@@ -223,10 +223,10 @@ footer {
     margin: 0 auto;
     font-size: .7em;
     color: white;
-    background-color: #003366;
+    background-color: #006666;
 }
 footer .row {
-    background-color: #003366;
+    background-color: #006666;
 }
 footer p.copyright {
     float: left;
