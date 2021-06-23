@@ -19,7 +19,6 @@ VIVO uncw_theme theme: screen styles
 @import url("../bootstrap/css/bootstrap.min.css");
 @import url("../bootstrap/css/bootstrap-theme.min.css");
 @import url("reset.css");
-@import url("uncw_theme.css");
 @import url("edit.css");
 @import url("navbar-breakpoint.css");
 @import url("page-admin.css");
@@ -33,3 +32,4 @@ VIVO uncw_theme theme: screen styles
 @import url("page-createAndLink.css");
 @import url("https://fonts.googleapis.com/css?family=Noto+Sans");
 @import url("../../../local/css/local.css");
+@import url("uncw_theme.css");
