@@ -19,6 +19,8 @@ services:
       - ./tdbModels:/usr/local/VIVO/home/tdbModels
       - ./tdbContentModels:/usr/local/VIVO/home/tdbContentModels
       - ./vivo/uncw_theme:/usr/local/tomcat/webapps/ROOT/themes/uncw_theme
+      - ./vivo/nemo:/usr/local/tomcat/webapps/ROOT/themes/nemo
+      - ./vivo/uncw_wilma_theme:/usr/local/tomcat/webapps/ROOT/themes/uncw_wilma_theme
       - ./vivo/uncw_theme/images/UNCW-3.jpg:/usr/local/tomcat/webapps/ROOT/images/placeholders/person.thumbnail.jpg
       - ./vivo/uncw_theme/images/UNCW-1.jpg:/usr/local/tomcat/webapps/ROOT/images/placeholders/person.bordered.thumbnail.jpg
 
