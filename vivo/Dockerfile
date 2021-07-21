@@ -19,7 +19,6 @@ WORKDIR /usr/local/VIVO/
 
 # insert customizations to image before maven install
 COPY --chown=root:staff ./configs/settings.xml settings.xml
-COPY --chown=root:staff ./uncw_theme /usr/local/VIVO/webapp/target/vivo/themes/uncw_theme
 COPY --chown=root:staff ./nemo /usr/local/VIVO/webapp/target/vivo/themes/nemo
 COPY --chown=root:staff ./configs/initialSiteConfig.rdf /usr/local/VIVO/home/src/main/resources/rdf/applicationMetadata/firsttime/
 
@@ -34,8 +33,8 @@ RUN rm -r /usr/local/tomcat/webapps/docs && \
 COPY --chown=root:staff ./configs/runtime.properties /usr/local/VIVO/home/config/runtime.properties
 COPY --chown=root:staff ./configs/applicationSetup.n3 /usr/local/VIVO/home/config/applicationSetup.n3
 COPY --chown=root:staff ./configs/aboutPage.n3 /usr/local/VIVO/home/rdf/display/firsttime/aboutPage.n3
-COPY --chown=root:staff ./uncw_theme/images/UNCW-1.jpg /usr/local/tomcat/webapps/vivo/images/placeholders/person.bordered.thumbnail.jpg
-COPY --chown=root:staff ./uncw_theme/images/UNCW-3.jpg /usr/local/tomcat/webapps/vivo/images/placeholders/person.thumbnail.jpg
+COPY --chown=root:staff ./nemo/images/UNCW-1.jpg /usr/local/tomcat/webapps/vivo/images/placeholders/person.bordered.thumbnail.jpg
+COPY --chown=root:staff ./nemo/images/UNCW-3.jpg /usr/local/tomcat/webapps/vivo/images/placeholders/person.thumbnail.jpg
 
 RUN chmod ugo+w -R /usr/local/tomcat/temp && \
 	chmod ugo+w -R /usr/local/VIVO/home
