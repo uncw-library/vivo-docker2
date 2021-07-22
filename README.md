@@ -63,3 +63,12 @@ Dev note:  Thank you to the developers of earlier dockerized VIVO releases who l
  - [vivo-docker](https://github.com/gwu-libraries/vivo-docker)
  - [vivo-docker2](https://github.com/vivo-community/vivo-docker2)
 
+
+# Person Images portion
+
+A GET request to http://sitename.com/file/n1234567890/personImage.jpg will load the file on the server at /usr/local/VIVO/home/uploads/file_storage_root/a\~n/123/456/789/0/personImage.jpg
+
+The spliting of the large integer into groups of 3 is important.
+
+So a file in ./person_images/123/456/789/0/personImage.jpg will map to the two locations above.
+
