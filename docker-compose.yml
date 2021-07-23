@@ -21,6 +21,7 @@ services:
       - ./vivo/nemo:/usr/local/tomcat/webapps/ROOT/themes/nemo
       - ./vivo/nemo/images/UNCW-3.jpg:/usr/local/tomcat/webapps/ROOT/images/placeholders/person.thumbnail.jpg
       - ./vivo/nemo/images/UNCW-1.jpg:/usr/local/tomcat/webapps/ROOT/images/placeholders/person.bordered.thumbnail.jpg
+      - ./person_images:/usr/local/VIVO/home/uploads
 
     ports:
       - 8080:8080
