@@ -22,7 +22,7 @@ services:
       - ./vivo/nemo/images/UNCW-3.jpg:/usr/local/tomcat/webapps/ROOT/images/placeholders/person.thumbnail.jpg
       - ./vivo/nemo/images/UNCW-1.jpg:/usr/local/tomcat/webapps/ROOT/images/placeholders/person.bordered.thumbnail.jpg
       - ./person_images:/usr/local/VIVO/home/uploads
-      - ./current_turtle/filename.ttl:/usr/local/VIVO/home/rdf/abox/filegraph/filename.ttl
+      - ./current_turtle/userdata.ttl:/usr/local/VIVO/home/rdf/abox/filegraph/userdata.ttl
 
     ports:
       - 8080:8080

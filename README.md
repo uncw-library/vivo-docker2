@@ -33,9 +33,9 @@ Regardless of the usage, you will need to build the images, which require the fo
 The example [docker-compose.yml](docker-compose.yml) is a basic VIVO installation in docker. This file has two containers and uses the standard TBD system.  The files in ./vivo configure many of the vivo settings.  There is an example custom theme included. 
 
 1. On first startup, log in with user: vivo_root@mydomain.edu password: rootPassword
-2. Any users/instance data is preserved in docker bind mounted volumes to the tdb* volumes in this repo.
-3. Subsequent `docker-compose down` and `docker-compose up --build` will retain the persistant docker volumes.
-4. If you wish to start clean, `docker volume rm vivo-docker2_tdbContentModels vivo-docker2_tdbModels` will delete the volumes holding user/instance data.
+1. Any users/instance data is preserved in docker bind mounted volumes to the tdb* volumes in this repo.
+1. Subsequent `docker-compose down` and `docker-compose up --build` will retain the persistant docker volumes.
+1. If you wish to start clean, `docker volume rm vivo-docker2_tdbContentModels vivo-docker2_tdbModels` will delete the volumes holding user/instance data.
 
 ## VIVO Development
 
@@ -43,7 +43,7 @@ Exposing the solr instance to localhost:8983 can be done by adding `ports: 8983:
 
 ## Revising the Theme
 
-You can disable the theme caching in the Site Admin page: "Activate developer Panel" / "Defeat the template cache".  Then, you can edit files in the "uncw_theme" folder and see the changes in real time at localhost:8080.  On the next `docker-compose up --build` the changes will be baked into your vivo image.
+You can disable the theme caching in the Site Admin page: "Activate developer Panel" / "Defeat the template cache".  Then, you can edit files in the "nemo" folder and see the changes in real time at localhost:8080.  On the next `docker-compose up --build` the changes will be baked into your vivo image.
 
 ## Production
 
@@ -72,3 +72,8 @@ The spliting of the large integer into groups of 3 is important.
 
 So a file in ./person_images/123/456/789/0/personImage.jpg will map to the two locations above.
 
+# Automatic import/refresh
+
+Our use-case is:  One ttl file holds all the userdata.  Place it at ./current_turle/userdata.ttl.  When starting the vivo instance, userdata.ttl is autoimported into Vivo.   (Vivo autoimports any file in vivo/home/rdf/abox/filegraph/;  docker-compose mounts userdata.ttl into that folder).  
+
+To do a data refresh, replace the userdata.ttl file with a new version.  Restarting Vivo will remove the previous data, and autoimport the new version.
