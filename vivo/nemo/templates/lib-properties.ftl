@@ -102,7 +102,7 @@
 				<div class="panel-group">
 					<@objectPropertyList property editable subclass.statements template />
 				</div>
-			<#else> ${property.template}
+			<#else>
 				<ul class="list-group">
 					<@objectPropertyList property editable subclass.statements template />
 				</ul>
