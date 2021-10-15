@@ -18,11 +18,11 @@ services:
     volumes:
       - ./tdbModels:/usr/local/VIVO/home/tdbModels
       - ./tdbContentModels:/usr/local/VIVO/home/tdbContentModels
+      - ./current_turtle/userdata.ttl:/usr/local/VIVO/home/rdf/abox/filegraph/userdata.ttl
       - ./vivo/nemo:/usr/local/tomcat/webapps/ROOT/themes/nemo
       - ./vivo/nemo/images/UNCW-3.jpg:/usr/local/tomcat/webapps/ROOT/images/placeholders/person.thumbnail.jpg
       - ./vivo/nemo/images/UNCW-1.jpg:/usr/local/tomcat/webapps/ROOT/images/placeholders/person.bordered.thumbnail.jpg
-      - ./person_images:/usr/local/VIVO/home/uploads
-      - ./current_turtle/userdata.ttl:/usr/local/VIVO/home/rdf/abox/filegraph/userdata.ttl
+      # - ./person_images:/usr/local/VIVO/home/uploads
 
     ports:
       - 8080:8080
