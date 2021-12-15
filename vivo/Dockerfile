@@ -1,4 +1,4 @@
-FROM tomcat:9.0.21-jdk11-openjdk
+FROM amd64/tomcat:9.0.21-jdk11-openjdk
 
 RUN apt update && \
 	apt install -y maven git
