@@ -1,4 +1,4 @@
-FROM solr:latest
+FROM amd64/solr:latest
 
 COPY ./vivocore /opt/vivocore
 
