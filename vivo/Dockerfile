@@ -5,34 +5,36 @@ RUN apt update && \
 
 WORKDIR /usr/local/
 
-ENV VITRO_VERSION 1.11.0
-ENV VIVO_VERSION 1.11.0
+ENV VITRO_VERSION 1.12.2
+ENV VIVO_VERSION 1.12.2
 
-RUN wget -O Vitro.zip https://github.com/vivo-project/Vitro/releases/download/vitro-${VITRO_VERSION}/vitro-${VITRO_VERSION}.zip && \
+RUN wget -O Vitro.zip https://github.com/vivo-project/Vitro/archive/refs/tags/vitro-${VITRO_VERSION}.zip && \
 	unzip Vitro.zip -d Vitro && \
+	mv ./Vitro/Vitro-vitro-1.12.2/* ./Vitro/ && \
 	rm Vitro.zip && \
-	wget -O VIVO.zip https://github.com/vivo-project/VIVO/releases/download/vivo-${VIVO_VERSION}/VIVO-${VIVO_VERSION}.zip && \
+	wget -O VIVO.zip https://github.com/vivo-project/VIVO/archive/refs/tags/vivo-${VIVO_VERSION}.zip && \
 	unzip VIVO.zip -d VIVO && \
+	mv ./VIVO/VIVO-vivo-1.12.2/* ./VIVO/ && \
 	rm VIVO.zip
 
 WORKDIR /usr/local/VIVO/
 
 # insert customizations to image before maven install
-COPY --chown=root:staff ./configs/settings.xml settings.xml
-COPY --chown=root:staff ./configs/initialSiteConfig.rdf /usr/local/VIVO/home/src/main/resources/rdf/applicationMetadata/firsttime/
-COPY --chown=root:staff ./nemo /usr/local/VIVO/webapp/target/vivo/themes/nemo
+COPY --chown=root:staff ./configs/settings.xml ./installer/settings.xml
+COPY --chown=root:staff ./configs/initialSiteConfig.rdf ./installer/home/src/main/resources/rdf/applicationMetadata/firsttime/initialSiteConfig.rdf
+COPY --chown=root:staff ./nemo ./webapp/src/main/webapp/themes/nemo
 
-RUN mvn install -s settings.xml
+RUN mvn install -s ./installer/settings.xml
 
-# clean up
+# # clean up
 RUN rm -r /usr/local/tomcat/webapps/docs && \
 	rm -r /usr/local/tomcat/webapps/examples && \
 	rm -r /usr/local/tomcat/webapps/ROOT
 
-# insert customizations to image after maven install
-COPY --chown=root:staff ./configs/runtime.properties /usr/local/VIVO/home/config/runtime.properties
-COPY --chown=root:staff ./configs/applicationSetup.n3 /usr/local/VIVO/home/config/applicationSetup.n3
-COPY --chown=root:staff ./configs/aboutPage.n3 /usr/local/VIVO/home/rdf/display/firsttime/aboutPage.n3
+# # insert customizations to image after maven install
+COPY --chown=root:staff ./configs/runtime.properties ./home/config/runtime.properties
+COPY --chown=root:staff ./configs/applicationSetup.n3 ./home/config/applicationSetup.n3
+COPY --chown=root:staff ./configs/aboutPage.n3 ./home/rdf/i18n/en_US/display/firsttime/aboutPage.n3
 COPY --chown=root:staff ./nemo/images/UNCW-1.jpg /usr/local/tomcat/webapps/vivo/images/placeholders/person.bordered.thumbnail.jpg
 COPY --chown=root:staff ./nemo/images/UNCW-3.jpg /usr/local/tomcat/webapps/vivo/images/placeholders/person.thumbnail.jpg
 
