@@ -41,26 +41,6 @@
 	</section>
 </#macro>
 
-<#-- Original Macro -->
-<#-- 
-	<#macro facultyMbrHtml>
-		<section id="home-faculty-mbrs" class="home-sections">
-			<h3>${i18n().faculty_capitalized}</h3>
-			<div id="tempSpacing">
-			<span>${i18n().loading_faculty}&nbsp;&nbsp;&nbsp;
-				<img src="${urls.images}/indicatorWhite.gif">
-			</span>
-			</div>
-			<div id="research-faculty-mbrs">
-				<!-- populated via an ajax call
-				<ul id="facultyThumbs">
-				</ul>
-			</div>
-		</section>
-	</#macro>
--->
-
-
 <!-- 
 	################################################################################
 	Faculty Count

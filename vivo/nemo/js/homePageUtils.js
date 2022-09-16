@@ -146,9 +146,8 @@ $(document).ready(function(){
 
     function buildAcademicDepartmentsBootstrap() {
         var deptNbr = academicDepartments.length;
-        var html = "<div id='home-department-sections-list' class='list-group'>";
+        var html = "<h4>Departments</h4><div id='home-department-sections-list' class='list-group'>";
         var index = Math.floor((Math.random()*deptNbr)+1)-1;
-        
         if ( deptNbr == 0 ) {
             html = "<ul style='list-style:none'><p><li style='padding-top:0.3em'>"
                    + i18nStrings.noDepartmentsFound + "</li></p></ul>";
@@ -177,9 +176,9 @@ $(document).ready(function(){
         }
         else {
             for ( var i=0;i<deptNbr;i++) {
-                html += "<li><a href='" + urlsBase + "/individual?uri=" 
+                html += "<a class='list-group-item' href='" + urlsBase + "/individual?uri=" 
                         + academicDepartments[i].uri + "'>" 
-                        + academicDepartments[i].name + "</a></li>";
+                        + academicDepartments[i].name + "</a>";
             }
         }
         if ( deptNbr > 0 ) {
