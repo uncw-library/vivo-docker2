@@ -10,4 +10,4 @@ services:
       - solr
     volumes:
       - /home/randall/volumes/vivo/tdbModels:/usr/local/VIVO/home/tdbModels
-      - /home/randall/volumes/vivo/tdbContentModels:/usr/local/VIVO/home/tdbContentModels
+      - /home/randall/volumes/vivo/tdbContentModels:/tdbContentModels

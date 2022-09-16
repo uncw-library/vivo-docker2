@@ -97,7 +97,7 @@
     a   vitroWebapp:triplesource.impl.tdb.ContentTripleSourceTDB ,
         vitroWebapp:modules.tripleSource.ContentTripleSource ;
     # May be an absolute path, or relative to the Vitro home directory.
-    :hasTdbDirectory "tdbContentModels" .
+    :hasTdbDirectory "/tdbContentModels" .
 
 #:sparqlContentTripleSource
 #    a   vitroWebapp:triplesource.impl.sparql.ContentTripleSourceSPARQL ,

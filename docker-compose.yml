@@ -19,7 +19,7 @@ services:
       - solr
     volumes:
       - ./tdbModels:/usr/local/VIVO/home/tdbModels
-      - ./tdbContentModels:/usr/local/VIVO/home/tdbContentModels
+      - ./tdbContentModels:/tdbContentModels
       - ./current_turtle/userdata.ttl:/usr/local/VIVO/home/rdf/abox/filegraph/userdata.ttl
       - ./vivo/nemo:/usr/local/tomcat/webapps/ROOT/themes/nemo
     ports:
