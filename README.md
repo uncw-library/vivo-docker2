@@ -13,23 +13,37 @@ Regardless of the usage, you will need to build the images, which require the fo
 1. Linux: [Install](https://docs.docker.com/install/) Docker
 1. Linux: [Install](https://docs.docker.com/compose/install/) Docker Compose
 1. Windows/Mac: [Install](https://www.docker.com/products/docker-desktop) Docker Desktop
-1. Clone this project
-1. (optional)  Copy the tdbModels & tdbContentModels from your production instance into the matching folders in this repo.  This pulls in any changes made on the production site via the Admin panel to the dev box.
+1. Git Clone this project
+
+## Build the docker images
+
+When satisfied with your dev box, build and push the images to production
+
+1. Your custom theme like ./vivo/uncw_theme is included in the docker image.
+1. Your config files at ./vivo/config are include in the docker image.
+1. Your vivo container will serve from http://{container}:80/ 
+1. `docker build --no-cache -t your_registry.com/vivo --platform linux/x86_64/v8 ./vivo`
+1. `docker build --no-cache -t your_registry.com/solr --platform linux/x86_64/v8 ./solr`
+1. Your production environment can be some analogue of what is in ./docker-compose-rancher.yml
+
+## Development env
+
+1. (optional)  Copy the tdbModels & tdbContentModels from your production instance into the matching folders in this repo.  This pulls in any changes made on the production site via the Admin panel to the dev box. They are gitignored.
 ```bash
    rsync -avz yourname@servername.com:/path/to/vivo/home/tdbModels .
    rsync -avz yourname@servername.com:/path/to/vivo/home/tdbContentModels .
    sudo chown -R root:root tdbModels/ tdbContentModels/
 ```
+1. (optional)  Place any additional graph files into ./current_turtle .  They will be autoimported into vivo on docker compose up.  They are gitignored.  We use a userdata.ttl file in this folder to import/remove instance data from our production vivo.
+1. (optional)  Create a custom theme, following the './vivo/uncw_theme' folder.  Revise ./vivo/Dockerfile and docker-compose.yml lines including uncw_theme.
 1. Start the containers:
 ```bash
    docker compose up --build
 ```
-
-1. ON FIRST START, WAIT FOR SOLR TO INITIALIZE THEN `docker compose restart vivo`.  This allows vivo to connect to the solr.  Otherwise, vivo will give an error about not connecting to http://solr:8983/solr/vivo.
-
-1. Rebuild the search index via logging into the Admin menu if the frontend does not display any instance data.
-
- Then navigate to [localhost:8080](http://localhost:8080)
+1. ON FIRST START, WAIT A MINUTE FOR SOLR TO INITIALIZE THEN `docker compose restart vivo`.  This allows vivo to connect to the solr.  Otherwise, vivo will give an error about not connecting to http://solr:8983/solr/vivo.
+1. ON EACH START, WAIT FIVE MINUTES FOR VIVO TO INITIALIZE.  Then navigate to [localhost:8080](http://localhost:8080)
+1. Rebuild the search index via logging into the Admin menu if the frontend does not display your instance data.
+1. NOTE:  After doing any theme or configfile changes, you must do a `docker build ...` step before pushing to production.  `docker build ...` bakes those changes into the image.  This contrasts with `docker compose up` which only temporarily overlays those folders onto the containers.
 
 ## VIVO Runtime Example
 
@@ -38,13 +52,16 @@ The example [docker-compose.yml](docker-compose.yml) is a basic VIVO installatio
 1. On first startup, log in with user: vivo_root@mydomain.edu password: rootPassword
 1. Any users/instance data is preserved in docker bind mounted volumes to the tdb* volumes in this repo.
 1. Subsequent `docker-compose down` and `docker-compose up --build` will retain the persistant docker volumes.
-1. If you wish to start clean, `docker volume rm vivo-docker2_tdbContentModels vivo-docker2_tdbModels` will delete the volumes holding user/instance data.
+1. If you wish to start clean, `docker volume rm vivo-docker2_solr_data` will delete the volume holding user/instance data.
 
-## VIVO Development
+## Solr access for dev
 
-Exposing the solr instance to localhost:8983 can be done by adding `ports: 8983:8983` to the solr section of docker-compose.yml
+In the docker-compose.yml, adding a `ports: 8983:8983` will expose the solr instance to localhost:8983.  The build otherwise makes solr unreachable everywhere except from the vivo container.
+
 
 ## Revising the Theme
+
+The custom theme lives at ./vivo/uncw_theme  It is included in the docker container during 'docker build'
 
 You can disable the theme caching in the Site Admin page: "Activate developer Panel" / "Defeat the template cache".  Then, you can edit files in the "nemo" folder and see the changes in real time at localhost:8080.  On the next `docker-compose up --build` the changes will be baked into your vivo image.
 

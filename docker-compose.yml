@@ -7,8 +7,6 @@ services:
     build:
       context: ./solr
     platform: linux/x86_64/v8
-    ports:
-      - 8983:8983
     volumes:
       - solr_data:/var/solr
     restart: always
@@ -25,7 +23,7 @@ services:
       - ./tdbModels:/usr/local/VIVO/home/tdbModels
       - ./tdbContentModels:/tdbContentModels
       - ./current_turtle/userdata.ttl:/usr/local/VIVO/home/rdf/abox/filegraph/userdata.ttl
-      # - ./vivo/nemo:/usr/local/tomcat/webapps/ROOT/themes/nemo
+      - ./vivo/uncw_theme:/usr/local/tomcat/webapps/vivo/themes/uncw_theme
     ports:
       - 8080:8080
     restart: always

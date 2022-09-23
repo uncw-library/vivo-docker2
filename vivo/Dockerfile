@@ -18,7 +18,7 @@ WORKDIR /usr/local/VIVO/
 # insert customizations to image before maven install
 COPY --chown=root:staff ./configs/settings.xml settings.xml
 COPY --chown=root:staff ./configs/initialSiteConfig.rdf /usr/local/VIVO/home/src/main/resources/rdf/applicationMetadata/firsttime/
-# COPY --chown=root:staff ./nemo /usr/local/VIVO/webapp/target/vivo/themes/nemo
+COPY --chown=root:staff ./uncw_theme /usr/local/VIVO/webapp/src/main/webapp/themes/uncw_theme
 
 WORKDIR /usr/local/Vitro-languages
 RUN mvn install
