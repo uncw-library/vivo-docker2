@@ -20,6 +20,6 @@
     </profile>
   </profiles>
   <activeProfiles>
-    <activeProfile>nemo</activeProfile>
+    <activeProfile>defaults</activeProfile>
   </activeProfiles>
 </settings>

@@ -22,9 +22,12 @@ Regardless of the usage, you will need to build the images, which require the fo
 ```
 1. Start the containers:
 ```bash
-   docker-compose up --build
+   docker compose up --build
 ```
-1. Rebuild the search index via the Admin menu if content is missing.
+
+1. ON FIRST START, WAIT FOR SOLR TO INITIALIZE THEN `docker compose restart vivo`.  This allows vivo to connect to the solr.  Otherwise, vivo will give an error about not connecting to http://solr:8983/solr/vivo.
+
+1. Rebuild the search index via logging into the Admin menu if the frontend does not display any instance data.
 
  Then navigate to [localhost:8080](http://localhost:8080)
 
@@ -49,7 +52,7 @@ You can disable the theme caching in the Site Admin page: "Activate developer Pa
 
 ```
 docker build --no-cache -t libapps-admin.uncw.edu:8000/randall-dev/vivo-docker2/vivo --platform linux/x86_64/v8 ./vivo
-docker push libapps-admin.uncw.edu:8000/randall-dev/vivo-docker2/vivo:1.12.2
+docker push libapps-admin.uncw.edu:8000/randall-dev/vivo-docker2/vivo
 ```
 
 

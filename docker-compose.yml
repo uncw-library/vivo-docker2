@@ -3,15 +3,19 @@ version: '3'
 services:
   solr:
     container_name: solr
-    image: libapps-admin.uncw.edu:8000/randall-dev/vivo-docker2/solr
+    image: libapps-admin.uncw.edu:8000/randall-dev/vivo-docker2/solr:1.13-maint
     build:
       context: ./solr
     platform: linux/x86_64/v8
+    ports:
+      - 8983:8983
+    volumes:
+      - solr_data:/var/solr
     restart: always
 
   vivo:
     container_name: vivo
-    image: libapps-admin.uncw.edu:8000/randall-dev/vivo-docker2/vivo
+    image: libapps-admin.uncw.edu:8000/randall-dev/vivo-docker2/vivo:1.13-maint
     build:
       context: ./vivo
     platform: linux/x86_64/v8
@@ -21,7 +25,10 @@ services:
       - ./tdbModels:/usr/local/VIVO/home/tdbModels
       - ./tdbContentModels:/tdbContentModels
       - ./current_turtle/userdata.ttl:/usr/local/VIVO/home/rdf/abox/filegraph/userdata.ttl
-      - ./vivo/nemo:/usr/local/tomcat/webapps/ROOT/themes/nemo
+      # - ./vivo/nemo:/usr/local/tomcat/webapps/ROOT/themes/nemo
     ports:
       - 8080:8080
     restart: always
+
+volumes:
+  solr_data:
