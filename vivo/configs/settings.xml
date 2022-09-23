@@ -10,16 +10,16 @@
       </properties>
     </profile>
     <profile>
-      <id>nemo</id>
+      <id>uncw</id>
       <properties>
         <app-name>vivo</app-name>
         <vivo-dir>/usr/local/VIVO/home</vivo-dir>
         <tomcat-dir>/usr/local/tomcat</tomcat-dir>
-        <default-theme>nemo</default-theme>
+        <default-theme>uncw_theme</default-theme>
       </properties>
     </profile>
   </profiles>
   <activeProfiles>
-    <activeProfile>defaults</activeProfile>
+    <activeProfile>uncw</activeProfile>
   </activeProfiles>
 </settings>
