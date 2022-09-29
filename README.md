@@ -21,7 +21,7 @@ When satisfied with your dev box, build and push the images to production
 
 1. Your custom theme like ./vivo/uncw_theme is included in the docker image.
 1. Your config files at ./vivo/config are include in the docker image.
-1. Your vivo container will serve from http://{container}:80/ 
+1. Your vivo container will serve from http://localhost:8080/
 1. `docker build --no-cache -t your_registry.com/vivo --platform linux/x86_64/v8 ./vivo`
 1. `docker build --no-cache -t your_registry.com/solr --platform linux/x86_64/v8 ./solr`
 1. Your production environment can be some analogue of what is in ./docker-compose-rancher.yml
@@ -43,7 +43,7 @@ When satisfied with your dev box, build and push the images to production
 1. ON FIRST START, WAIT A MINUTE FOR SOLR TO INITIALIZE THEN `docker compose restart vivo`.  This allows vivo to connect to the solr.  Otherwise, vivo will give an error about not connecting to http://solr:8983/solr/vivo.
 1. ON EACH START, WAIT FIVE MINUTES FOR VIVO TO INITIALIZE.  Then navigate to [localhost:8080](http://localhost:8080)
 1. Rebuild the search index via logging into the Admin menu if the frontend does not display your instance data.
-1. NOTE:  After doing any theme or configfile changes, you must do a `docker build ...` step before pushing to production.  `docker build ...` bakes those changes into the image.  This contrasts with `docker compose up` which only temporarily overlays those folders onto the containers.
+1. NOTE:  After doing any theme or configfile changes, you must do a `docker build ...` step before pushing to production.  `docker compose up` only temporarily overlays those folders onto the containers.  `docker build ...` bakes those changes into the image.  
 
 ## VIVO Runtime Example
 
@@ -61,7 +61,8 @@ In the docker-compose.yml, adding a `ports: 8983:8983` will expose the solr inst
 
 ## Revising the Theme
 
-The custom theme lives at ./vivo/uncw_theme  It is included in the docker container during 'docker build'
+A custom theme lives at ./vivo/uncw_theme  It is included in the docker container during 'docker build'
+You can copy this folder into a sister folder, then find-replace all references to 'uncw_theme' within this repo.
 
 You can disable the theme caching in the Site Admin page: "Activate developer Panel" / "Defeat the template cache".  Then, you can edit files in the "nemo" folder and see the changes in real time at localhost:8080.  On the next `docker-compose up --build` the changes will be baked into your vivo image.
 
@@ -72,22 +73,10 @@ docker build --no-cache -t libapps-admin.uncw.edu:8000/randall-dev/vivo-docker2/
 docker push libapps-admin.uncw.edu:8000/randall-dev/vivo-docker2/vivo
 ```
 
-
-Data persistance can be accomplished by bind volume mapping two container folders:
+Data persistance can be accomplished by bind volume mapping two container folders to the production filesystem:
 
  - /usr/local/VIVO/home/tdbContentModels
  - /usr/local/VIVO/home/tdbModels
-
-, or by perserving the docker volumes:
-
- - vivo-docker2_tdbContentModels
- - vivo-docker2_tdbModels
-
-
-Dev note:  Thank you to the developers of earlier dockerized VIVO releases who laid the groundwork,
-
- - [vivo-docker](https://github.com/gwu-libraries/vivo-docker)
- - [vivo-docker2](https://github.com/vivo-community/vivo-docker2)
 
 
 # Person Images portion
@@ -103,3 +92,9 @@ So a file in ./person_images/123/456/789/0/personImage.jpg will map to the two l
 Our use-case is:  One ttl file holds all the userdata.  Place it at ./current_turle/userdata.ttl.  When starting the vivo instance, userdata.ttl is autoimported into Vivo.   (Vivo autoimports any file in vivo/home/rdf/abox/filegraph/;  docker-compose mounts userdata.ttl into that folder).  
 
 To do a data refresh, replace the userdata.ttl file with a new version.  Restarting Vivo will remove the previous data, and autoimport the new version.
+
+
+Acknowledgements:  Thank you to the developers of earlier dockerized VIVO releases who laid the groundwork,
+
+ - [vivo-docker](https://github.com/gwu-libraries/vivo-docker)
+ - [vivo-docker2](https://github.com/vivo-community/vivo-docker2)

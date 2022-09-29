@@ -16,8 +16,8 @@ RUN git clone https://github.com/vivo-project/Vitro.git Vitro -b ${GIT_BRANCH} &
 WORKDIR /usr/local/VIVO/
 
 # insert customizations to image before maven install
-COPY --chown=root:staff ./configs/settings.xml settings.xml
-COPY --chown=root:staff ./configs/initialSiteConfig.rdf /usr/local/VIVO/home/src/main/resources/rdf/applicationMetadata/firsttime/
+COPY --chown=root:staff ./configs/settings.xml /usr/local/VIVO/settings.xml
+COPY --chown=root:staff ./configs/initialSiteConfig.rdf /usr/local/VIVO/installer/home/src/main/resources/rdf/applicationMetadata/firsttime/
 COPY --chown=root:staff ./uncw_theme /usr/local/VIVO/webapp/src/main/webapp/themes/uncw_theme
 
 WORKDIR /usr/local/Vitro-languages
