@@ -8,9 +8,6 @@
     </section>
     
     <#include "menupage-browse.ftl">
-    
-  <#--  ${stylesheets.add('<link rel="stylesheet" href="${urls.base}/css/menupage/menupage.css" />')} -->
-    
     <#include "menupage-scripts.ftl">
 <#else>
     ${noDataNotification}

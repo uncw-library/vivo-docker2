@@ -64,12 +64,10 @@
 				</div>
 				<div class="panel-body">
 					<div class="property-list" style="width:100%;" role="list" id="${property.localName}-${rangeClass}-List" displayLimit="${limit}">
-					<#-- data property -->
 						<#if property.type == "data"> 
-						<@p.dataPropertyList property editable />
-					<#-- object property -->
+							<@p.dataPropertyList property editable />
 						<#else>
-						<@p.objectProperty property editable /> 
+							<@p.objectProperty property editable /> 
 						</#if>
 					</div>
 				</div>

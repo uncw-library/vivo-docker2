@@ -6,7 +6,7 @@
 <#assign subjectUri = individual.controlPanelUrl()?split("=") >
 <#assign tabCount = 1 >
 <#assign sectionCount = 1 >
-<!-- ${propertyGroups.all?size} -->
+
 <div class="row individual-objects">
 	<div class="col-md-12">		
 		<ul class="nav nav-tabs" role="tablist">
@@ -44,18 +44,6 @@
 					</#if>
 				</#if>
 			</#list>
-			<#--
-				<#if (propertyGroups.all?size > 1) >
-					<li role="presentation">
-						<a href="#${groupNameHtmlId?replace("/","-")}" 
-							aria-controls="${groupName?capitalize}" 
-							role="tab" data-toggle="tab">
-							
-							${groupName?capitalize}
-						</a>
-					</li>
-				</#if>
-			-->
 		</ul>
 
 		<div class="tab-content">
@@ -69,15 +57,6 @@
 						class="tab-pane <#if (sectionCount > 1) ><#else>active</#if>" 
 						role="tabpanel"
 					>
-
-					<#--
-						<nav id="scroller" class="scroll-up hidden" role="navigation"> 
-							<a href="#branding" title="${i18n().scroll_to_menus}" >
-								<img src="${urls.images}/individual/scroll-up.gif" alt="${i18n().scroll_to_menus}" />
-							</a>
-						</nav> 
-					-->
-
 						<#-- Display the group heading --> 
 						<#if groupName?has_content>
 							<#--the function replaces spaces in the name with underscores, also called for the property group menu-->
@@ -85,12 +64,6 @@
 							<h2 id="${groupNameHtmlId?replace("/","-")}" pgroup="tabs" class="hidden">${groupName?capitalize}</h2>
 						<#else>
 							<h2 id="properties" pgroup="tabs" class="hidden">${i18n().properties_capitalized}</h2>
-							<#--   
-								<section id="${groupNameHtmlId?replace("/","-")}" 
-									class="property-group" 
-									role="region" 
-									style="<#if (sectionCount > 1) >display:none<#else>display:block</#if>"> 
-							-->
 						</#if>
 						<div id="${groupNameHtmlId?replace("/","-")}Group">
 							<#-- List the properties in the group   -->

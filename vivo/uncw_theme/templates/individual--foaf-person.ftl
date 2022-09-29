@@ -18,15 +18,6 @@
 <#assign foafFullName>
 	<#assign title = propertyGroups.pullProperty("http://purl.obolibrary.org/obo/ARG_2000028","http://www.w3.org/2006/vcard/ns#Title")!>
 	
-	<#--
-		<#assign full_name = propertyGroups.pullProperty("http://purl.obolibrary.org/obo/ARG_2000028","http://www.w3.org/2006/vcard/ns#Name")!>
-		<#if full_name?has_content>
-			<#list full_name.statements as statement>
-				<span itemprop="name" class="fn"><@showFullName statement /></span>
-			</#list>
-		</#if>
-	-->
-	
 	<@p.label individual editable labelCount localesCount/>
 	<#if title?has_content> <#-- true when the property is in the list, even if not populated (when editing) -->
 		<#if (title.statements?size < 1) >
@@ -42,12 +33,6 @@
 			</small>
 			<@p.editingLinks "${title.localName}" "${title.name}" statement editable title.rangeUri />
 	    </#list>
-	</#if>
-	
-	<#--</#if> -->
-	<#-- If preferredTitle is unpopulated, display mostSpecificTypes -->
-	<#if ! (title.statements)?has_content>
-		<#--	<@p.mostSpecificTypes individual /> -->
 	</#if>
 </#assign>
 
@@ -202,12 +187,6 @@ Add divs and wrapper to create funnelback basket controls. MUST BE REMOVED BEFOR
 		};
 </script>
 
-
-<#-- 
-	${stylesheets.add('<link rel="stylesheet" href="${urls.base}/css/individual/individual.css" />',
-	'<link rel="stylesheet" href="${urls.base}/css/individual/individual-vivo.css" />',
-	'<link rel="stylesheet" href="${urls.base}/js/jquery-ui/css/smoothness/jquery-ui-1.8.9.custom.css" />')}
--->
 
 ${stylesheets.add('<link rel="stylesheet" href="${urls.base}/js/jquery-ui/css/smoothness/jquery-ui-1.8.9.custom.css" />')}
 

@@ -14,14 +14,12 @@
     <#-- Include for any class specific template additions -->
     ${classSpecificExtension!}
     ${departmentalGrantsExtension!}
-    <!--PREINDIVIDUAL OVERVIEW.FTL-->
     <#include "individual-vocabularyService.ftl">
     <#include "individual-webpage.ftl">
     <#include "individual-overview.ftl">
     ${affiliatedResearchAreas!}
         </section> <!-- #individual-info -->
     </section> <!-- #individual-intro -->
-    <!--postindividual overiew ftl-->
 </#assign>
 
 <#if individual.conceptSubclass() >
@@ -32,12 +30,12 @@
 
 <#include "individual-vitro.ftl">
 <script>
-var i18nStrings = {
-    displayLess: '${i18n().display_less}',
-    displayMoreEllipsis: '${i18n().display_more_ellipsis}',
-    showMoreContent: '${i18n().show_more_content}',
-    verboseTurnOff: '${i18n().verbose_turn_off}',
-};
+    var i18nStrings = {
+        displayLess: '${i18n().display_less}',
+        displayMoreEllipsis: '${i18n().display_more_ellipsis}',
+        showMoreContent: '${i18n().show_more_content}',
+        verboseTurnOff: '${i18n().verbose_turn_off}',
+    };
 </script>
 
 ${stylesheets.add('<link rel="stylesheet" href="${urls.base}/css/individual/individual-vivo.css" />')}

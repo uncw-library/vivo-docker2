@@ -44,7 +44,6 @@
             </nav>
             <section id="individuals-in-class" role="region">
                 <ul role="list">
-
                     <#-- Will be populated dynamically via AJAX request -->
                 </ul>
             </section>

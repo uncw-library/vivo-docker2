@@ -7,13 +7,9 @@
 
 <#assign entityURI ="${entityURI?url}">
 <#assign entityVivoProfileURL = "${urls.base}/individual?uri=${entityURI}">
-
 <#assign mapOfScienceVisParam = "map-of-science">
-
 <#assign subEntityVivoProfileURL = "${urls.base}/individual?">
-
 <#assign subEntityMapOfScienceCommonURL = "${urls.base}${shortVisualizationURLRoot}/${mapOfScienceVisParam}/">
-
 
 <#if entityLocalName?has_content >
     
@@ -26,9 +22,7 @@
 </#if>
 
 <#assign mapOfScienceIcon = '${urls.images}/visualization/mapofscience/scimap_icon.png'>
-
 <#assign entityMapOfScienceDataURL = "${urls.base}${dataVisualizationURLRoot}?vis=${mapOfScienceVisParam}&uri=${entityURI}&output=json">
-
 <#assign entityMapOfScienceDisciplineCSVURL = "${urls.base}${dataVisualizationURLRoot}?vis=${mapOfScienceVisParam}&uri=${entityURI}&output=csv&vis_mode=discipline">
 <#assign entityMapOfScienceSubDisciplineCSVURL = "${urls.base}${dataVisualizationURLRoot}?vis=${mapOfScienceVisParam}&uri=${entityURI}&output=csv&vis_mode=subdiscipline">
 <#assign entityMapOfScienceUnlocatedJournalsCSVURL = "${urls.base}${dataVisualizationURLRoot}?vis=${mapOfScienceVisParam}&uri=${entityURI}&output=csv&vis_mode=unlocated_journals">
@@ -41,19 +35,17 @@ var contextPath = "${urls.base}";
 var scienceMapDataPrefix = "${urls.base}${dataVisualizationURLRoot}?vis=${mapOfScienceVisParam}&output=json&uri=";
 var scienceMapDataURL = scienceMapDataPrefix + "${entityURI}";
 var entityUnmappedJournalsCSVURLPrefix = "${urls.base}${dataVisualizationURLRoot}?vis=${mapOfScienceVisParam}&output=csv&vis_mode=unlocated_journals&uri=";
-
 var imageFolderPrefix = "${urls.images}/visualization/";
 var mapOfScienceImageFolderPrefix  = imageFolderPrefix + "mapofscience/";
 var disciplineLabelImageUrlPrefix = mapOfScienceImageFolderPrefix + "labels/";
 var disciplineBlackLabelImageUrlPrefix = disciplineLabelImageUrlPrefix + "black/";
-
 var infoIconUrl = "${urls.images}/iconInfo.png";
 var drillDownIconUrl = "${urls.images}/visualization/drill_down_icon.png";
-											
 var entityLabel = '${entityLabel}';
-
 var ENTITY_TYPE = '${entityType}';
+
 <#if entityType == "PERSON" >
+
 	<#assign viewTypeFilterDisplay = "none">
 <#else>
 	<#assign viewTypeFilterDisplay = "block">
@@ -106,7 +98,7 @@ var i18nStrings = {
     percentActivity: '${i18n().percent_activity}'
 };
 </script>
-<#--//'<script type="text/javascript" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>', -->
+
 ${scripts.add('<script type="text/javascript" src="//maps.google.com/maps/api/js?key=AIzaSyBTRf2JXqvTvpqy4ryJn0J1BWaMRqxqeMU"></script>',
 			  '<script type="text/javascript" src="${urls.base}/js/jquery-ui/js/jquery-ui-1.8.9.custom.min.js"></script>',
                           '<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.4.1.js"></script>'

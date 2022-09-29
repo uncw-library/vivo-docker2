@@ -7,8 +7,6 @@
 <#assign tabCount = 1 >
 <#assign sectionCount = 1 >
 
-<!-- ${propertyGroups.all?size} -->
-
 <div class="row">
 	<div class="col-md-12">
 		<ul class="nav nav-tabs user-nav" role="tablist" id="individualNavTabs">
@@ -38,14 +36,7 @@
 				</#if>
 			</#if>
 		</#list>
-		<#--
-			<li id="visualisationTab" role="presentation">
-				<a href="#visualisation" aria-controls="Visualisations" role="tab" data-toggle="tab">
-					Visualisation
-				</a>
-			</li>
-		-->
-		</ul>
+	    </ul>
 	</div>
 	<div class="col-md-12 person-container">
 		<div class="tab-content" id="individualNavTabsContent">
@@ -62,7 +53,6 @@
 						<h2 id="${groupNameHtmlId?replace("/","-")}" pgroup="tabs" class="hidden">${groupName?capitalize}</h2>
 					<#else>
 						<h2 id="properties" pgroup="tabs" class="hidden">${i18n().properties_capitalized}</h2>
-						<#--<section id="${groupNameHtmlId?replace("/","-")}" class="property-group" role="region" style="<#if (sectionCount > 1) >display:none<#else>display:block</#if>"> -->
 					</#if>
 					<div id="${groupNameHtmlId?replace("/","-")}Group">
 						<#-- List the properties in the group -->
@@ -73,20 +63,6 @@
 				<#assign sectionCount = 2 >
 			</#if>
 			</#list>
-			<#--
-				<div id="visualisation" class="tab-pane fade" role="tabpanel">
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h3 class="panel-title">
-								Co-Author Network
-							</h3>
-						</div>
-						<div class="panel-body">
-							<iframe src="${individual.coAuthorVisUrl()}?iframemode=yes" width="800" height="800" style="border: none;" target="_parent"></iframe>
-						</div>
-					</div>
-				</div>
-			-->
 		</div>
 	</div>
 </div>

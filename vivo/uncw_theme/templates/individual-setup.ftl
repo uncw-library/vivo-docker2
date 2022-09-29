@@ -6,7 +6,5 @@
 <#import "lib-properties.ftl" as p>
 
 <#assign editable = individual.editable>
-
 <#assign propertyGroups = individual.propertyList>
-
 <#assign core = "http://vivoweb.org/ontology/core#">

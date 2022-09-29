@@ -13,8 +13,6 @@
                             p.hasVisualizationStatements(propertyGroups, "${obo_RO53}", "${core}CoPrincipalInvestigatorRole") ) >
 
 <#if (isAuthor || isInvestigator)>
- 
-   <#-- ${stylesheets.add('<link rel="stylesheet" href="${urls.base}/css/visualization/visualization.css" />')} -->
     <#assign standardVisualizationURLRoot ="/visualization">
     <div class="visualizationContainer" style="width:100%;text-align: left;font-size:small;">
         <h5><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> <strong>Visualizations</strong></h5>
@@ -25,30 +23,19 @@
             <#assign mapOfScienceVisUrl = individual.mapOfScienceUrl()>
             
             <#assign googleJSAPI = "https://www.google.com/jsapi?autoload=%7B%22modules%22%3A%5B%7B%22name%22%3A%22visualization%22%2C%22version%22%3A%221%22%2C%22packages%22%3A%5B%22imagesparkline%22%5D%7D%5D%7D"> 
-            
-            <#-- <h5 id="sparklineHeading">${i18n().publications_in_vivo}</h5> -->
-            <#-- Below divs seem to be empty, have been removed
-            <div id="vis_container_coauthor">&nbsp;</div>
-            
-            <div class="collaboratorship-link-separator"></div> -->
-            <#-- <h5>Visualizations</h5> -->
             <div id="coauthorship_link_container" class="collaboratorship-link-container">
 				<#-- Replaced co author icon with glyphicon-->
                 <div class="collaboratorship-link">
                     <a href="${coAuthorVisUrl}" title="${i18n().co_author_network}" class="btn btn-default btn-block">
-                        <#-- <span class="glyphicon glyphicon-education" aria-hidden="true"></span> -->
                         ${i18n().co_author_network}
                     </a>
                 </div>
             </div>
-            <#-- Another useless div -->
-            <#-- <div class="collaboratorship-link-separator"></div> -->
             
   	      	<div id="mapofscience_link_container" class="collaboratorship-link-container">
             	<#-- Replaced map of science icon with glyphicon -->
                 <div class="collaboratorship-link">
                     <a href="${mapOfScienceVisUrl}" title="${i18n().map_of_science}" class="btn btn-default btn-block">
-                        <#-- <span class="glyphicon glyphicon-globe" aria-hidden="true"></span> -->
                         ${i18n().map_of_science_capitalized}
                     </a>
                 </div>
@@ -76,11 +63,10 @@
                 <#-- Replaced co-investigator icon with glyphicon -->
                 <div class="collaboratorship-link">
                     <a href="${coInvestigatorVisUrl}" title="${i18n().co_investigator_network}" class="btn btn-default btn-block">
-                        <#-- <span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span> -->
                         ${i18n().co_investigator_network_capitalized}
                     </a>
                 </div>
             </div>
         </#if>
-        </div>
+    </div>
 </#if>

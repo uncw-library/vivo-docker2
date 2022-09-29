@@ -8,26 +8,15 @@
 <#assign mailingAddress = propertyGroups.pullProperty("http://purl.obolibrary.org/obo/ARG_2000028","http://www.w3.org/2006/vcard/ns#Address")!>
 
 
-<#-- <#if phone?has_content || primaryEmail?has_content || addlEmail?has_content >
-    <h5 class="contactInfoHeading">
-        ${i18n().contact_info}
-    </h5>
-
-</#if> -->
-
 <#-- Wrapped the emails in a div so we can style them together -->
 <div class="emailsContainer" style="width:100%;text-align: left;font-size:small;">
     <h5>
         <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> <strong>E-mail</strong>
     </h5>
-    <#-- Primary Email -->    
     <@emailLinks "primaryEmail" primaryEmail />
-
-    <#-- Additional Emails --> 
     <@emailLinks "email" addlEmail />
 </div>
-  
-<#-- Phone --> 
+
 <div class="phoneContainer" style="width:100%;text-align: left;font-size:small;">
 <#if phone?has_content> <#-- true when the property is in the list, even if not populated (when editing) -->
     <@p.addLinkWithLabel phone editable />
@@ -46,27 +35,6 @@
     </#if>
 </#if>
 </div>
-
-<#-- 
-<#if mailingAddress?has_content>
-	<@p.addLinkWithLabel mailingAddress editable />
-	<#if mailingAddress.statements?has_content>
-		<div id="individual-address" role="list" <#if editable>style="list-style:none;margin-left:0;"</#if>>
-			<h4>
-				<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
-			</h4>
-			<#list mailingAddress.statements as statement>
-				${statement.street!}<br/>
-				${statement.locality!},
-				${statement.region!}
-				${statement.postalCode!}
-				${statement.country!}<br/>
-				<@p.editingLinks "${mailingAddress.localName}" "${mailingAddress.name}" statement editable mailingAddress.rangeUri />
-			</#list>
-		</div>
-	</#if>
-</#if>
- -->
 
 <div class="addressContainer" style="width:100%;text-align: left;font-size:small;">
 <#if mailingAddress?has_content>

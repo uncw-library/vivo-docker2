@@ -32,9 +32,10 @@
                              <#if altmetricHideEmpty??>data-hide-no-mentions="true"</#if>
                              data-link-target="_blank"
                              data-pmid="${pmid.statements[0].value}"></div>
-                    </div>
-<span class="__dimensions_badge_embed__" data-pmid="${pmid.statements[0].value}"></span><script async src="https://badge.dimensions.ai/badge.js" charset="utf-8"></script>
+                        </div>
+                    <span class="__dimensions_badge_embed__" data-pmid="${pmid.statements[0].value}"></span>
+                    <script async src="https://badge.dimensions.ai/badge.js" charset="utf-8"></script>
+                </#if>
             </#if>
         </#if>
     </#if>
-</#if>

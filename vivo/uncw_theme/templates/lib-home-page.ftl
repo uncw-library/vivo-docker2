@@ -219,16 +219,6 @@ var urlsBase = "${urls.base}";
 <#macro geographicFocusHtml>
     <section id="home-geo-focus" class="home-sections">
         <h2 class="h1">${i18n().geographic_focus}</h2>
-        <#-- map controls allow toggling between multiple map types: e.g., global, country, state/province. -->
-        <#-- VIVO default is for only a global display, though the javascript exists to support the other   -->
-        <#-- types. See map documentation for additional information on how to implement additional types.  -->
-        <#--
-            <div id="mapControls">
-                <a id="globalLink" class="selected" href="javascript:">${i18n().global_research}</a>&nbsp;|&nbsp;
-                <a id="countryLink" href="javascript:">${i18n().country_wide_research}</a>&nbsp;|&nbsp;
-                <a id="localLink" href="javascript:">${i18n().local_research}</a>  
-            </div>  
-        -->
         <div id="researcherTotal"></div>
         <div id="timeIndicatorGeo">
             <span>${i18n().loading_map_information}&nbsp;&nbsp;&nbsp;
@@ -236,10 +226,5 @@ var urlsBase = "${urls.base}";
             </span>
         </div>
         <div id="mapGlobal" class="mapArea"></div>
-
-       <#--  
-            <div id="mapCountry" class="mapArea"></div>
-            <div id="mapLocal" class="mapArea"></div> 
-       -->
     </section>
 </#macro>
