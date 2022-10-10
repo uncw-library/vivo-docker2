@@ -26,7 +26,7 @@
 		<div class="panel panel-default">
 			<div class="panel-body">
 				<div class="row">
-					<div class="col-md-4">
+<#-- 					<div class="col-md-4">
 						<#if statement.downloadLocation??>
 							<div id="photo-wrapper">
 								<img width="190" title="image" class="img-rounded" alt="image" src="${statement.downloadLocation?replace("http:","https:")}">
@@ -36,7 +36,7 @@
 								<img width="190" title="no image" class="img-rounded" alt="placeholder image" src="/images/placeholders/person.thumbnail.jpg">
 							</div>
 						</#if>		
-					</div>
+					</div> -->
 					<div class="col-md-8">
 						<h4>
 							<#local linkedIndividual>

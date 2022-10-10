@@ -5,13 +5,18 @@
 about:ABOUTDG
     a   <java:edu.cornell.mannlib.vitro.webapp.utils.dataGetter.FixedHTMLDataGetter> ;
     <http://vitro.mannlib.cornell.edu/ontologies/display/1.1#htmlValue>
-        """<h2>About VIVO</h2>
-        <div class=\"pageGroupBody\" id=\"aboutText\"><p>The VIVO application enables the discovery of researchers across institutions. Participants in the network include institutions with local installations of VIVO or those with research discovery and profiling applications that can provide semantic web-compliant data. The information accessible through VIVO's search and browse capability will therefore reside and be controlled locally, within institutional VIVOs or other semantic web-compliant applications.</p>
-
-        <p>VIVO is an open source semantic web application originally developed and implemented at Cornell. When installed and populated with content at an institution, it enables the discovery of research and scholarship across disciplines at that institution. VIVO supports browsing and a search function which returns faceted results for rapid retrieval of desired information. Content in any local VIVO installation may be maintained manually or brought into the database in automated ways from local systems of record, such as human resources, scholarships, grants, course, and faculty activity databases.</p>
-
-        <p>See more information on the <a href=\"http://vivoweb.org\">VIVO Project</a>.</p></div>
-        """@en ;
+        """<h2>About Scholars@UNCW</h2>
+        <div class=\"pageGroupBody\" id=\"aboutText\">
+            <p>Scholars@UNCW is designed to showcase the scholarship and research activities of current UNCW faculty, to share areas of research expertise, and to connect faculty and researchers with common interests to each other. The system is an implementation of <a href="https://duraspace.org/vivo/">VIVO</a>, a member-supported, open source software and an ontology for representing scholarship. <a href="https://library.uncw.edu">Randall Library</a> developed and maintains the implementation for UNCW, in collaboration with other offices including <a href="https://uncw.edu/irp/ir/index.html">Institutional Research and Planning</a> and the <a href="https://uncw.edu/research/">Office of Research and Innovation</a>. Scholars@UNCW draws directly on data entered into UNCW's implementation of <a href="https://uncw.edu/irp/ie/resources/digital-measures.html">Digital Measures/Faculty Success.</a></p>
+        </div>
+        <h2>Who is included in Scholars@UNCW?</h2>
+        <div class=\"pageGroupBody\">
+            <p>Currently only faculty from the College of Health and Human Services and Randall Library are included in Scholars@UNCW as part of the pilot rollout. Other departments and colleges will be added as long as faculty in those areas have data in Digital Measures/Faculty Success. UNCW faculty from all ranks are included.</p>
+        </div>
+        <h2>How can incomplete or inaccurate faculty profiles be fixed?</h2>
+        <div class=\"pageGroupBody\">
+            <p>Since the data is coming directly from Digital Measures/Faculty Success, any corrections or additions should be made in that system. The data in Scholars@UNCW will refresh nightly. For information on how to update or correct your data in Digital Measures, please contact Allison Kittinger, Scholarly Communications Librarian at (<a mailto="kittingera@uncw.edu">kittingera@uncw.edu</a>).
+        </div>"""@en ;
         <http://vitro.mannlib.cornell.edu/ontologies/display/1.1#saveToVar>
                 "aboutPage" .
 about:ABOUTPAGE

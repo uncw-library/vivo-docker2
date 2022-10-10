@@ -32,18 +32,17 @@
                 </div>
             </div>
             
-  	      	<div id="mapofscience_link_container" class="collaboratorship-link-container">
-            	<#-- Replaced map of science icon with glyphicon -->
+  	      	<#-- <div id="mapofscience_link_container" class="collaboratorship-link-container">
                 <div class="collaboratorship-link">
                     <a href="${mapOfScienceVisUrl}" title="${i18n().map_of_science}" class="btn btn-default btn-block">
                         ${i18n().map_of_science_capitalized}
                     </a>
                 </div>
-            </div>
+            </div> -->
             
-            ${scripts.add('<script type="text/javascript" src="${googleJSAPI}"></script>',
+            <#-- ${scripts.add('<script type="text/javascript" src="${googleJSAPI}"></script>',
                           '<script type="text/javascript" src="${urls.base}/js/visualization/visualization-helper-functions.js"></script>',
-                          '<script type="text/javascript" src="${urls.base}/js/visualization/sparkline.js"></script>')}           
+                          '<script type="text/javascript" src="${urls.base}/js/visualization/sparkline.js"></script>')} -->           
             
             <script type="text/javascript">
                 var visualizationUrl = '${urls.base}/visualizationAjax?uri=${individual.uri?url}&template=${visRequestingTemplate!}';

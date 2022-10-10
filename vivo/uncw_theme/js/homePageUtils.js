@@ -100,6 +100,11 @@ $(document).ready(function(){
                     $('div#tempSpacing').hide();
                     
                 
+                    /*
+                        Nemo code has an unfinished feature.
+                        Frontpage of site always displays placeHolderImage, even if fac has an image uploaded.
+                        New code to fetch & display the image url is needed, before finishing this feature.
+                    -------------------------------------------------------------------------------------------
                     $.each($('div#research-faculty-mbrs div.item a.faculty-mbrs '), function() {
                         if ( $(this).children('img').length == 0 ) {
                             var imgHtml = "<img class='img-circle' width='160' alt='" + i18nStrings.placeholderImage + "' src='" + urlsBase + "/images/placeholders/person.bordered.thumbnail.jpg'>";
@@ -111,16 +116,14 @@ $(document).ready(function(){
                             });
                         }
                     });
+                    */
+
+
                     var viewMore = "<ul id='viewMoreFac' style='list-style:none;margin:0;padding:0;'><li><a href='"
                                 + urlsBase
                                 + "/people#http://vivoweb.org/ontology/core#FacultyMember' alt='" 
                                 + i18nStrings.viewAllFaculty + "'>"
-                                + i18nStrings.viewAllString + "</a></li></ul>";
-                    //var viewMore = "<ul id='viewMoreFac' style='list-style:none;margin:0;padding:0;'><li><a href='"
-                    //    + urlsBase
-                    //    + "/people#http://xmlns.com/foaf/0.1/Person' alt='" 
-                    //    + i18nStrings.viewAllFaculty + "'>"
-                    //    + i18nStrings.viewAllString + "</a></li?</ul>";                    
+                                + i18nStrings.viewAllString + "</a></li></ul>";              
                     $('div#research-faculty-mbrs').append(viewMore);
                 }
             });
@@ -182,78 +185,13 @@ $(document).ready(function(){
             }
         }
         if ( deptNbr > 0 ) {
-//          html += "</div><ul style='list-style:none'>"
-//                  + "<li class='v-all' style='font-size:0.9em;text-align:right;padding: 6px 16px 0 0'><a href='" 
-//                  + urlsBase 
-//                  + "/organizations#http://vivoweb.org/ontology/core#AcademicDepartment' alt='" 
-//                  + i18nStrings.viewAllDepartments + "'>" 
-//                  + i18nStrings.viewAllString + "</a></li></ul>";
-//          html += "</div>"
-//              + "<ul style='list-style:none'>"
-//              + "<li class='v-all' style='font-size:0.9em;text-align:left;'>"
-//              + "<a href='" + urlsBase 
-//              + "/organizations#http://vivoweb.org/ontology/core#AcademicDepartment' alt='" 
-//              + i18nStrings.viewAllDepartments + "'>" 
-//              + i18nStrings.viewAllString + "</a>"
-//              + "</li></ul>";
           html += "<a href='" + urlsBase 
               + "/organizations#http://vivoweb.org/ontology/core#AcademicDepartment' alt='" 
               + i18nStrings.viewAllDepartments + "'>" 
               + i18nStrings.viewAllString + "</a>"
               + "</div>"
-          //<a href="${urls.base}/research" alt="${i18n().view_all_research}">${i18n().view_all}</a>
       }
         $('div#academic-depts').html(html);
     }
-    
-    
-//    function buildAcademicDepartments() {
-//        var deptNbr = academicDepartments.length;
-//        var html = "<ul>";
-//        var index = Math.floor((Math.random()*deptNbr)+1)-1;
-//        
-//        if ( deptNbr == 0 ) {
-//            html = "<ul style='list-style:none'><p><li style='padding-top:0.3em'>"
-//                   + i18nStrings.noDepartmentsFound + "</li></p></ul>";
-//        }
-//        else if ( deptNbr > 6 ) {
-//        	//if there are more than 6 departments, we want to choose a random subset and display
-//        	//and also to make sure the same department is not repeated twice
-//        	var indicesUsed = {};//utilizing a hash since easier
-//        	var indicesCount = 0;
-//        	while(indicesCount < 6) {
-//                index = Math.floor((Math.random()*deptNbr)+1)-1;
-//                //if the index has already been used, this will be true
-//                var indexFound = (index in indicesUsed);
-//                //Check to see if this index hasn't already been employed
-//                if(!indexFound) {
-//                	//if this index hasn't already been employed then utilize it
-//                	 html += "<li><a href='" + urlsBase + "/individual?uri=" 
-//                     + academicDepartments[index].uri + "'>" 
-//                     + academicDepartments[index].name + "</a></li>";
-//                	 //add this index to the set of already used indices
-//                	 indicesUsed[index] = true;
-//                	 //keep count
-//                	 indicesCount++;
-//                }
-//            }
-//        }
-//        else {
-//            for ( var i=0;i<deptNbr;i++) {
-//                html += "<li><a href='" + urlsBase + "/individual?uri=" 
-//                        + academicDepartments[i].uri + "'>" 
-//                        + academicDepartments[i].name + "</a></li>";
-//            }
-//        }
-//        if ( deptNbr > 0 ) {
-//            html += "</ul><ul style='list-style:none'>"
-//                    + "<li class='v-all' style='font-size:0.9em;text-align:right;padding: 6px 16px 0 0'><a href='" 
-//                    + urlsBase 
-//                    + "/organizations#http://vivoweb.org/ontology/core#AcademicDepartment' alt='" 
-//                    + i18nStrings.viewAllDepartments + "'>" 
-//                    + i18nStrings.viewAllString + "</a></li></ul>";
-//        }
-//        $('div#academic-depts').html(html);
-//    }
     
 }); 

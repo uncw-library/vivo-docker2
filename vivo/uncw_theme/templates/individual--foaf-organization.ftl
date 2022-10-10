@@ -7,8 +7,8 @@
 <#if temporalVisualizationEnabled>
     <#assign classSpecificExtension>
         <section id="right-hand-column" role="region">
-            <#include "individual-visualizationTemporalGraph.ftl">
-            <#include "individual-visualizationMapOfScience.ftl">
+            <#-- <#include "individual-visualizationTemporalGraph.ftl"> -->
+            <#-- <#include "individual-visualizationMapOfScience.ftl"> -->
         </section> <!-- #right-hand-column -->
     </#assign>
 </#if>
