@@ -6,9 +6,10 @@ services:
     image: libapps-admin.uncw.edu:8000/randall-dev/vivo-docker2/solr:1.13-maint
     build:
       context: ./solr
-    platform: linux/x86_64/v8
     volumes:
       - solr_data:/var/solr
+    ports:
+      - 8983:8983
     restart: always
 
   vivo:
@@ -16,7 +17,6 @@ services:
     image: libapps-admin.uncw.edu:8000/randall-dev/vivo-docker2/vivo:1.13-maint
     build:
       context: ./vivo
-    platform: linux/x86_64/v8
     depends_on:
       - solr
     volumes:
