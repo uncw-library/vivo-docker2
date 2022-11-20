@@ -18,7 +18,7 @@ services:
     labels:
       io.rancher.container.pull_image: always
   digitalmeasures-scripts:
-    image: libapps-admin.uncw.edu:8000/randall-dev/digitalmeasures-scripts/xml-to-turtle:20220727
+    image: libapps-admin.uncw.edu:8000/randall-dev/digitalmeasures-scripts/xml-to-turtle
     environment:
       DMUSER: CHANGEME
       DMPASS: CHANGEME
