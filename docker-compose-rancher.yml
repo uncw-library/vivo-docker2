@@ -14,7 +14,7 @@ services:
     - /home/randall/volumes/vivo/tdbModels:/usr/local/VIVO/home/tdbModels
     - /home/randall/volumes/vivo/tdbContentModels:/tdbContentModels
     - /home/randall/volumes/vivo/current_turtle/userdata.ttl:/usr/local/VIVO/home/rdf/abox/filegraph/userdata.ttl
-    - /home/randall/volumes/vivo/uploads/file_storage_root/a~n:/usr/local/VIVO/home/uploads/file_storage_root/a~n
+    - /home/randall/volumes/vivo/uploads:/usr/local/VIVO/home/uploads
     labels:
       io.rancher.container.pull_image: always
   digitalmeasures-scripts:
