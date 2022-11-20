@@ -4,6 +4,7 @@ RUN apt update && \
 	apt install -y maven git tzdata
 
 ENV TZ="America/New_York"
+ENV CATALINA_OPTS="-Xms512m -Xmx512m -XX:MaxPermSize=128m"
 
 WORKDIR /usr/local/
 
@@ -17,7 +18,7 @@ RUN git clone https://github.com/vivo-project/Vitro.git Vitro -b ${GIT_BRANCH} &
 
 WORKDIR /usr/local/VIVO/
 
-# insert customizations to image before maven install
+## insert customizations to image before maven install
 COPY --chown=root:staff ./configs/settings.xml /usr/local/VIVO/settings.xml
 COPY --chown=root:staff ./configs/initialSiteConfig.rdf /usr/local/VIVO/installer/home/src/main/resources/rdf/applicationMetadata/firsttime/
 COPY --chown=root:staff ./uncw_theme /usr/local/VIVO/webapp/src/main/webapp/themes/uncw_theme
@@ -32,12 +33,12 @@ WORKDIR /usr/local/VIVO
 RUN mvn clean package -s settings.xml
 RUN mvn install -s settings.xml
 
-# # clean up
+## clean up
 RUN rm -r /usr/local/tomcat/webapps/docs && \
 	rm -r /usr/local/tomcat/webapps/examples && \
 	rm -r /usr/local/tomcat/webapps/ROOT
 
-# # insert customizations to image after maven install
+## insert customizations to image after maven install
 COPY --chown=root:staff ./configs/runtime.properties /usr/local/VIVO/home/config/runtime.properties
 COPY --chown=root:staff ./configs/applicationSetup.n3 /usr/local/VIVO/home/config/applicationSetup.n3
 COPY --chown=root:staff ./configs/aboutPage.n3 /usr/local/VIVO/home/rdf/display/firsttime/aboutPage.n3
@@ -48,7 +49,9 @@ RUN chmod ugo+w -R /usr/local/tomcat/temp && \
 	chmod ugo+w -R /usr/local/VIVO/home
 
 RUN ln -s /usr/local/tomcat/webapps/vivo/ /usr/local/tomcat/webapps/ROOT
-# the next line "copy i18n to vivo root" seem wrong.  It works better than without, but still feels wrong.
-# RUN cp -R /usr/local/tomcat/webapps/ROOT/src/i18n /usr/local/tomcat/webapps/ROOT
 
-RUN export CATALINA_OPTS="-Xms512m -Xmx512m -XX:MaxPermSize=128m"
+# RUN mkdir -p /usr/local/VIVO/home/uploads && \
+# 	ln -s /usr/local/VIVO/home/uploads /uploads
+
+## the next line "copy i18n to vivo root" seem wrong.  It works better than without, but still feels wrong.
+# RUN cp -R /usr/local/tomcat/webapps/ROOT/src/i18n /usr/local/tomcat/webapps/ROOT

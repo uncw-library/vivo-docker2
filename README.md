@@ -36,12 +36,17 @@ When satisfied with your dev box, build and push the images to production
 ```
 1. (optional)  Place any additional graph files into ./current_turtle .  They will be autoimported into vivo on docker compose up.  They are gitignored.  We use a userdata.ttl file in this folder to import/remove instance data from our production vivo.
 1. (optional)  Create a custom theme, following the './vivo/uncw_theme' folder.  Revise ./vivo/Dockerfile and docker-compose.yml lines including uncw_theme.
+
+1. Comment out in docker-compose.yml the line `- ./uploads:/usr/local/VIVO/home/uploads`  Vivo container cannot build itself if that volume is already mounted
 1. Start the containers:
 ```bash
-   docker compose up --build
+   docker compose up solr -d
+   (wait 1 minute)
+   docker compose up vivo -d
+   (wait 30 minutes)
 ```
-1. ON FIRST START, WAIT A MINUTE FOR SOLR TO INITIALIZE THEN `docker compose restart vivo`.  This allows vivo to connect to the solr.  Otherwise, vivo will give an error about not connecting to http://solr:8983/solr/vivo.
-1. ON EACH START, WAIT FIVE MINUTES FOR VIVO TO INITIALIZE.  Then navigate to [localhost:8080](http://localhost:8080)
+
+1. Watch [localhost:8080](http://localhost:8080) until the site is up.
 1. Rebuild the search index via logging into the Admin menu if the frontend does not display your instance data.
 1. NOTE:  After doing any theme or configfile changes, you must do a `docker build ...` step before pushing to production.  `docker compose up` only temporarily overlays those folders onto the containers.  `docker build ...` bakes those changes into the image.  
 
@@ -85,7 +90,7 @@ A GET request to http://sitename.com/file/n1234567890/personImage.jpg will load 
 
 The spliting of the large integer into groups of 3 is important.
 
-So a file in ./person_images/123/456/789/0/personImage.jpg will map to the two locations above.
+So a file in ./uploads/file_storage_root/a~n/123/456/789/0/personImage.jpg will map to the two locations above.
 
 # Automatic import/refresh
 
