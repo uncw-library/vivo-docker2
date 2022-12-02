@@ -4,18 +4,22 @@
 
 <#import "lib-properties.ftl" as p>
 
-<li class="individual" role="listitem" role="navigation">
-    <#if (individual.thumbUrl)??>
-        <img src="${individual.thumbUrl}" width="90" alt="${individual.name}" />
-        <h2 class="thumb">
-            <a href="${individual.profileUrl}" title="${i18n().view_profile_page_for} ${individual.name}">${individual.name}</a>
-        </h2>
-    <#else>
-        <h2>
-            <a href="${individual.profileUrl}" title="${i18n().view_profile_page_for} ${individual.name}">${individual.name}</a>
-        </h2>
-    </#if>
+<div class="container">
+    <div class="row individual">
+        <div class="col-md-4">
+            <h2 class="thumb">
+                <a href="${individual.profileUrl}" title="${i18n().view_profile_page_for} ${individual.name}">${individual.name}</a>
+            </h2>
+        </div>
+        <div class="col-md-4">
+            <#if (individual.thumbUrl)??>
+                <img src="${individual.thumbUrl}" width="90" alt="${individual.name}" />
+            </#if>
+        </div>
+    </div>
+</div>
 
+<li class="individual" role="listitem" role="navigation">
     <#if (extra[0].pt)?? >
         <span class="title">${extra[0].pt}</span>
     <#else>
