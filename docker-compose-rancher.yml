@@ -1,0 +1,31 @@
+version: '2'
+services:
+  solr:
+    image: libapps-admin.uncw.edu:8000/randall-dev/vivo-docker2/solr:1.13-maint
+    environment:
+      LOG4J_FORMAT_MSG_NO_LOOKUPS: 'true'
+    labels:
+      io.rancher.container.pull_image: always
+  vivo:
+    image: libapps-admin.uncw.edu:8000/randall-dev/vivo-docker2/vivo:1.13-maint
+    environment:
+      LOG4J_FORMAT_MSG_NO_LOOKUPS: 'true'
+    volumes:
+    - /home/randall/volumes/vivo/tdbModels:/usr/local/VIVO/home/tdbModels
+    - /home/randall/volumes/vivo/tdbContentModels:/tdbContentModels
+    - /home/randall/volumes/vivo/current_turtle/userdata.ttl:/usr/local/VIVO/home/rdf/abox/filegraph/userdata.ttl
+    - /home/randall/volumes/vivo/uploads:/usr/local/VIVO/home/uploads
+    labels:
+      io.rancher.container.pull_image: always
+  digitalmeasures-scripts:
+    image: libapps-admin.uncw.edu:8000/randall-dev/digitalmeasures-scripts/xml-to-turtle
+    environment:
+      DMUSER: CHANGEME
+      DMPASS: CHANGEME
+    stdin_open: true
+    volumes:
+    - /home/randall/volumes/vivo/current_turtle/userdata.ttl:/output/turtles/userdata.ttl
+    - /home/randall/volumes/vivo/uploads/file_storage_root/a~n:/output/person_images/a~n
+    tty: true
+    labels:
+      io.rancher.container.pull_image: always
