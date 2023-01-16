@@ -4,7 +4,7 @@ RUN apt update && \
 	apt install -y maven git tzdata
 
 ENV TZ="America/New_York"
-ENV CATALINA_OPTS="-Xms512m -Xmx512m -XX:MaxPermSize=128m"
+ENV CATALINA_OPTS="-Xms512m -Xmx4g -XX:MaxPermSize=512m"
 
 WORKDIR /usr/local/
 
@@ -42,16 +42,11 @@ RUN rm -r /usr/local/tomcat/webapps/docs && \
 COPY --chown=root:staff ./configs/runtime.properties /usr/local/VIVO/home/config/runtime.properties
 COPY --chown=root:staff ./configs/applicationSetup.n3 /usr/local/VIVO/home/config/applicationSetup.n3
 COPY --chown=root:staff ./configs/aboutPage.n3 /usr/local/VIVO/home/rdf/display/firsttime/aboutPage.n3
-# COPY --chown=root:staff ./nemo/images/UNCW-1.jpg /usr/local/tomcat/webapps/vivo/images/placeholders/person.bordered.thumbnail.jpg
-# COPY --chown=root:staff ./nemo/images/UNCW-3.jpg /usr/local/tomcat/webapps/vivo/images/placeholders/person.thumbnail.jpg
 
 RUN chmod ugo+w -R /usr/local/tomcat/temp && \
 	chmod ugo+w -R /usr/local/VIVO/home
 
 RUN ln -s /usr/local/tomcat/webapps/vivo/ /usr/local/tomcat/webapps/ROOT
-
-# RUN mkdir -p /usr/local/VIVO/home/uploads && \
-# 	ln -s /usr/local/VIVO/home/uploads /uploads
 
 ## the next line "copy i18n to vivo root" seem wrong.  It works better than without, but still feels wrong.
 # RUN cp -R /usr/local/tomcat/webapps/ROOT/src/i18n /usr/local/tomcat/webapps/ROOT
