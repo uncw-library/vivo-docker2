@@ -23,9 +23,6 @@ services:
       - ./tdbModels:/usr/local/VIVO/home/tdbModels
       - ./tdbContentModels:/tdbContentModels
       - ./current_turtle/userdata.ttl:/usr/local/VIVO/home/rdf/abox/filegraph/userdata.ttl
-      - ./current_turtle/userdata2.ttl:/usr/local/VIVO/home/rdf/abox/filegraph/userdata2.ttl
-      - ./current_turtle/userdata3.ttl:/usr/local/VIVO/home/rdf/abox/filegraph/userdata3.ttl
-      - ./current_turtle/userdata4.ttl:/usr/local/VIVO/home/rdf/abox/filegraph/userdata4.ttl
       - ./vivo/uncw_theme:/usr/local/tomcat/webapps/vivo/themes/uncw_theme
       - ./uploads:/usr/local/VIVO/home/uploads
     ports:
