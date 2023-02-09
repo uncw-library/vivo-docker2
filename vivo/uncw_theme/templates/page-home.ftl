@@ -90,7 +90,8 @@
 					<div class="col-md-12">
 						<h2 class="h1">Meet Our Scholars</h2>
 						<div class="gap20"></div>
-						<h2 class="h4">${i18n().home_faculty_para1}</h2>
+						<h2 class="h4 faculty-blurb">${i18n().home_faculty_para1}</h2>
+						<h2 class="h4 faculty-blurb">${i18n().home_faculty_para2}</h2>
 						<!-- Use bootstrap carousel to showcase faculty members, edited in lib-home-page.ftl and homePageUtils.js -->
 						<@lh.facultyMbrHtml />
 					</div>

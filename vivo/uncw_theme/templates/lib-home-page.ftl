@@ -76,11 +76,18 @@
 	################################################################################
 -->
 <#macro allClassGroups classGroups>
+    <#--  <#list classGroups as c>
+        <#list c?keys as q>
+            ${q}
+        </#list>
+    </#list>  -->
+
+
     <#-- Loop through classGroups first so we can account for situations when all class groups are empty -->
     <#assign selected = 'class="selected" ' />
     <#assign classGroupList>
         <section id="home-research" class="home-sections">
-            <h4>Statistics</h4>
+            <#--  <h4>Statistics</h4>  -->
             <div id="home-sections-list" class="list-group">
                 <#assign groupCount = 1>
                 <#list classGroups as group>
@@ -93,8 +100,9 @@
                         <#if !firstPopulatedClassGroup??>
                             <#assign firstPopulatedClassGroup = group />
                         </#if>
-                        <#if !group.uri?contains("equipment") && !group.uri?contains("course") >
-	                        <a href="${urls.base}/browse" 
+                        <#if !group.uri?contains("equipment") && !group.uri?contains("course") && !group.displayName?contains("locations") >
+	                        <a 
+                                <#--  href="${urls.base}/browse"   -->
 	                        	class="list-group-item">${group.displayName?capitalize}<span class="badge">
                                     <#if (group.individualCount > 10000) >
                                         <#assign overTen = group.individualCount/1000>
@@ -143,7 +151,7 @@
 <#macro researchClasses classGroups=vClassGroups>
 <#assign foundClassGroup = false />
 <section id="home-research" class="home-sections">
-    <h4>${i18n().research_capitalized}</h4>
+    <#--  <h4>${i18n().research_capitalized}</h4>  -->
     <div id="home-sections-list" class="list-group">
         <#list classGroups as group>
             <#if (group.individualCount > 0) && group.uri?contains("publications") >

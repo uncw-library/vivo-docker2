@@ -36,6 +36,17 @@ Add a custom homepage background to hero class here
   text-align: center;
   text-shadow: 1px 1px 4px #000;
 }
+.faculty-home .faculty-blurb {
+  background-color: transparent;
+  color: #000000;
+  text-align: center;
+  font-size: 19px;
+  font-weight: 400;
+  /* line-height: 30px; */
+  margin-bottom: 15px;
+
+}
+
 #search-homepage input.form-control {
   opacity: 0.9;
   border-radius: 5px;
@@ -198,11 +209,13 @@ Customise the about our research section
 }
 #home-sections-list a:last-child {
   color: #ffffff;
+  font-size: 15px;
 }
 #home-sections-list a.list-group-item {
   color: #555555;
   margin: 6px 0;
   border-radius: 4px;
+  font-size: 15px;
 }
 #home-sections-list button.list-group-item {
   color: #555555;
@@ -241,11 +254,13 @@ Customise the about our departments section
 }
 #home-department-sections-list a:last-child {
   color: #222222;
+  font-size: 15px;
 }
 #home-department-sections-list a.list-group-item {
   color: #555555;
   margin: 6px 0;
   border-radius: 4px;
+  font-size: 15px;
 }
 #home-department-sections-list button.list-group-item {
   color: #555555;

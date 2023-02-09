@@ -149,7 +149,7 @@ $(document).ready(function(){
 
     function buildAcademicDepartmentsBootstrap() {
         var deptNbr = academicDepartments.length;
-        var html = "<h4>Departments</h4><div id='home-department-sections-list' class='list-group'>";
+        var html = "<div id='home-department-sections-list' class='list-group'>";
         var index = Math.floor((Math.random()*deptNbr)+1)-1;
         if ( deptNbr == 0 ) {
             html = "<ul style='list-style:none'><p><li style='padding-top:0.3em'>"
