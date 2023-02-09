@@ -52,9 +52,11 @@
 											<input 
 												type="text" 
 												name="querytext" 
-												class="form-control" 
+												class="form-control"
 												value="" 
-												placeholder="${i18n().search_form}" autocapitalize="off" />
+												placeholder="${i18n().frontpage_searchbox}"
+												autocapitalize="off" 
+											/>
 											<span class="input-group-btn">
 												<button class="btn btn-default" type="submit">
 													<span class="icon-search">${i18n().search_button}</span>
@@ -86,9 +88,9 @@
 			<div class="row faculty-home">
 				<div class="container">
 					<div class="col-md-12">
-						<h2 class="h1">Meet our faculty</h2>
+						<h2 class="h1">Meet Our Scholars</h2>
 						<div class="gap20"></div>
-						<p>${i18n().home_faculty_para1}</p>
+						<h2 class="h4">${i18n().home_faculty_para1}</h2>
 						<!-- Use bootstrap carousel to showcase faculty members, edited in lib-home-page.ftl and homePageUtils.js -->
 						<@lh.facultyMbrHtml />
 					</div>
