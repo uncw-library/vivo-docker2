@@ -13,4 +13,4 @@
 an individual profile page. -->
 ${headContent!}
 
-<link rel="shortcut icon" type="image/x-icon" href="${urls.base}/favicon.ico">
+<link rel="shortcut icon" type="image/x-icon" href="${urls.base}/themes/uncw_theme/images/favicon.ico">
