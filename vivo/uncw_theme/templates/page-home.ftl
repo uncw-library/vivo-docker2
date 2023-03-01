@@ -27,6 +27,18 @@
 				<div class="theme-showcase">
 					<div class="col-md-12">
 						<div class="container" role="main">
+							<div id="profile-button" class="container">
+								<div class="row align-items-start justify-content-between">
+									<div class="col-xs-6 visible-xs-block"></div>
+									<div class="col-xs-2 visible-xs-block">
+										<a id="link-profile-button-body" href="https://uncw.libguides.com/scholarsuncw" target="_blank" class="btn btn-primary" role="button">
+											<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+											<span>Edit My Profile</span>
+										</a>
+									</div>
+									<div class="col-xs-4 visible-xs-block"></div>
+								</div>
+							</div>
 							<div class="jumbotron">
 								<h1>${i18n().intro_title}</h1>
 							</div>

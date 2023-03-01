@@ -5,12 +5,18 @@
 	<div class="header">
 		<div class="hgroup">
 			<div class="container">
-				<div class="row">
-					<div class="col-md-12 col-sm-12 hidden-xs logo-sm">
-						<a href="${urls.home}"><img height="50" src="${urls.theme}/images/Logo.png" alt="VIVO Logo" /></a>
+				<div class="row align-items-center">
+					<div id="sitename-large" class="col-md-10 col-sm-9 hidden-xs logo-sm">
+						<a href="${urls.home}"><b>Scholars</b>@UNCW</a>
 					</div>
-					<div class="col-xs-12 visible-xs-block">
-						<a href="${urls.home}"><img height="40" width="350" src="${urls.theme}/images/Logo.png" alt="VIVO Logo" /></a>
+					<div id="sitename-small" class="col-xs visible-xs-block">
+						<a href="${urls.home}"><b>Scholars</b>@UNCW</a>
+					</div>
+					<div class="col-md-2 hidden-xs justify-content-end">
+						<a id="link-profile-button-banner" href="https://uncw.libguides.com/scholarsuncw" target="_blank" class="btn btn-primary" role="button">
+							<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+							<span>Edit My Profile</span>
+						</a>
 					</div>
 				</div>
 			</div>

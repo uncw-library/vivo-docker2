@@ -11,9 +11,22 @@ Homepage colours
 /*---------------------------------------------
 Add a custom homepage background to hero class here
 ----------------------------------------------*/
+#sitename-large a {
+  color: white;
+  font-size: 48px;
+  line-height: 1;
+  letter-spacing: 1.1px;
+}
+#sitename-small a {
+  color: white;
+  font-size: 40px;
+  line-height: 1;
+  letter-spacing: 1.1px;
+}
+
 .hero {
   background-size: cover;
-  background-image: url('../images/hero-background.jpg');
+  background-image: url('../images/hero-background-20230301.jpg');
   background-position: 50% 50%;
   background-repeat: no-repeat;
 }
