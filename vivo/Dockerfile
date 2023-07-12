@@ -1,7 +1,7 @@
-FROM tomcat:9.0.21-jdk11-openjdk
+FROM tomcat:9-jdk11-openjdk
 
 RUN apt update && \
-	apt install -y maven git tzdata
+	apt install -y ca-certificates-java maven git tzdata
 
 ENV TZ="America/New_York"
 ENV CATALINA_OPTS="-Xms512m -Xmx4g -XX:MaxPermSize=512m"
@@ -34,9 +34,9 @@ RUN mvn clean package -s settings.xml
 RUN mvn install -s settings.xml
 
 ## clean up
-RUN rm -r /usr/local/tomcat/webapps/docs && \
-	rm -r /usr/local/tomcat/webapps/examples && \
-	rm -r /usr/local/tomcat/webapps/ROOT
+# RUN rm -r /usr/local/tomcat/webapps/docs && \
+# 	rm -r /usr/local/tomcat/webapps/examples && \
+# 	rm -r /usr/local/tomcat/webapps/ROOT
 
 ## insert customizations to image after maven install
 COPY --chown=root:staff ./configs/runtime.properties /usr/local/VIVO/home/config/runtime.properties
