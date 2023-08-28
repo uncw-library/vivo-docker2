@@ -15,13 +15,13 @@ RUN git clone https://github.com/vivo-project/Vitro.git Vitro -b ${GIT_BRANCH} &
 	git clone https://github.com/vivo-project/Vitro-languages.git Vitro-languages -b ${GIT_BRANCH}  && \
 	git clone https://github.com/vivo-project/VIVO-languages.git VIVO-languages -b ${GIT_BRANCH}
 
-
 WORKDIR /usr/local/VIVO/
 
 ## insert customizations to image before maven install
 COPY --chown=root:staff ./configs/settings.xml /usr/local/VIVO/settings.xml
 COPY --chown=root:staff ./configs/initialSiteConfig.rdf /usr/local/VIVO/installer/home/src/main/resources/rdf/applicationMetadata/firsttime/
 COPY --chown=root:staff ./uncw_theme /usr/local/VIVO/webapp/src/main/webapp/themes/uncw_theme
+COPY --chown=root:staff ./util/SiteMapServlet.java /usr/local/VIVO/api/src/main/java/org/vivoweb/webapp/sitemap/SiteMapServlet.java
 
 WORKDIR /usr/local/Vitro-languages
 RUN mvn install
