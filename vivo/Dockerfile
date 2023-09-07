@@ -8,12 +8,10 @@ ENV CATALINA_OPTS="-Xms512m -Xmx4g -XX:MaxPermSize=512m"
 
 WORKDIR /usr/local/
 
-ARG GIT_BRANCH=rel-1.13-maint
+ARG GIT_BRANCH=rel-1.14-maint
 
 RUN git clone https://github.com/vivo-project/Vitro.git Vitro -b ${GIT_BRANCH} && \
-	git clone https://github.com/vivo-project/VIVO.git VIVO -b ${GIT_BRANCH} && \
-	git clone https://github.com/vivo-project/Vitro-languages.git Vitro-languages -b ${GIT_BRANCH}  && \
-	git clone https://github.com/vivo-project/VIVO-languages.git VIVO-languages -b ${GIT_BRANCH}
+	git clone https://github.com/vivo-project/VIVO.git VIVO -b ${GIT_BRANCH}
 
 WORKDIR /usr/local/VIVO/
 
@@ -23,10 +21,6 @@ COPY --chown=root:staff ./configs/initialSiteConfig.rdf /usr/local/VIVO/installe
 COPY --chown=root:staff ./uncw_theme /usr/local/VIVO/webapp/src/main/webapp/themes/uncw_theme
 COPY --chown=root:staff ./util/SiteMapServlet.java /usr/local/VIVO/api/src/main/java/org/vivoweb/webapp/sitemap/SiteMapServlet.java
 
-WORKDIR /usr/local/Vitro-languages
-RUN mvn install
-WORKDIR /usr/local/VIVO-languages
-RUN mvn install
 WORKDIR /usr/local/Vitro
 RUN mvn install
 WORKDIR /usr/local/VIVO
@@ -47,6 +41,3 @@ RUN chmod ugo+w -R /usr/local/tomcat/temp && \
 	chmod ugo+w -R /usr/local/VIVO/home
 
 RUN ln -s /usr/local/tomcat/webapps/vivo/ /usr/local/tomcat/webapps/ROOT
-
-## the next line "copy i18n to vivo root" seem wrong.  It works better than without, but still feels wrong.
-# RUN cp -R /usr/local/tomcat/webapps/ROOT/src/i18n /usr/local/tomcat/webapps/ROOT

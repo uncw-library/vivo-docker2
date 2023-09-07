@@ -22,8 +22,8 @@ When satisfied with your dev box, build and push the images to production
 1. Your custom theme like ./vivo/uncw_theme is included in the docker image.
 1. Your config files at ./vivo/config are include in the docker image.
 1. Your vivo container will serve from http://localhost:8080/
-1. `docker build --no-cache -t your_registry.com/vivo --platform linux/amd64 ./vivo`
-1. `docker build --no-cache -t your_registry.com/solr --platform linux/amd64 ./solr`
+1. `docker build --no-cache -t libapps-admin.uncw.edu:8000/vivo ./vivo`
+1. `docker build --no-cache -t libapps-admin.uncw.edu:8000/solr ./solr`
 1. Your production environment can be some analogue of what is in ./docker-compose-rancher.yml
 
 ## Development env
