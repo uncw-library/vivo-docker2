@@ -17,11 +17,15 @@ services:
     - /home/randall/volumes/vivo/uploads:/usr/local/VIVO/home/uploads
     labels:
       io.rancher.container.pull_image: always
-  digitalmeasures-scripts:
-    image: libapps-admin.uncw.edu:8000/randall-dev/digitalmeasures-scripts/xml-to-turtle
+      io.rancher.container.start_once: 'true'
+  vivo-data-update:
+    image: libapps-admin.uncw.edu:8000/randall-dev/vivo-data-update
     environment:
-      DMUSER: CHANGEME
-      DMPASS: CHANGEME
+      DM_API_USER: CHANGEME
+      DM_API_PASS: CHANGEME
+      DM_SAMBA_USER: CHANGEME
+      DM_SAMBA_PASS: CHANGEME
+      DM_PHOTO_FOLDER: //server/folder
     stdin_open: true
     volumes:
     - /home/randall/volumes/vivo/current_turtle/userdata.ttl:/output/turtles/userdata.ttl
@@ -29,3 +33,4 @@ services:
     tty: true
     labels:
       io.rancher.container.pull_image: always
+      io.rancher.container.start_once: 'true'
