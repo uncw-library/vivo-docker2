@@ -7,7 +7,7 @@ ENV TZ="America/New_York"
 ENV CATALINA_OPTS="-Xms1g -Xmx5g -XX:MaxPermSize=2g"
 ENV JAVA_OPTS="${JAVA_OPTS} -Dtdb:fileMode=direct"
 
-ARG GIT_BRANCH=rel-1.14-maint
+ARG GIT_BRANCH="main"
 
 WORKDIR /usr/local/
 RUN git clone https://github.com/vivo-project/Vitro.git Vitro -b ${GIT_BRANCH} && \
