@@ -74,7 +74,7 @@ You can disable the theme caching in the Site Admin page: "Activate developer Pa
 ## Production
 
 ```
-docker build --no-cache -t libapps-admin.uncw.edu:8000/randall-dev/vivo-docker2/vivo --platform linux/x86_64/v8 ./vivo
+docker build --no-cache -t libapps-admin.uncw.edu:8000/randall-dev/vivo-docker2/vivo --platform linux/amd64 ./vivo
 docker push libapps-admin.uncw.edu:8000/randall-dev/vivo-docker2/vivo
 ```
 
