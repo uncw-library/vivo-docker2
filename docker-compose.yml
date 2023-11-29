@@ -3,9 +3,9 @@ version: '3.7'
 services:
   solr:
     container_name: solr
-    image: libapps-admin.uncw.edu:8000/randall-dev/vivo-docker2/solr:1-13-maint
-    # build:
-    #   context: ./solr
+    image: libapps-admin.uncw.edu:8000/randall-dev/vivo-docker2/solr:1.14-maint
+    build:
+      context: ./solr
     volumes:
       - solr_data:/var/solr
     # ports:
@@ -14,9 +14,9 @@ services:
 
   vivo:
     container_name: vivo
-    image: libapps-admin.uncw.edu:8000/randall-dev/vivo-docker2/vivo:1.13-maint
-    # build:
-    #   context: ./vivo
+    image: libapps-admin.uncw.edu:8000/randall-dev/vivo-docker2/vivo:1.14-maint
+    build:
+      context: ./vivo
     depends_on:
       - solr
     volumes:
