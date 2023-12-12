@@ -31,7 +31,7 @@
 								<div class="row align-items-start justify-content-between">
 									<div class="col-xs-6 visible-xs-block"></div>
 									<div class="col-xs-2 visible-xs-block">
-										<a id="link-profile-button-body" href="https://uncw.libguides.com/scholarsuncw" target="_blank" class="btn btn-primary" role="button">
+										<a id="link-profile-button-body" href="https://libguides.uncw.edu/scholars_editing" target="_blank" class="btn btn-primary" role="button">
 											<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
 											<span>Edit My Profile</span>
 										</a>

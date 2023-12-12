@@ -13,7 +13,7 @@
 						<a href="${urls.home}"><b>Scholars</b>@UNCW</a>
 					</div>
 					<div class="col-md-2 hidden-xs justify-content-end">
-						<a id="link-profile-button-banner" href="https://uncw.libguides.com/scholarsuncw" target="_blank" class="btn btn-primary" role="button">
+						<a id="link-profile-button-banner" href="https://libguides.uncw.edu/scholars_editing" target="_blank" class="btn btn-primary" role="button">
 							<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
 							<span>Edit My Profile</span>
 						</a>
