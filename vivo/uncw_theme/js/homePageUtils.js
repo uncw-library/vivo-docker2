@@ -12,7 +12,7 @@ $(document).ready(function(){
     // to return to the home page from the search results
     $('input[name="classgroup"]').val("");    
 
-    getFacultyMembers();  
+    // getFacultyMembers();  
     buildAcademicDepartmentsBootstrap(); 
 
     if ( $('section#home-geo-focus').length == 0 ) {
