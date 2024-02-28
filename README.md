@@ -32,7 +32,7 @@ When satisfied with your dev box, build and push the images to production
 ```bash
    rsync -avz yourname@servername.com:/path/to/vivo/home/tdbModels .
    rsync -avz yourname@servername.com:/path/to/vivo/home/tdbContentModels .
-   sudo chown -R root:root tdbModels/ tdbContentModels/
+   sudo chown -R root tdbModels/ tdbContentModels/
 ```
 1. (optional)  Place any additional graph files into ./current_turtle .  They will be autoimported into vivo on docker compose up.  They are gitignored.  We use a userdata.ttl file in this folder to import/remove instance data from our production vivo.
 1. (optional)  Create a custom theme, following the './vivo/uncw_theme' folder.  Revise ./vivo/Dockerfile and docker-compose.yml lines including uncw_theme.
@@ -43,6 +43,8 @@ When satisfied with your dev box, build and push the images to production
    docker compose up solr -d
    (wait 1 minute)
    docker compose up vivo -d
+   docker compose exec vivo tail /usr/local/tomcat/logs/vivo.all.log -f
+   (watch the vivo app startup + data import)
    (wait 30 minutes)
 ```
 

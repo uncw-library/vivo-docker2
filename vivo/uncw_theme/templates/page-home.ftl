@@ -113,47 +113,46 @@
 								</span>
 							</div>
 							<div id="research-faculty-mbrs" class="carousel-inner" role="listbox">
-
 								<div class="item active">
-									<a href="/individual/751504" class="faculty-mbrs" title="View Profile">
+									<a href="/display/hallsj" class="faculty-mbrs" title="View Profile">
+										<img class="img-circle" src="/file/n303821999/303821.jpg" width="160">
+										<h3>Halls, Joanne N</h3>
+										<h4 class="faculty-title">Professor</h4>
+									</a>
+								</div>
+								<div class="item">
+									<a href="/display/scottj" class="faculty-mbrs" title="View Profile">
 										<img class="img-circle" src="/file/n751504999/751504.jpg" width="160">
 										<h3>Scott, Julie Ann</h3>
 										<h4 class="faculty-title">Professor</h4>
 									</a>
 								</div>
 								<div class="item">
-									<a href="/individual/2163146" class="faculty-mbrs" title="View Profile">
+									<a href="/display/crowen" class="faculty-mbrs" title="View Profile">
 										<img class="img-circle" src="/file/n2163146999/2163146.jpg" width="160">
 										<h3>Crowe, Nathan P.</h3>
 										<h4 class="faculty-title">Associate Professor</h4>
 									</a>
 								</div>
 								<div class="item">
-									<a href="/individual/2163038" class="faculty-mbrs" title="View Profile">
+									<a href="/display/fogartyn" class="faculty-mbrs" title="View Profile">
 										<img class="img-circle" src="/file/n2163038999/2163038.jpg" width="160">
 										<h3>Fogarty, Nicole D</h3>
 										<h4 class="faculty-title">Associate Professor</h4>
 									</a>
 								</div>
 								<div class="item">
-									<a href="/individual/2255306" class="faculty-mbrs" title="View Profile">
+									<a href="/display/daidoned" class="faculty-mbrs" title="View Profile">
 										<img class="img-circle" src="/file/n2255306999/2255306.jpg" width="160">
 										<h3>Daidone, Danielle</h3>
 										<h4 class="faculty-title">Assistant Professor</h4>
 									</a>
 								</div>
 								<div class="item">
-									<a href="/individual/2375064" class="faculty-mbrs" title="View Profile">
+									<a href="/display/lidsterr" class="faculty-mbrs" title="View Profile">
 										<img class="img-circle" src="/file/n2375064999/2375064.jpg" width="160">
 										<h3>Lidster, Ryan F</h3>
 										<h4 class="faculty-title">Assistant Professor</h4>
-									</a>
-								</div>
-								<div class="item">
-									<a href="/individual/303821" class="faculty-mbrs" title="View Profile">
-										<img class="img-circle" src="/file/n303821999/303821.jpg" width="160">
-										<h3>Halls, Joanne N</h3>
-										<h4 class="faculty-title">Professor</h4>
 									</a>
 								</div>
 							</div>
