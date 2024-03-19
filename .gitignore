@@ -2,3 +2,6 @@
 
 datastore/
 .DS_STORE
+
+mounted
+.env
