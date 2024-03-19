@@ -33,7 +33,7 @@ services:
       - traefik.http.routers.vivo.entrypoints=websecure
       - traefik.http.routers.vivo.rule=Host(`scholars.uncw.edu`)
       - traefik.http.routers.vivo.tls=true
-      - traefik.http.routers.vivo.priority=1
+      - traefik.http.routers.vivo.priority=99
       - traefik.http.services.vivo.loadbalancer.server.port=8080
 
 volumes:
