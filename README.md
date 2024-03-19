@@ -1,3 +1,5 @@
+# For production, we're pretending vivo-data-update + vivo-docker2 are one docker-compose.  This repo has the docker-compose.yml that orchestrates images from both git repos.
+
 # Dockerized VIVO
 
 This project creates two dockerized containers,
