@@ -19,7 +19,7 @@ services:
     restart: unless-stopped
 
   vivo:
-    container_name: vivo
+    container_name: vivo-vivo
     image: libapps-admin.uncw.edu:8000/randall-dev/vivo-docker2/vivo:hardcoded_featured_fac
     platform: linux/amd64
     volumes:
