@@ -12,6 +12,7 @@ services:
   vivo-data-update:
     container_name: vivo-data-update
     image: libapps-admin.uncw.edu:8000/randall-dev/vivo-data-update:latest
+    env_file: .env
     platform: linux/amd64
     volumes:
       - ./mounted/uploads/file_storage_root/a~n:/output/person_images/a~n
