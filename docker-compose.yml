@@ -3,25 +3,25 @@ version: '3.7'
 services:
   vivo-solr:
     container_name: vivo-solr
-    image: libapps-admin.uncw.edu:8000/randall-dev/vivo-docker2/solr:latest
+    image: libapps-admin.uncw.edu:8000/randall-dev/vivo-docker2/solr
     platform: linux/amd64
     volumes:
       - solr_data:/var/solr
     restart: unless-stopped
 
-  # vivo-data-update:
-  #   container_name: vivo-data-update
-  #   image: libapps-admin.uncw.edu:8000/randall-dev/vivo-data-update:latest
-  #   env_file: .env
-  #   platform: linux/amd64
-  #   volumes:
-  #     - ./mounted/uploads/file_storage_root/a~n:/output/person_images/a~n
-  #     - ./mounted/current_turtle/userdata.ttl:/output/turtles/userdata.ttl
-  #   restart: unless-stopped
+  vivo-data-update:
+    container_name: vivo-data-update
+    image: libapps-admin.uncw.edu:8000/randall-dev/vivo-data-update:latest
+    env_file: .env
+    platform: linux/amd64
+    volumes:
+      - ./mounted/uploads/file_storage_root/a~n:/output/person_images/a~n
+      - ./mounted/current_turtle/userdata.ttl:/output/turtles/userdata.ttl
+    restart: unless-stopped
 
   vivo-vivo:
     container_name: vivo-vivo
-    image: libapps-admin.uncw.edu:8000/randall-dev/vivo-docker2/vivo:like-stock
+    image: libapps-admin.uncw.edu:8000/randall-dev/vivo-docker2/vivo
     platform: linux/amd64
     volumes:
       - ./mounted/tdbModels:/usr/local/vivo/home/tdbModels
@@ -32,7 +32,7 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.routers.vivo-vivo.entrypoints=websecure
-      - traefik.http.routers.vivo-vivo.rule=Host(`scholars.libapps-dev.uncw.edu`)
+      - traefik.http.routers.vivo-vivo.rule=Host(`scholars.uncw.edu`)
       - traefik.http.routers.vivo-vivo.tls=true
       - traefik.http.routers.vivo-vivo.priority=99
       - traefik.http.services.vivo-vivo.loadbalancer.server.port=8080
