@@ -62,8 +62,9 @@ docker compose exec vivo-vivo tail /usr/local/tomcat/logs/vivo.all.log -f    {to
 The example [docker-compose.yml](docker-compose.yml) is a basic VIVO installation in docker. This file has two containers and uses the standard TBD system.  The files in ./vivo configure many of the vivo settings.  There is an example custom theme included. 
 
 1. On first startup, log in with the user named in ./vivo/configs/runtime.properties
-1. Any users/instance data is preserved in docker bind mounted volumes to the ./tdb* folders in this repo.
-1. Subsequent `docker compose down` and `docker compose up` will retain the persistant docker volumes.
+1. Any vivo users/instance data is preserved in docker bind mounted volumes to the ./tdb* folders in this repo.
+1. Solr data is preserved in docker volume: vivo-docker2_solr_data.
+1. Subsequent `docker compose down` and `docker compose up` will retain these volumes.
 1. If you wish to start clean, `docker volume rm vivo-docker2_solr_data` will delete the volume holding solr data.  And `rm ./tdbContentModels/*.*` and `rm ./tdbModels/*.*` will delete the vivo data.
 
 ## Solr access for dev
@@ -89,9 +90,9 @@ So a file in ./uploads/file_storage_root/a~n/123/456/789/0/personImage.jpg will 
 
 # Automatic import/refresh
 
-Our use-case is:  One ttl file holds all the userdata.  Place it at ./current_turle/userdata.ttl.  When starting the vivo instance, userdata.ttl is autoimported into Vivo.   (Vivo autoimports any file in vivo/home/rdf/abox/filegraph/;  docker-compose mounts userdata.ttl into that folder).  
+Our use-case is:  One .ttl file (turtle fileformat) holds all the userdata.  Place it at ./current_turle/userdata.ttl.  When starting the vivo instance, userdata.ttl is autoimported into Vivo.   (Vivo autoimports any file in vivo/home/rdf/abox/filegraph/;  docker-compose mounts userdata.ttl into that folder).  
 
-To do a data refresh, replace the userdata.ttl file with a new version.  Restarting Vivo will remove the previous data, and autoimport the new version.
+To do a data refresh, replace the userdata.ttl file with a new version.  Restarting Vivo autoupdate any changes.
 
 
 Acknowledgements:  Thank you to the developers of earlier dockerized VIVO releases who laid the groundwork,
