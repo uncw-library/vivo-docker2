@@ -99,7 +99,7 @@ public class SiteMapServlet extends VitroHttpServlet {
                     if (!StringUtils.isEmpty(memberID)) {
                         try {
                             out.println("  <url>");
-                            out.println("    <loc>" + schemeAndServer + "/display" + memberID + "</loc>");
+                            out.println("    <loc>" + schemeAndServer + memberID + "</loc>");
                             out.println("    <changefreq>weekly</changefreq>");
                             out.println("  </url>");
                         } catch (Exception e) {

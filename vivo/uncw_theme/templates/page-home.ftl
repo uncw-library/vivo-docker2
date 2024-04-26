@@ -31,7 +31,7 @@
 								<div class="row align-items-start justify-content-between">
 									<div class="col-xs-6 visible-xs-block"></div>
 									<div class="col-xs-2 visible-xs-block">
-										<a id="link-profile-button-body" href="https://uncw.libguides.com/scholarsuncw" target="_blank" class="btn btn-primary" role="button">
+										<a id="link-profile-button-body" href="https://libguides.uncw.edu/scholars_editing" target="_blank" class="btn btn-primary" role="button">
 											<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
 											<span>Edit My Profile</span>
 										</a>
@@ -105,7 +105,74 @@
 						<h2 class="h4 faculty-blurb">${i18n().home_faculty_para1}</h2>
 						<h2 class="h4 faculty-blurb">${i18n().home_faculty_para2}</h2>
 						<!-- Use bootstrap carousel to showcase faculty members, edited in lib-home-page.ftl and homePageUtils.js -->
-						<@lh.facultyMbrHtml />
+						
+						<section id="faculty-carousel" class="carousel slide" data-ride="carousel" data-interval="4000">
+							<div id="tempSpacing" style="display: none;">
+								<span>Loading faculty . . .&nbsp;&nbsp;&nbsp;
+									<img src="/images/indicatorWhite.gif">
+								</span>
+							</div>
+							<div id="research-faculty-mbrs" class="carousel-inner" role="listbox">
+								<div class="item active">
+									<a href="/display/hallsj" class="faculty-mbrs" title="View Profile">
+										<img class="img-circle" src="/file/n303821999/303821.jpg" width="160">
+										<h3>Halls, Joanne N</h3>
+										<h4 class="faculty-title">Professor</h4>
+									</a>
+								</div>
+								<div class="item">
+									<a href="/display/scottj" class="faculty-mbrs" title="View Profile">
+										<img class="img-circle" src="/file/n751504999/751504.jpg" width="160">
+										<h3>Scott, Julie Ann</h3>
+										<h4 class="faculty-title">Professor</h4>
+									</a>
+								</div>
+								<div class="item">
+									<a href="/display/crowen" class="faculty-mbrs" title="View Profile">
+										<img class="img-circle" src="/file/n2163146999/2163146.jpg" width="160">
+										<h3>Crowe, Nathan P.</h3>
+										<h4 class="faculty-title">Associate Professor</h4>
+									</a>
+								</div>
+								<div class="item">
+									<a href="/display/fogartyn" class="faculty-mbrs" title="View Profile">
+										<img class="img-circle" src="/file/n2163038999/2163038.jpg" width="160">
+										<h3>Fogarty, Nicole D</h3>
+										<h4 class="faculty-title">Associate Professor</h4>
+									</a>
+								</div>
+								<div class="item">
+									<a href="/display/daidoned" class="faculty-mbrs" title="View Profile">
+										<img class="img-circle" src="/file/n2255306999/2255306.jpg" width="160">
+										<h3>Daidone, Danielle</h3>
+										<h4 class="faculty-title">Assistant Professor</h4>
+									</a>
+								</div>
+								<div class="item">
+									<a href="/display/lidsterr" class="faculty-mbrs" title="View Profile">
+										<img class="img-circle" src="/file/n2375064999/2375064.jpg" width="160">
+										<h3>Lidster, Ryan F</h3>
+										<h4 class="faculty-title">Assistant Professor</h4>
+									</a>
+								</div>
+							</div>
+							<ul id="viewMoreFac" style="list-style:none;margin:0;padding:0;">
+								<li>
+									<a href="/people#http://vivoweb.org/ontology/core#FacultyMember" alt="view all faculty">View all ...</a>
+								</li>
+							</ul>
+
+							<a class="left carousel-control" href="#faculty-carousel" role="button" data-slide="prev">
+								<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+								<span class="sr-only">Previous</span>
+							</a>
+							<a class="right carousel-control" href="#faculty-carousel" role="button" data-slide="next">
+								<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+								<span class="sr-only">Next</span>
+							</a>
+						</section>
+						
+						<#--  <@lh.facultyMbrHtml />  -->
 					</div>
 				</div>
 			</div>

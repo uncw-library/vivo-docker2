@@ -4,40 +4,36 @@ RUN apt update && \
 	apt install -y ca-certificates-java maven git tzdata
 
 ENV TZ="America/New_York"
-ENV CATALINA_OPTS="-Xms512m -Xmx4g -XX:MaxPermSize=512m"
+ENV CATALINA_OPTS="-Xms1g -Xmx5g -XX:MaxPermSize=2g"
+ENV JAVA_OPTS="${JAVA_OPTS} -Dtdb:fileMode=direct"
+
+ARG GIT_BRANCH=rel-1.14-maint
 
 WORKDIR /usr/local/
-
-ARG GIT_BRANCH="main"
-
 RUN git clone https://github.com/vivo-project/Vitro.git Vitro -b ${GIT_BRANCH} && \
-	git clone https://github.com/vivo-project/VIVO.git VIVO -b ${GIT_BRANCH}
+	git clone https://github.com/vivo-project/VIVO.git vivo -b ${GIT_BRANCH}
 
-WORKDIR /usr/local/VIVO/
+## insert customizations to vivo git repo ./installer before maven install
+WORKDIR /usr/local/vivo/
+COPY --chown=root:root ./configs/settings.xml ./installer/settings.xml
+COPY --chown=root:root ./uncw_theme ./installer/webapp/src/main/webapp/themes/uncw_theme
 
-## insert customizations to image before maven install
-COPY --chown=root:staff ./configs/settings.xml /usr/local/VIVO/settings.xml
-COPY --chown=root:staff ./configs/initialSiteConfig.rdf /usr/local/VIVO/installer/home/src/main/resources/rdf/applicationMetadata/firsttime/
-COPY --chown=root:staff ./uncw_theme /usr/local/VIVO/webapp/src/main/webapp/themes/uncw_theme
-COPY --chown=root:staff ./util/SiteMapServlet.java /usr/local/VIVO/api/src/main/java/org/vivoweb/webapp/sitemap/SiteMapServlet.java
-
+# maven install
 WORKDIR /usr/local/Vitro
 RUN mvn install
-WORKDIR /usr/local/VIVO
-RUN mvn clean package -s settings.xml
-RUN mvn install -s settings.xml
-
-## clean up
-# RUN rm -r /usr/local/tomcat/webapps/docs && \
-# 	rm -r /usr/local/tomcat/webapps/examples && \
-# 	rm -r /usr/local/tomcat/webapps/ROOT
+WORKDIR /usr/local/vivo
+RUN mvn clean package -s installer/settings.xml
+RUN mvn install -s installer/settings.xml
 
 ## insert customizations to image after maven install
-COPY --chown=root:staff ./configs/runtime.properties /usr/local/VIVO/home/config/runtime.properties
-COPY --chown=root:staff ./configs/applicationSetup.n3 /usr/local/VIVO/home/config/applicationSetup.n3
-COPY --chown=root:staff ./configs/aboutPage.n3 /usr/local/VIVO/home/rdf/display/firsttime/aboutPage.n3
+WORKDIR /usr/local/vivo/home
+COPY --chown=root:root ./configs/runtime.properties ./config/runtime.properties
+COPY --chown=root:root ./configs/applicationSetup.n3 ./config/applicationSetup.n3
+COPY --chown=root:root ./configs/aboutPage.n3 ./rdf/i18n/en_US/display/firsttime/aboutPage.n3
+COPY --chown=root:root ./configs/initialSiteConfig.rdf ./rdf/applicationMetadata/firsttime/initialSiteConfig.rdf
 
-RUN chmod ugo+w -R /usr/local/tomcat/temp && \
-	chmod ugo+w -R /usr/local/VIVO/home
+# ugly overwrite of SiteMapServet.java, which makes sitemap.xml
+COPY --chown=root:root ./util/SiteMapServlet.java /usr/local/vivo/api/src/main/java/org/vivoweb/webapp/sitemap/SiteMapServlet.java
 
-RUN ln -s /usr/local/tomcat/webapps/vivo/ /usr/local/tomcat/webapps/ROOT
+# move vivo tomcat folder to ROOT tomcat folder
+RUN mv /usr/local/tomcat/webapps/vivo/ /usr/local/tomcat/webapps/ROOT

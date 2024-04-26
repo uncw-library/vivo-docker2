@@ -1,30 +1,29 @@
 version: '3.7'
 
 services:
-  solr:
-    container_name: solr
+  vivo-solr:
+    container_name: vivo-solr
     image: libapps-admin.uncw.edu:8000/randall-dev/vivo-docker2/solr
-    # build:
-    #   context: ./solr
+    build:
+      context: ./solr
     volumes:
       - solr_data:/var/solr
     # ports:
     #   - 8983:8983
     restart: always
 
-  vivo:
-    container_name: vivo
-    image: libapps-admin.uncw.edu:8000/randall-dev/vivo-docker2/vivo
-    # build:
-    #   context: ./vivo
-    depends_on:
-      - solr
+  vivo-vivo:
+    container_name: vivo-vivo
+    image: libapps-admin.uncw.edu:8000/randall-dev/vivo-docker2/vivo:like-stock
+    build:
+      context: ./vivo
     volumes:
-      - ./tdbModels:/usr/local/VIVO/home/tdbModels
+      - ./tdbModels:/usr/local/vivo/home/tdbModels
       - ./tdbContentModels:/tdbContentModels
-      - ./current_turtle/userdata.ttl:/usr/local/VIVO/home/rdf/abox/filegraph/userdata.ttl
-      - ./vivo/uncw_theme:/usr/local/tomcat/webapps/vivo/themes/uncw_theme
-      - ./uploads:/usr/local/VIVO/home/uploads/
+      - ./current_turtle/userdata.ttl:/usr/local/vivo/home/rdf/abox/filegraph/userdata.ttl
+      - ./uploads:/usr/local/vivo/home/uploads
+      # only uncomment theme dir if doing theme work & after your computer has already done `docker compose up` with it commented out
+      # - ./vivo/uncw_theme:/usr/local/tomcat/webapps/ROOT/themes/uncw_theme
     ports:
       - 8080:8080
     restart: always
