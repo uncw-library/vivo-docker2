@@ -21,7 +21,7 @@ services:
 
   vivo-vivo:
     container_name: vivo-vivo
-    image: libapps-admin.uncw.edu:8000/randall-dev/vivo-docker2/vivo:like-stock
+    image: libapps-admin.uncw.edu:8000/randall-dev/vivo-docker2/vivo
     platform: linux/amd64
     volumes:
       - ./mounted/tdbModels:/usr/local/vivo/home/tdbModels
