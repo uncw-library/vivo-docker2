@@ -15,7 +15,7 @@ about:ABOUTDG
         </div>
         <h2>How can incomplete or inaccurate faculty profiles be fixed?</h2>
         <div class=\"pageGroupBody\">
-            <p>Since the data is coming directly from Digital Measures/Faculty Success, any corrections or additions should be made in that system. The data in Scholars@UNCW will refresh nightly. For information on how to update or correct your data in Digital Measures, please contact Allison Kittinger, Scholarly Communications Librarian at (<a mailto="kittingera@uncw.edu">kittingera@uncw.edu</a>).
+            <p>Since the data is coming directly from Digital Measures/Faculty Success, any corrections or additions should be made in that system. The data in Scholars@UNCW will refresh nightly. For information on how to update or correct your data in Digital Measures, please consult (<a href="https://libguides.uncw.edu/scholars_editing">https://libguides.uncw.edu/scholars_editing</a>).
         </div>"""@en ;
         <http://vitro.mannlib.cornell.edu/ontologies/display/1.1#saveToVar>
                 "aboutPage" .

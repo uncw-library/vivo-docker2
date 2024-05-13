@@ -28,6 +28,6 @@
         &lt;/p&gt;</j.0:aboutText>
         <j.0:themeDir rdf:datatype="http://www.w3.org/2001/XMLSchema#string">themes/wilma/</j.0:themeDir>
         <j.0:copyrightURL rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://uncw.edu/www/copyright.html</j.0:copyrightURL>
-    	<j.0:contactMail rdf:datatype="http://www.w3.org/2001/XMLSchema#string">kittingera@uncw.edu</j.0:contactMail>
+    	<j.0:contactMail rdf:datatype="http://www.w3.org/2001/XMLSchema#string">libsystems@uncw.edu</j.0:contactMail>
       </rdf:Description>
 </rdf:RDF>
