@@ -13,9 +13,10 @@ WORKDIR /usr/local/
 RUN git clone https://github.com/vivo-project/Vitro.git Vitro -b ${GIT_BRANCH} && \
 	git clone https://github.com/vivo-project/VIVO.git vivo -b ${GIT_BRANCH}
 
+#temp checking out milospp's responsive wilma pull request
 WORKDIR /usr/local/Vitro
 RUN git fetch origin pull/460/head:rwilma && git checkout rwilma
-WORKDIR /usr/local/vivo
+WORKDIR /usr/local/vivoweb
 RUN git fetch origin pull/3972/head:rwilma && git checkout rwilma
 
 
