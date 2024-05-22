@@ -37,8 +37,9 @@ WORKDIR /usr/local/vivo/home
 COPY --chown=root:root ./configs/runtime.properties ./config/runtime.properties
 COPY --chown=root:root ./configs/applicationSetup.n3 ./config/applicationSetup.n3
 COPY --chown=root:root ./configs/aboutPage.n3 ./rdf/i18n/en_US/display/firsttime/aboutPage.n3
-COPY --chown=root:root ./configs/featuredItems.n3 ./rdf/tbox/firsttime/featuredItems.n3
+COPY --chown=root:root ./wilma_uncw/vivo_UiLabel_wilma_uncw.ttl ./rdf/i18n/en_US/interface-i18n/firsttime/vivo_UiLable_wilma_uncw.ttl
 COPY --chown=root:root ./configs/initialSiteConfig.rdf ./rdf/applicationMetadata/firsttime/initialSiteConfig.rdf
+COPY --chown=root:root ./configs/featuredItems.n3 ./rdf/tbox/firsttime/featuredItems.n3
 
 # ugly overwrite of SiteMapServet.java, which makes sitemap.xml
 COPY --chown=root:root ./util/SiteMapServlet.java /usr/local/vivo/api/src/main/java/org/vivoweb/webapp/sitemap/SiteMapServlet.java

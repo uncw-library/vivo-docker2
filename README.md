@@ -4,6 +4,8 @@ This project creates two dockerized containers,
 - `vivo-vivo` The vivo instance
 - `vivo-solr` A standalone solr instance, based on a solr docker image
 
+(works on Mac Mx and Windows/Linux x86)
+
 # Usage
 
 ## Example Docker Installation
@@ -20,8 +22,8 @@ Regardless of the usage, you will need to build the images, which require the fo
 1. Your custom theme like ./vivo/uncw_theme is included in the docker image.
 1. Your config files at ./vivo/config are include in the docker image.
 1. Your vivo container will serve from http://localhost:8080/
-1. `docker build --no-cache -t libapps-admin.uncw.edu:8000/vivo-docker2/vivo ./vivo`
-1. `docker build --no-cache -t libapps-admin.uncw.edu:8000/vivo-docker2/solr ./solr`
+1. `docker compose build --no-cache vivo-solr`
+1. `docker compose build --no-cache vivo-vivo`
 
 When satisfied with your dev box, build and push the images to production
 
@@ -29,11 +31,11 @@ When satisfied with your dev box, build and push the images to production
 
 Assumes the docker images are already built/pushed.
 
-Our servers are 'libapps' and 'libapps-dev'.  git clone this repo onto your server, then git checkout the branch 'libapps' or 'libapps-dev'
+UNCW's servers are 'libapps' and 'libapps-dev'.  git clone this repo onto your server, then git checkout the branch 'libapps' or 'libapps-dev'
 
 Make sure there is a `current_turtle/userdata.ttl` file.  even an empty file with that name is ok.
 
-```
+```bash
 docker compose up vivo-solr -d     {wait 1 minute}
 docker compose up -d
 docker compose exec vivo-vivo tail /usr/local/tomcat/logs/vivo.all.log -f    {to follow the log output} 
@@ -42,20 +44,29 @@ docker compose exec vivo-vivo tail /usr/local/tomcat/logs/vivo.all.log -f    {to
 
 ## Development env
 
-1. Place a userdata.ttl graph file into ./current_turtle.  It will be autoimported into vivo on `docker compose up`.  The file is gitignored.  Replacing userdata.ttl with a newer version will autoupdate the vivo data on `docker compose down && docker compose up`
+1. Place a userdata.ttl graph file into ./current_turtle/userdata.ttl -- even an empty file with that name is ok.  It will be autoimported into vivo on `docker compose up`.  The file is gitignored.  Replacing userdata.ttl with a newer version will autoupdate the vivo data on `docker compose down && docker compose up`
 1. (optional)  Create a custom theme, following the './vivo/uncw_theme' folder.  Revise ./vivo/Dockerfile and docker-compose.yml lines including uncw_theme.
+1. Build the images:
+```bash
+docker compose build
+```
 1. Start the containers:
 ```bash
-   docker compose up vivo-solr -d    { wait 1 minute }
-   docker compose up vivo-vivo -d
-   docker compose exec vivo-vivo tail /usr/local/tomcat/logs/vivo.all.log -f
-   { watch the vivo-vivo logs }
+docker compose up vivo-solr -d    { wait 1 minute }
+docker compose up vivo-vivo -d
+docker compose exec vivo-vivo tail /usr/local/tomcat/logs/vivo.all.log -f
+{ watch the vivo-vivo logs }
 ```
 
 1. Watch [localhost:8080](http://localhost:8080) until the site is up.
 1. Rebuild the search index via logging into the Admin menu if the frontend does not display your instance data.
 1. NOTE:  After doing any theme or configfile changes, you must do a `docker build` step before pushing to production.  Docker Compose only temporarily overlays those folders onto the containers.  `docker build` bakes those changes into the image.
 1. `docker compose exec -it vivo-vivo bash` will get you inside the running container.
+1. To wipe the box & start fresh:
+```bash
+docker compose down
+docker volume rm vivo-docker2_solr_data && rm tdbModels/*.* && rm tdbContentModels/*.*
+```
 
 ## VIVO Runtime Example
 
