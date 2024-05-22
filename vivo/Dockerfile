@@ -23,6 +23,7 @@ RUN git fetch origin pull/3972/head:rwilma && git checkout rwilma
 WORKDIR /usr/local/vivo/
 COPY --chown=root:root ./configs/settings.xml ./installer/settings.xml
 COPY --chown=root:root ./uncw_theme ./installer/webapp/src/main/webapp/themes/uncw_theme
+COPY --chown=root:root ./wilma_uncw ./installer/webapp/src/main/webapp/themes/wilma_uncw
 
 # maven install
 WORKDIR /usr/local/Vitro
@@ -36,6 +37,7 @@ WORKDIR /usr/local/vivo/home
 COPY --chown=root:root ./configs/runtime.properties ./config/runtime.properties
 COPY --chown=root:root ./configs/applicationSetup.n3 ./config/applicationSetup.n3
 COPY --chown=root:root ./configs/aboutPage.n3 ./rdf/i18n/en_US/display/firsttime/aboutPage.n3
+COPY --chown=root:root ./configs/featuredItems.n3 ./rdf/tbox/firsttime/featuredItems.n3
 COPY --chown=root:root ./configs/initialSiteConfig.rdf ./rdf/applicationMetadata/firsttime/initialSiteConfig.rdf
 
 # ugly overwrite of SiteMapServet.java, which makes sitemap.xml
