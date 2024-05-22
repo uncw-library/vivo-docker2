@@ -22,6 +22,7 @@ services:
       - ./tdbContentModels:/tdbContentModels
       - ./current_turtle/userdata.ttl:/usr/local/vivo/home/rdf/abox/filegraph/userdata.ttl
       - ./current_turtle/featuredFaculty.ttl:/usr/local/vivo/home/rdf/abox/filegraph/featuredFaculty.ttl
+      - ./vivo/configs/vivo_UiLabel_wilma_uncw.ttl:/usr/local/vivo/home/rdf/i18n/en_US/interface-i18n/firsttime/vivo_UiLable_wilma_uncw.ttl
       - ./uploads:/usr/local/vivo/home/uploads
       # - ./temp_rdf:/usr/local/vivo/home/rdf
       # only uncomment theme dir if doing theme work & after your computer has already done `docker compose up` with it commented out
