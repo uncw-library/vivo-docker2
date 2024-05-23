@@ -30,7 +30,7 @@ Regardless of the usage, you will need to build the images, which require the fo
 1. (optional)  Create a custom theme, following the uncw_theme or wilma_uncw in ./vivo/inject.  
 Revise ./vivo/Dockerfile and docker-compose.yml lines to include the theme.
 1. Build the images:
-    ```bash
+    ```bassh
     docker compose build
     ```
 1. Start the containers:
@@ -67,9 +67,7 @@ Otherwise, same steps as above #Development env.
 
 ## VIVO site admin
 
-The example [docker-compose.yml](docker-compose.yml) is a basic VIVO installation in docker. This file has two containers and uses the standard TBD system.  The files in ./vivo configure many of the vivo settings.  There is an example custom theme included. 
-
-1. On first startup, log in with the user named in ./vivo/configs/runtime.properties
+1. On first startup, log in with the user named in ./vivo/inject/vivo_home/config/runtime.properties
 1. Any vivo users/instance data is preserved in docker bind mounted volumes to the ./tdb* folders in this repo.
 1. Solr data is preserved in docker volume: vivo-docker2_solr_data.
 1. Subsequent `docker compose down` and `docker compose up` will retain these volumes.
