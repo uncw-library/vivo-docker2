@@ -40,14 +40,14 @@
 @prefix dc:    <http://purl.org/dc/elements/1.1/> .
 
 uncw:featuredText  a                  owl:DatatypeProperty , owl:FunctionalProperty ;
-        rdfs:domain                   uncw:FeaturedItem ;
+        rdfs:domain                   uncw:FeaturedFaculty ;
         rdfs:label                    "featured profile text"@en-US ;
         obo:IAO_0000112               ""@en-US ;
         vitro:descriptionAnnot        ""@en-US ;
         vitro:publicDescriptionAnnot  ""@en-US .
 
-uncw:FeaturedItem  a             owl:Class ;
-        rdfs:label               "Featured Item"@en-US ;
+uncw:FeaturedFaculty  a          owl:Class ;
+        rdfs:label               "Featured Faculty"@en-US ;
         obo:IAO_0000112          ""@en-US ;
         obo:IAO_0000115          ""@en-US ;
         vitro:descriptionAnnot   ""@en-US ;
@@ -56,7 +56,7 @@ uncw:FeaturedItem  a             owl:Class ;
         vitro:inClassGroup       <http://vivoweb.org/ontology#vitroClassGroupactivities> .
 
 uncw:featuredPhoto  a                 owl:DatatypeProperty , owl:FunctionalProperty ;
-        rdfs:domain                   uncw:FeaturedItem ;
+        rdfs:domain                   uncw:FeaturedFaculty ;
         rdfs:label                    "featured photo url "@en-US ;
         obo:IAO_0000112               ""@en-US ;
         vitro:descriptionAnnot        ""@en-US ;
@@ -67,7 +67,7 @@ uncw:   a                          owl:Ontology ;
         vitro:ontologyPrefixAnnot  "uncw" .
 
 uncw:featured  a                      owl:DatatypeProperty , owl:FunctionalProperty ;
-        rdfs:domain                   uncw:FeaturedItem ;
+        rdfs:domain                   uncw:FeaturedFaculty ;
         rdfs:label                    "featured"@en-US ;
         rdfs:range                    xsd:boolean ;
         obo:IAO_0000112               ""@en-US ;

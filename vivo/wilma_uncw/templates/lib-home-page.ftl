@@ -109,15 +109,16 @@
 </section>
 </#macro>
 
-<#macro featuredProfile>
+<#macro featuredFaculty>
 
-<#if featuredProfileDG?has_content>
+
+<#if featuredFacultyDG?has_content>
 <div id="myCarousel" class="carousel slide" data-interval="10000" data-bs-ride="carousel">
 	<!-- Wrapper for slides -->
   <div class="carousel-inner">
-      <#list featuredProfileDG as resultRow>
+      <#list featuredFacultyDG as resultRow>
           <#assign uri = resultRow["theURI"] />
-          <#assign label = resultRow["name"] />
+          <#assign label = resultRow["label"] />
           <#assign photo = resultRow["featuredPhoto"] />
           <#assign caption = resultRow["featuredText"] />
 

@@ -107,7 +107,7 @@
 							</div>
 
 							<div class="col-sm-12 col-md-6 feature-container">
-									<@lh.featuredProfile />
+									<@lh.featuredFaculty />
 							</div>
 					</div>
                     </div>

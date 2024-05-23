@@ -36,6 +36,7 @@ RUN mvn install -s installer/settings.xml
 WORKDIR /usr/local/vivo/home
 COPY --chown=root:root ./configs/runtime.properties ./config/runtime.properties
 COPY --chown=root:root ./configs/applicationSetup.n3 ./config/applicationSetup.n3
+COPY --chown=root:root ./configs/rdf/display/everytime/homePageDataGetters.n3 ./rdf/display/everytime/homePageDataGetters.n3
 COPY --chown=root:root ./configs/aboutPage.n3 ./rdf/i18n/en_US/display/firsttime/aboutPage.n3
 COPY --chown=root:root ./wilma_uncw/vivo_UiLabel_wilma_uncw.ttl ./rdf/i18n/en_US/interface-i18n/firsttime/vivo_UiLable_wilma_uncw.ttl
 COPY --chown=root:root ./configs/initialSiteConfig.rdf ./rdf/applicationMetadata/firsttime/initialSiteConfig.rdf
