@@ -20,12 +20,12 @@ services:
     volumes:
       - ./tdbModels:/usr/local/vivo/home/tdbModels
       - ./tdbContentModels:/tdbContentModels
-      - ./current_turtle/userdata.ttl:/usr/local/vivo/home/rdf/abox/filegraph/userdata.ttl
-      - ./current_turtle/featuredFaculty.ttl:/usr/local/vivo/home/rdf/abox/filegraph/featuredFaculty.ttl
-      - ./uploads:/usr/local/vivo/home/uploads
+      - ./siteData/userdata.ttl:/usr/local/vivo/home/rdf/abox/filegraph/userdata.ttl
+      - ./siteData/featuredFaculty.ttl:/usr/local/vivo/home/rdf/abox/filegraph/featuredFaculty.ttl
+      - ./siteData/uploads:/usr/local/vivo/home/uploads
       # only uncomment theme dir if doing theme work & after your computer has already done `docker compose up` with it commented out
-      # - ./vivo/uncw_theme:/usr/local/tomcat/webapps/ROOT/themes/uncw_theme
-      # - ./vivo/wilma_uncw:/usr/local/tomcat/webapps/ROOT/themes/wilma_uncw
+      # - ./vivo/inject/installer/webapp/src/main/webapp/themes/uncw_theme:/usr/local/tomcat/webapps/ROOT/themes/uncw_theme
+      # - ./vivo/inject/installer/webapp/src/main/webapp/themes/wilma_uncw:/usr/local/tomcat/webapps/ROOT/themes/wilma_uncw
     ports:
       - 8080:8080
     restart: always
