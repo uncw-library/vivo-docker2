@@ -56,7 +56,7 @@
 									<div class="col-md-12 search">
 
 										<!--<h2>${i18n().intro_searchvivo}</h2>-->
-										<h2>Find your next collaborator at the University of North Carolina - Wilmington</h2>
+										<h2>Find your next collaborator at the University of North Carolina Wilmington</h2>
 
 									<form
 										id="search-homepage"
@@ -95,7 +95,7 @@
 <div class="row">
 							<div class="col-sm-12 col-md-6 feature-container">
 								<h2>Welcome to Scholars@UNCW</h2>
-								Scholars@UNCW is the University of North Carolina - Wilmington's portal for exploring and connecting with the university’s scholarly community.
+								Scholars@UNCW is the University of North Carolina Wilmington's portal for exploring and connecting with the university’s scholarly community.
 								<br><br>
 								Use the search feature and explore the interconnected results by People, Organizations and Scholarly and Creative Works.
 								<br><br>
