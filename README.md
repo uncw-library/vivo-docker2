@@ -27,21 +27,21 @@ Regardless of the usage, you will need to build the images, which require the fo
 1. Ensure ./siteData contains a `userdata.ttl` and a `featuredFaculty.ttl`
     `touch ./siteData/userdata.ttl && touch ./siteData/featuredFaculty.ttl`
     - even empty files with that name is ok.
+    - otherwise docker-compose will make empty folders with those names, which may be harmless.
+1. (optional)  Configure & customize your instance as noted in the Lyrasis Vivo wiki.
 1. (optional)  Create a custom theme, following the uncw_theme or wilma_uncw in ./vivo/inject.  
-Revise ./vivo/Dockerfile and docker-compose.yml lines to include the theme.
+Revise ./vivo/Dockerfile and docker-compose.yml lines to add the theme folder.
 1. Build the images:
     ```bassh
     docker compose build
     ```
 1. Start the containers:
     ```bash
-    docker compose up vivo-solr -d && docker compose logs -f    
-    { wait for "Registered new searcher" in vivo-solr logs.  then Ctrl-C to exit logs }
-    
     docker compose up -d
-    
+    ```
+1. Watch the vivo logs:
+    ```bash
     docker compose exec vivo-vivo tail /usr/local/tomcat/logs/vivo.all.log -f
-    { wait for atch the vivo-vivo tomcat logs }
     ```
 
 1. Site at [localhost:8080](http://localhost:8080)
@@ -70,8 +70,8 @@ Otherwise, same steps as above #Development env.
 1. On first startup, log in with the user named in ./vivo/inject/vivo_home/config/runtime.properties
 1. Any vivo users/instance data is preserved in docker bind mounted volumes to the ./tdb* folders in this repo.
 1. Solr data is preserved in docker volume: vivo-docker2_solr_data.
-1. Subsequent `docker compose down` and `docker compose up` will retain these volumes.
-1. If you wish to start clean, `docker volume rm vivo-docker2_solr_data` will delete the volume holding solr data.  And `rm ./tdbContentModels/*.*` and `rm ./tdbModels/*.*` will delete the vivo data.
+1. Subsequent `docker compose down` and `docker compose up` will preserve the tdb folders and solr data.
+1. If you wish to start clean, `docker volume rm vivo-docker2_solr_data` will delete the volume holding solr data.  And `rm ./tdbContentModels/*.*` and `rm ./tdbModels/*.*` will clear that data.  Start from step 1 after  the next `docker compose up`
 
 ## Solr access for dev
 
@@ -100,7 +100,7 @@ We use vivo_data_update app to fetch and organize the person images into ./siteD
 
 Our use-case is:
 - One userdata.ttl file (turtle fileformat), created outside of Vivo, holding all the site data for profiles.  Place it at ./siteData/userdata.ttl.  When starting the vivo instance, userdata.ttl is autoingested into Vivo.
-- One folder with profile images, created outside of Vivo.  Place it at ./siteData/uploads.  Check that the namespaces file in that folder has your site's namespace.  See Person
+- One folder with profile images, created outside of Vivo.  Place it at ./siteData/uploads.  Check that the namespaces file in that folder has your site's namespace.
 - One featuredFaculty.ttl file, created outside of Vivo, holding site data for our custom FeaturedFaculty homepage display.
 
 To do a data refresh, replace some files in ./siteData with a new version.  Restarting Vivo autoupdates any changes.
