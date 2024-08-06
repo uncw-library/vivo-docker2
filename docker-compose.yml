@@ -3,7 +3,7 @@ version: '3.7'
 services:
   vivo-solr:
     container_name: vivo-solr
-    image: libapps-admin.uncw.edu:8000/randall-dev/vivo-docker2/solr:latest
+    image: uncwlibrary/vivo-docker2/solr:latest
     platform: linux/amd64
     volumes:
       - solr_data:/var/solr
@@ -11,7 +11,7 @@ services:
 
   # vivo-data-update:
   #   container_name: vivo-data-update
-  #   image: libapps-admin.uncw.edu:8000/randall-dev/vivo-data-update:latest
+  #   image: uncwlibrary/vivo-data-update:latest
   #   env_file: .env
   #   platform: linux/amd64
   #   volumes:
@@ -21,7 +21,7 @@ services:
 
   vivo-vivo:
     container_name: vivo-vivo
-    image: libapps-admin.uncw.edu:8000/randall-dev/vivo-docker2/vivo
+    image: uncwlibrary/vivo-docker2/vivo
     platform: linux/amd64
     volumes:
       - ./mounted/tdbModels:/usr/local/vivo/home/tdbModels
