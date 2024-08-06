@@ -3,7 +3,7 @@ version: '3.7'
 services:
   vivo-solr:
     container_name: vivo-solr
-    image: libapps-admin.uncw.edu:8000/randall-dev/vivo-docker2/solr
+    image: uncwlibrary/vivo-docker2/solr
     build:
       context: ./solr
     volumes:
@@ -14,7 +14,7 @@ services:
 
   vivo-vivo:
     container_name: vivo-vivo
-    image: libapps-admin.uncw.edu:8000/randall-dev/vivo-docker2/vivo:like-stock
+    image: uncwlibrary/vivo-docker2/vivo:like-stock
     build:
       context: ./vivo
     volumes:
