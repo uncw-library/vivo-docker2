@@ -3,7 +3,7 @@ version: '3.7'
 services:
   vivo-solr:
     container_name: vivo-solr
-    image: uncwlibrary/vivo-docker2/solr
+    image: uncwlibrary/vivo-docker2-solr
     platform: linux/amd64
     volumes:
       - solr_data:/var/solr
@@ -21,7 +21,7 @@ services:
 
   vivo-vivo:
     container_name: vivo-vivo
-    image: uncwlibrary/vivo-docker2/vivo
+    image: uncwlibrary/vivo-docker2-vivo
     platform: linux/amd64
     volumes:
       - ./mounted/tdbModels:/usr/local/vivo/home/tdbModels
