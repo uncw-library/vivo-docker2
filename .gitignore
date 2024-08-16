@@ -1,4 +1,5 @@
 *~
-
+instanceData/*
+!instanceData/uploads/file_storage_namespaces.properties
 datastore/
 .DS_STORE
