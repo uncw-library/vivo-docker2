@@ -4,7 +4,7 @@ This project creates two dockerized containers,
 - `vivo-vivo` The vivo instance
 - `vivo-solr` A standalone solr instance, based on a solr docker image
 
-(works on Mac M1 and Windows/Linux x86)
+(works on Mac arm64 and Windows/Linux amd64)
 
 # Usage
 
@@ -24,15 +24,15 @@ Regardless of the usage, you will need to build the images, which require the fo
 
 ## Development env
 
-1. Ensure ./siteData contains a `userdata.ttl` and a `featuredFaculty.ttl`
-    `touch ./siteData/userdata.ttl && touch ./siteData/featuredFaculty.ttl`
+1. Ensure ./instanceData contains a file called `userdata.ttl` and one called `featuredFaculty.ttl`
+    `touch ./instanceData/userdata.ttl && touch ./instanceData/featuredFaculty.ttl`
     - even empty files with that name is ok.
-    - otherwise docker-compose will make empty folders with those names, which may be harmless.
+    - otherwise docker-compose will make empty folders with those names, which may be annoying.
 1. (optional)  Configure & customize your instance as noted in the Lyrasis Vivo wiki.
 1. (optional)  Create a custom theme, following the uncw_theme or wilma_uncw in ./vivo/inject.  
 Revise ./vivo/Dockerfile and docker-compose.yml lines to add the theme folder.
 1. Build the images:
-    ```bassh
+    ```bash
     docker compose build
     ```
 1. Start the containers:
