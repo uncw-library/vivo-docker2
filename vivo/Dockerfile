@@ -40,7 +40,7 @@ COPY --chown=root:root ./inject/vivo_home/rdf/applicationMetadata/firsttime/init
 COPY --chown=root:root ./inject/vivo_home/rdf/display/everytime/homePageDataGetters.n3 ./rdf/display/everytime/homePageDataGetters.n3
 COPY --chown=root:root ./inject/vivo_home/rdf/i18n/en_US/display/firsttime/aboutPage.n3 ./rdf/i18n/en_US/display/firsttime/aboutPage.n3
 COPY --chown=root:root ./inject/vivo_home/rdf/i18n/en_US/interface-i18n/firsttime/vivo_UiLabel_wilma_uncw.ttl ./rdf/i18n/en_US/interface-i18n/firsttime/vivo_UiLable_wilma_uncw.ttl
-COPY --chown=root:root ./inject/vivo_home/rdf/tbox/firsttime/featuredItems.n3 ./rdf/tbox/firsttime/featuredItems.n3
+COPY --chown=root:root ./inject/vivo_home/rdf/tbox/firsttime/featuredFacultyOntology.n3 ./rdf/tbox/firsttime/featuredFacultyOntology.n3
 
 # ugly overwrite of SiteMapServet.java, which makes sitemap.xml
 WORKDIR /usr/local/vivo/api

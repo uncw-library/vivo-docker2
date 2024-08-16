@@ -1,18 +1,18 @@
 services:
   vivo-solr:
     container_name: vivo-solr
-    image: uncwlibrary/vivo-docker2/solr:m1
+    image: uncwlibrary/vivo-docker2-solr:rwilma-m1
     build:
       context: ./solr
     volumes:
-      - solr_data:/var/solr
+      - solr-data:/var/solr
     restart: unless-stopped
     healthcheck:
       test: ["CMD-SHELL", "curl -f http://localhost:8983/solr/vivocore/admin/ping || exit 1"]
 
   vivo-vivo:
     container_name: vivo-vivo
-    image: uncwlibrary/vivo-docker2/vivo:m1
+    image: uncwlibrary/vivo-docker2-vivo:rwilma-m1
     build:
       context: ./vivo
     volumes:
@@ -31,6 +31,6 @@ services:
         condition: service_healthy
 
 volumes:
-  solr_data:
+  solr-data:
   tdbModels:
   tdbContentModels:

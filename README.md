@@ -3,6 +3,10 @@
 This project creates two dockerized containers,
 - `vivo-vivo` The vivo instance
 - `vivo-solr` A standalone solr instance, based on a solr docker image
+And three docker mounted volumes,
+- `solr-data`
+- `tdbModels`
+- `tdbContentModels`
 
 (works on Mac arm64 and Windows/Linux amd64)
 
@@ -24,7 +28,7 @@ Regardless of the usage, you will need to build the images, which require the fo
 
 ## Development env
 
-1. Ensure ./instanceData contains a file called `userdata.ttl` and one called `featuredFaculty.ttl`
+1. Ensure ./instanceData/turtles contains a file called `userdata.ttl` and one called `featuredFaculty.ttl`
     `touch ./instanceData/userdata.ttl && touch ./instanceData/featuredFaculty.ttl`
     - even empty files with that name is ok.
     - otherwise docker-compose will make empty folders with those names, which may be annoying.
@@ -48,7 +52,7 @@ Revise ./vivo/Dockerfile and docker-compose.yml lines to add the theme folder.
 1. To wipe the box & start fresh:
     ```bash
     docker compose down
-    docker volume rm vivo-docker2_solr_data && rm tdbModels/*.* && rm tdbContentModels/*.*
+    docker volume rm vivo-docker2_solr-data vivo-docker2_tdbModels vivo-docker2_tdbContentModels 
     ```
     - then goto step 4.
 
@@ -68,10 +72,10 @@ Otherwise, same steps as above #Development env.
 ## VIVO site admin
 
 1. On first startup, log in with the user named in ./vivo/inject/vivo_home/config/runtime.properties
-1. Any vivo users/instance data is preserved in docker bind mounted volumes to the ./tdb* folders in this repo.
-1. Solr data is preserved in docker volume: vivo-docker2_solr_data.
-1. Subsequent `docker compose down` and `docker compose up` will preserve the tdb folders and solr data.
-1. If you wish to start clean, `docker volume rm vivo-docker2_solr_data` will delete the volume holding solr data.  And `rm ./tdbContentModels/*.*` and `rm ./tdbModels/*.*` will clear that data.  Start from step 1 after  the next `docker compose up`
+1. Any vivo users/instance data is preserved in docker volumes: vivo-docker2_tdbModels and vivo-docker2_tdbContentModels.
+1. Solr data is preserved in docker volume: vivo-docker2_solr-data.
+1. Subsequent `docker compose down` and `docker compose up` will preserve the tdb data and solr data.
+1. If you wish to start clean, `docker volume rm vivo-docker2_solr-data` will delete the volume holding solr data.  And `docker volume rm tdbContentModels tdbModels` will clear that data.  Start from step 1 after  the next `docker compose up`
 
 ## Solr access for dev
 
