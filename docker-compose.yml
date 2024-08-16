@@ -16,10 +16,10 @@ services:
     build:
       context: ./vivo
     volumes:
-      - ./tdbModels:/usr/local/vivo/home/tdbModels
-      - ./tdbContentModels:/tdbContentModels
-      - ./instanceData/userdata.ttl:/usr/local/vivo/home/rdf/abox/filegraph/userdata.ttl
-      - ./instanceData/featuredFaculty.ttl:/usr/local/vivo/home/rdf/abox/filegraph/featuredFaculty.ttl
+      - tdbModels:/usr/local/vivo/home/tdbModels
+      - tdbContentModels:/tdbContentModels
+      - ./instanceData/turtles/userdata.ttl:/usr/local/vivo/home/rdf/abox/filegraph/userdata.ttl
+      - ./instanceData/turtles/featuredFacultyData.ttl:/usr/local/vivo/home/rdf/abox/filegraph/featuredFacultyData.ttl
       - ./instanceData/uploads:/usr/local/vivo/home/uploads
       - ./vivo/inject/installer/webapp/src/main/webapp/themes/uncw_theme:/usr/local/tomcat/webapps/ROOT/themes/uncw_theme
       - ./vivo/inject/installer/webapp/src/main/webapp/themes/wilma_uncw:/usr/local/tomcat/webapps/ROOT/themes/wilma_uncw
@@ -32,3 +32,5 @@ services:
 
 volumes:
   solr_data:
+  tdbModels:
+  tdbContentModels:
