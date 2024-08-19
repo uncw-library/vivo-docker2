@@ -3,7 +3,8 @@
 This project creates two dockerized containers,
 - `vivo-vivo` The vivo instance
 - `vivo-solr` A standalone solr instance, based on a solr docker image
-And three docker mounted volumes,
+
+And three docker mounted volumes:
 - `solr-data`
 - `tdbModels`
 - `tdbContentModels`
@@ -29,7 +30,8 @@ Regardless of the usage, you will need to build the images, which require the fo
 ## Development env
 
 1. Ensure ./instanceData/turtles contains a file called `userdata.ttl` and one called `featuredFaculty.ttl`
-    `touch ./instanceData/userdata.ttl && touch ./instanceData/featuredFaculty.ttl`
+    
+    `touch ./instanceData/turtles/userdata.ttl && touch ./instanceData/turtles/featuredFaculty.ttl`
     - even empty files with that name is ok.
     - otherwise docker-compose will make empty folders with those names, which may be annoying.
 1. (optional)  Configure & customize your instance as noted in the Lyrasis Vivo wiki.
@@ -69,7 +71,7 @@ Otherwise, same steps as above #Development env.
 
 
 
-## VIVO site admin
+## VIVO app admin
 
 1. On first startup, log in with the user named in ./vivo/inject/vivo_home/config/runtime.properties
 1. Any vivo users/instance data is preserved in docker volumes: vivo-docker2_tdbModels and vivo-docker2_tdbContentModels.
@@ -96,18 +98,18 @@ A GET request to http://sitename.com/file/n1234567890/personImage.jpg will load 
 
 The spliting of the large integer into groups of 3 is important.
 
-So, a file in this repo's ./siteData/uploads/file_storage_root/a~n/123/456/789/0/personImage.jpg maps to the two locations above.
+So, a file in this repo's ./instanceData/uploads/file_storage_root/a~n/123/456/789/0/personImage.jpg maps to the two locations above.
 
 We use vivo_data_update app to fetch and organize the person images into ./siteData/uploads/
 
 ## Automatic import/refresh
 
 Our use-case is:
-- One userdata.ttl file (turtle fileformat), created outside of Vivo, holding all the site data for profiles.  Place it at ./siteData/userdata.ttl.  When starting the vivo instance, userdata.ttl is autoingested into Vivo.
-- One folder with profile images, created outside of Vivo.  Place it at ./siteData/uploads.  Check that the namespaces file in that folder has your site's namespace.
-- One featuredFaculty.ttl file, created outside of Vivo, holding site data for our custom FeaturedFaculty homepage display.
+- One userdata.ttl file (turtle fileformat), created outside of Vivo, holding all the site data for profiles.  Place it at ./instanceData/turtles/userdata.ttl.  When starting the vivo instance, userdata.ttl is autoingested into Vivo.
+- One folder with profile images, created outside of Vivo.  Place it at ./instanceData/uploads.  Check that the namespaces file in that folder has your site's namespace.
+- One featuredFaculty.ttl file, created outside of Vivo, holding site data for our custom FeaturedFaculty homepage display.  Place it at ./instanceData/turtles/featuredFaculty.ttl.
 
-To do a data refresh, replace some files in ./siteData with a new version.  Restarting Vivo autoupdates any changes.
+To do a data refresh, replace some files in ./instanceData with a new version.  Restarting Vivo autoupdates any changes.
 
 
 # Acknowledgements:  
