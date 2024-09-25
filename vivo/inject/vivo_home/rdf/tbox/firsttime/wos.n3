@@ -1,0 +1,765 @@
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix vitro: <http://vitro.mannlib.cornell.edu/ns/vitro/0.7#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix bibo: <http://purl.org/ontology/bibo/> .
+@prefix wos: <http://webofscience.com/ontology/wos#> .
+
+@prefix vivo-root: <http://vivoweb.org/ontology#> .
+@prefix vivo: <http://vivoweb.org/ontology/core#> .
+@prefix wos-display: <http://webofscience.com/ontology/rap/display/#> .
+@prefix vitro-role: <http://vitro.mannlib.cornell.edu/ns/vitro/role#> .
+
+wos:FilmReview
+  a owl:Class ;
+  rdfs:label "Film Review"^^rdf:langString ;
+  rdfs:subClassOf wos:Publication ;
+  vitro:inClassGroup vivo-root:vitroClassGrouppublications .
+
+wos:impactFactor
+  a owl:DatatypeProperty ;
+  rdfs:label "impact factor" ;
+  rdfs:range xsd:decimal .
+
+wos:sequenceNumber
+  a owl:DatatypeProperty ;
+  rdfs:label "WoS sequence number"^^rdf:langString ;
+  rdfs:range xsd:string .
+
+wos:BookChapter
+  a owl:Class ;
+  rdfs:label "Book Chapter"^^rdf:langString ;
+  rdfs:subClassOf wos:Publication ;
+  vitro:inClassGroup vivo-root:vitroClassGrouppublications .
+
+wos:isni
+  a owl:DatatypeProperty ;
+  rdfs:label "isni"^^rdf:langString ;
+  rdfs:range xsd:string ;
+  vitro:displayLimitAnnot 1 ;
+  vitro:displayRankAnnot 3 ;
+  vitro:hiddenFromDisplayBelowRoleLevelAnnot vitro-role:public ;
+  vitro:hiddenFromPublishBelowRoleLevelAnnot vitro-role:public ;
+  vitro:inPropertyGroupAnnot vivo-root:vitroPropertyGroupidentifiers, wos:identity ;
+  vitro:offerCreateNewOptionAnnot true ;
+  vitro:prohibitedFromUpdateBelowRoleLevelAnnot vitro-role:public .
+
+wos:waanId
+  a owl:DatatypeProperty ;
+  rdfs:label "WoS WAAN id"^^rdf:langString ;
+  rdfs:range xsd:string ;
+  rdfs:subPropertyOf vivo:identifier .
+
+wos:daisNg
+  a owl:DatatypeProperty ;
+  rdfs:label "WoS dais ng"^^rdf:langString ;
+  rdfs:range xsd:string ;
+  rdfs:subPropertyOf vivo:identifier ;
+  vitro:inPropertyGroupAnnot vivo-root:vitroPropertyGroupidentifiers .
+
+wos:year
+  a owl:DatatypeProperty ;
+  rdfs:label "year" ;
+  rdfs:range xsd:integer .
+
+wos:industryCollaboration
+  a owl:DatatypeProperty ;
+  rdfs:label "industry collaboration" ;
+  rdfs:range xsd:boolean ;
+  vitro:inPropertyGroupAnnot wos-display:metrics .
+
+wos:ExternalResearcher
+  a owl:Class ;
+  rdfs:label "External Researcher"^^rdf:langString ;
+  rdfs:subClassOf foaf:Person .
+
+wos:journalAbbr
+  a owl:DatatypeProperty ;
+  rdfs:label "journal abbreviation"^^rdf:langString ;
+  rdfs:range xsd:string .
+
+wos:Article
+  a owl:Class ;
+  rdfs:label "Article"^^rdf:langString ;
+  rdfs:subClassOf wos:Publication ;
+  vitro:inClassGroup vivo-root:vitroClassGrouppublications .
+
+wos:fundingText
+  a owl:DatatypeProperty ;
+  rdfs:label "funding text"^^rdf:langString ;
+  rdfs:range xsd:string ;
+  vitro:inPropertyGroupAnnot vivo-root:vitroPropertyGroupoverview .
+
+wos:BroadDiscipline
+  a owl:Class ;
+  rdfs:label "Web of Science Broad Discipline"^^rdf:langString ;
+  rdfs:subClassOf skos:Concept .
+
+wos:InCitesCount
+  a owl:Class ;
+  rdfs:label "InCites Doc Count" ;
+  rdfs:subClassOf owl:Thing .
+
+wos:MeetingAbstract
+  a owl:Class ;
+  rdfs:label "Meeting Abstract", "Meeting Abstract"^^rdf:langString ;
+  rdfs:subClassOf wos:Publication ;
+  vitro:displayLimitAnnot "-1"^^xsd:int ;
+  vitro:displayRankAnnot "-1"^^xsd:int ;
+  vitro:hiddenFromDisplayBelowRoleLevelAnnot vitro-role:public ;
+  vitro:hiddenFromPublishBelowRoleLevelAnnot vitro-role:public ;
+  vitro:inClassGroup vivo-root:vitroClassGrouppublications ;
+  vitro:prohibitedFromUpdateBelowRoleLevelAnnot vitro-role:public .
+
+wos:hasResearchArea
+  a owl:ObjectProperty ;
+  rdfs:domain wos:ResearchArea ;
+  rdfs:label "research area"^^rdf:langString ;
+  rdfs:range obo:IAO_0000030 ;
+  rdfs:subPropertyOf vivo:hasResearchArea ;
+  vitro:displayLimitAnnot "-1"^^xsd:int ;
+  owl:inverseOf wos:researchAreaFor .
+
+wos:referenceCount
+  a owl:DatatypeProperty ;
+  rdfs:label "WoS References"^^rdf:langString ;
+  rdfs:range xsd:integer ;
+  vitro:inPropertyGroupAnnot wos-display:metrics .
+
+wos:ArtExhibitReview
+  a owl:Class ;
+  rdfs:label "Art Exhibit Review"^^rdf:langString ;
+  rdfs:subClassOf wos:Publication ;
+  vitro:inClassGroup vivo-root:vitroClassGrouppublications .
+
+wos:TheaterReview
+  a owl:Class ;
+  rdfs:label "Theater Review" ;
+  rdfs:subClassOf wos:Publication ;
+  vitro:inClassGroup vivo-root:vitroClassGrouppublications .
+
+wos:Chronology
+  a owl:Class ;
+  rdfs:label "Chronology"^^rdf:langString ;
+  rdfs:subClassOf wos:Publication ;
+  vitro:inClassGroup vivo-root:vitroClassGrouppublications .
+
+wos:wosId
+  a owl:DatatypeProperty ;
+  rdfs:domain bibo:Document ;
+  rdfs:label "WoS ID"^^rdf:langString ;
+  rdfs:range xsd:string ;
+  rdfs:subPropertyOf vivo:identifier ;
+  vitro:hiddenFromDisplayBelowRoleLevelAnnot vitro-role:public ;
+  vitro:hiddenFromPublishBelowRoleLevelAnnot vitro-role:public ;
+  vitro:inPropertyGroupAnnot vivo-root:vitroPropertyGroupidentifiers ;
+  vitro:prohibitedFromUpdateBelowRoleLevelAnnot vitro-role:public .
+
+wos:avgExpectedRate
+  a owl:DatatypeProperty ;
+  rdfs:label "average expected rate" ;
+  rdfs:range xsd:decimal .
+
+wos:hasAffiliation
+  a owl:ObjectProperty ;
+  rdfs:label "has affilation"^^rdf:langString ;
+  vitro:inPropertyGroupAnnot vivo-root:vitroPropertyGroupoverview ;
+  owl:inverseOf wos:affiliationFor .
+
+wos:keywordPlus
+  a owl:DatatypeProperty ;
+  rdfs:label "keyword plus"^^rdf:langString ;
+  rdfs:range xsd:string ;
+  vitro:inPropertyGroupAnnot vivo-root:vitroPropertyGroupresearch .
+
+wos:lastName
+  a owl:DatatypeProperty ;
+  rdfs:label "WoS last name"^^rdf:langString ;
+  rdfs:range xsd:string .
+
+wos:InCitesPubPerYear
+  a owl:Class ;
+  rdfs:label "InCites Pubs Per Year" ;
+  rdfs:subClassOf wos:InCitesCount .
+
+wos:hotPaper
+  a owl:DatatypeProperty ;
+  rdfs:label "hot paper" ;
+  rdfs:range xsd:boolean ;
+  vitro:inPropertyGroupAnnot wos-display:metrics .
+
+wos:FictionCreativeProse
+  a owl:Class ;
+  rdfs:label "Fiction Creative Prose"^^rdf:langString ;
+  rdfs:subClassOf wos:Publication ;
+  vitro:inClassGroup vivo-root:vitroClassGrouppublications .
+
+wos:BookReview
+  a owl:Class ;
+  rdfs:label "Book Review"^^rdf:langString ;
+  rdfs:subClassOf wos:Publication ;
+  vitro:inClassGroup vivo-root:vitroClassGrouppublications .
+
+wos:firstName
+  a owl:DatatypeProperty ;
+  rdfs:label "WoS first name"^^rdf:langString ;
+  rdfs:range xsd:string .
+
+wos:researchAreaFor
+  a owl:ObjectProperty ;
+  rdfs:domain obo:IAO_0000030 ;
+  rdfs:label "research area"^^rdf:langString ;
+  rdfs:range wos:ResearchArea ;
+  rdfs:subPropertyOf vivo:researchAreaOf ;
+  vitro:hiddenFromDisplayBelowRoleLevelAnnot vitro-role:public ;
+  vitro:hiddenFromPublishBelowRoleLevelAnnot vitro-role:public ;
+  vitro:inPropertyGroupAnnot vivo-root:vitroPropertyGroupresearch ;
+  vitro:prohibitedFromUpdateBelowRoleLevelAnnot vitro-role:public ;
+  vitro:selectFromExistingAnnot true ;
+  owl:inverseOf wos:hasResearchArea .
+
+wos:RecordReview
+  a owl:Class ;
+  rdfs:label "Record Review" ;
+  rdfs:subClassOf wos:Publication ;
+  vitro:inClassGroup vivo-root:vitroClassGrouppublications .
+
+wos:Poetry
+  a owl:Class ;
+  rdfs:label "Poetry" ;
+  rdfs:subClassOf wos:Publication ;
+  vitro:inClassGroup vivo-root:vitroClassGrouppublications .
+
+wos:InCitesCitesPerYear
+  a owl:Class ;
+  rdfs:label "InCites Cites Per Year" ;
+  rdfs:subClassOf wos:InCitesCount .
+
+wos:Abstract
+  a owl:Class ;
+  rdfs:label "Abstract of Published Item"^^rdf:langString ;
+  rdfs:subClassOf wos:Publication ;
+  vitro:inClassGroup vivo-root:vitroClassGrouppublications .
+
+wos:hasKeywordPlus
+  a owl:ObjectProperty ;
+  rdfs:label "keyword plus"^^rdf:langString ;
+  rdfs:subPropertyOf vivo:hasResearchArea ;
+  vitro:inPropertyGroupAnnot vivo-root:vitroPropertyGroupresearch, vivo-root:vitroPropertyGroupoverview ;
+  owl:inverseOf wos:keywordPlusFor .
+
+wos:Excerpt
+  a owl:Class ;
+  rdfs:label "Excerpt"^^rdf:langString ;
+  rdfs:subClassOf wos:Publication ;
+  vitro:inClassGroup vivo-root:vitroClassGrouppublications .
+
+wos:esiMostCited
+  a owl:DatatypeProperty ;
+  rdfs:label "ESI most cited" ;
+  rdfs:range xsd:boolean ;
+  vitro:inPropertyGroupAnnot wos-display:metrics .
+
+wos:Organization
+  a owl:Class ;
+  rdfs:label "WoS Organization"^^rdf:langString ;
+  rdfs:subClassOf foaf:Organization ;
+  vitro:inClassGroup vivo-root:vitroClassGrouporganizations .
+
+wos:totalCites
+  a owl:DatatypeProperty ;
+  rdfs:label "total cites" ;
+  rdfs:range xsd:integer .
+
+wos:displayName
+  a owl:DatatypeProperty ;
+  rdfs:label "WoS display name"^^rdf:langString ;
+  rdfs:range xsd:string .
+
+wos:DancePerformanceReview
+  a owl:Class ;
+  rdfs:label "Dance Performance Review"^^rdf:langString ;
+  rdfs:subClassOf wos:Publication ;
+  vitro:inClassGroup vivo-root:vitroClassGrouppublications .
+
+wos:Review
+  a owl:Class ;
+  rdfs:label "Review"^^rdf:langString ;
+  rdfs:subClassOf wos:Publication ;
+  vitro:hiddenFromDisplayBelowRoleLevelAnnot vitro-role:public ;
+  vitro:hiddenFromPublishBelowRoleLevelAnnot vitro-role:public ;
+  vitro:inClassGroup vivo-root:vitroClassGrouppublications ;
+  vitro:prohibitedFromUpdateBelowRoleLevelAnnot vitro-role:public .
+
+wos:Funder
+  a owl:Class ;
+  rdfs:label "Funder"^^rdf:langString ;
+  rdfs:subClassOf foaf:Organization .
+
+wos:hasScientificFocusArea
+  a owl:ObjectProperty ;
+  rdfs:label "scientific focus area"^^rdf:langString ;
+  rdfs:subPropertyOf vivo:hasResearchArea ;
+  vitro:displayLimitAnnot -1 ;
+  vitro:hiddenFromDisplayBelowRoleLevelAnnot vitro-role:public ;
+  vitro:hiddenFromPublishBelowRoleLevelAnnot vitro-role:public ;
+  vitro:inPropertyGroupAnnot vivo-root:vitroPropertyGroupresearch ;
+  vitro:prohibitedFromUpdateBelowRoleLevelAnnot vitro-role:public ;
+  vitro:selectFromExistingAnnot true ;
+  owl:inverseOf wos:scientificFocusAreaFor .
+
+wos:EditorialMaterial
+  a owl:Class ;
+  rdfs:label "Editorial Material" ;
+  rdfs:subClassOf wos:Publication ;
+  vitro:inClassGroup vivo-root:vitroClassGrouppublications .
+
+wos:Script
+  a owl:Class ;
+  rdfs:label "Script" ;
+  rdfs:subClassOf wos:Publication ;
+  vitro:inClassGroup vivo-root:vitroClassGrouppublications .
+
+wos:Category
+  a owl:Class ;
+  rdfs:label "Web of Science Category"^^rdf:langString ;
+  rdfs:subClassOf skos:Concept ;
+  vitro:hiddenFromDisplayBelowRoleLevelAnnot vitro-role:public ;
+  vitro:hiddenFromPublishBelowRoleLevelAnnot vitro-role:public ;
+  vitro:inClassGroup vivo-root:vitroClassGrouppublications ;
+  vitro:prohibitedFromUpdateBelowRoleLevelAnnot vitro-role:public .
+
+wos:Researcher
+  a owl:Class ;
+  rdfs:label "Researcher"^^rdf:langString ;
+  rdfs:subClassOf foaf:Person ;
+  vitro:inClassGroup vivo-root:vitroClassGrouppeople .
+
+wos:MusicScoreReview
+  a owl:Class ;
+  rdfs:label "Music Score Review" ;
+  rdfs:subClassOf wos:Publication ;
+  vitro:inClassGroup vivo-root:vitroClassGrouppublications .
+
+wos:categoryFor
+  a owl:ObjectProperty ;
+  rdfs:domain obo:IAO_0000030 ;
+  rdfs:label "category"^^rdf:langString ;
+  rdfs:range wos:Category ;
+  vitro:displayLimitAnnot -1 ;
+  vitro:hiddenFromDisplayBelowRoleLevelAnnot vitro-role:public ;
+  vitro:hiddenFromPublishBelowRoleLevelAnnot vitro-role:public ;
+  vitro:inPropertyGroupAnnot vivo-root:vitroPropertyGroupresearch ;
+  vitro:prohibitedFromUpdateBelowRoleLevelAnnot vitro-role:public ;
+  vitro:selectFromExistingAnnot true ;
+  owl:inverseOf wos:hasCategory .
+
+wos:standardName
+  a owl:DatatypeProperty ;
+  rdfs:label "WoS standard name"^^rdf:langString ;
+  rdfs:range xsd:string .
+
+wos:fullName
+  a owl:DatatypeProperty ;
+  rdfs:label "WoS full name"^^rdf:langString ;
+  rdfs:range xsd:string .
+
+wos:journalExpectedCitations
+  a owl:DatatypeProperty ;
+  rdfs:label "journal expected citations" ;
+  rdfs:range xsd:decimal .
+
+wos:birth
+  a owl:DatatypeProperty ;
+  rdfs:label "birth"^^rdf:langString ;
+  rdfs:range xsd:dateTime .
+
+wos:number
+  a owl:DatatypeProperty ;
+  rdfs:label "number" ;
+  rdfs:range xsd:integer .
+
+wos:BiographicalItem
+  a owl:Class ;
+  rdfs:label "Biographical Item"^^rdf:langString ;
+  rdfs:subClassOf wos:Publication ;
+  vitro:inClassGroup vivo-root:vitroClassGrouppublications .
+
+wos:Address
+  a owl:Class ;
+  rdfs:label "WoS Address"^^rdf:langString ;
+  rdfs:subClassOf owl:Thing .
+
+wos:TVRadioReview
+  a owl:Class ;
+  rdfs:label "TV Review, Radio Review" ;
+  rdfs:subClassOf wos:Publication ;
+  vitro:inClassGroup vivo-root:vitroClassGrouppublications .
+
+wos:ResearchArea
+  a owl:Class ;
+  rdfs:label "Web of Science Research Area"^^rdf:langString ;
+  rdfs:subClassOf skos:Concept ;
+  vitro:hiddenFromDisplayBelowRoleLevelAnnot vitro-role:public ;
+  vitro:hiddenFromPublishBelowRoleLevelAnnot vitro-role:public ;
+  vitro:inClassGroup vivo-root:vitroClassGrouppublications ;
+  vitro:prohibitedFromUpdateBelowRoleLevelAnnot vitro-role:public .
+
+wos:authorKeyword
+  a owl:DatatypeProperty ;
+  rdfs:label "author keyword"^^rdf:langString ;
+  rdfs:range xsd:string ;
+  vitro:inPropertyGroupAnnot vivo-root:vitroPropertyGroupresearch .
+
+wos:TVRadioVideoReview
+  a owl:Class ;
+  rdfs:label "TV Review, Radio Review, Video Review" ;
+  rdfs:subClassOf wos:Publication ;
+  vitro:inClassGroup vivo-root:vitroClassGrouppublications .
+
+wos:internationalCollaboration
+  a owl:DatatypeProperty ;
+  rdfs:label "international collaboration" ;
+  rdfs:range xsd:boolean ;
+  vitro:inPropertyGroupAnnot wos-display:metrics .
+
+wos:citationCount
+  a owl:DatatypeProperty ;
+  rdfs:label "WoS Citations"^^rdf:langString ;
+  rdfs:range xsd:integer ;
+  vitro:inPropertyGroupAnnot wos-display:metrics .
+
+wos:NewsItem
+  a owl:Class ;
+  rdfs:label "News Item" ;
+  rdfs:subClassOf wos:Publication ;
+  vitro:inClassGroup vivo-root:vitroClassGrouppublications .
+
+wos:keywordPlusFor
+  a owl:ObjectProperty ;
+  rdfs:label "papers"^^rdf:langString ;
+  vitro:inPropertyGroupAnnot vivo-root:vitroPropertyGroupresearch ;
+  owl:inverseOf wos:authorKeyword .
+
+wos:authorKeywordFor
+  a owl:ObjectProperty ;
+  rdfs:label "publications "^^rdf:langString, "author keyword"^^rdf:langString ;
+  vitro:hiddenFromDisplayBelowRoleLevelAnnot vitro-role:public ;
+  vitro:hiddenFromPublishBelowRoleLevelAnnot vitro-role:public ;
+  vitro:inPropertyGroupAnnot vivo-root:vitroPropertyGroupresearch ;
+  vitro:prohibitedFromUpdateBelowRoleLevelAnnot vitro-role:public ;
+  vitro:selectFromExistingAnnot true ;
+  owl:inverseOf wos:hasAuthorKeyword .
+
+wos:MeetingSummary
+  a owl:Class ;
+  rdfs:label "Meeting Summary" ;
+  rdfs:subClassOf wos:Publication ;
+  vitro:inClassGroup vivo-root:vitroClassGrouppublications .
+
+wos:UnifiedOrganization
+  a owl:Class ;
+  rdfs:label "WoS Unified Organization"^^rdf:langString ;
+  rdfs:subClassOf foaf:Organization ;
+  vitro:inClassGroup vivo-root:vitroClassGrouporganizations .
+
+wos:photo
+  a owl:DatatypeProperty ;
+  rdfs:label "image" ;
+  rdfs:range xsd:string ;
+  vitro:displayLimitAnnot 1 ;
+  vitro:displayRankAnnot 3 ;
+  vitro:hiddenFromDisplayBelowRoleLevelAnnot vitro-role:public ;
+  vitro:hiddenFromPublishBelowRoleLevelAnnot vitro-role:public ;
+  vitro:inPropertyGroupAnnot wos:identity, vivo-root:vitroPropertyGroupidentifiers ;
+  vitro:offerCreateNewOptionAnnot true ;
+  vitro:prohibitedFromUpdateBelowRoleLevelAnnot vitro-role:public .
+
+wos:InCitesTopCategory
+  a owl:Class ;
+  rdfs:label "InCites Top Category" ;
+  rdfs:subClassOf wos:InCitesCount .
+
+wos:Letter
+  a owl:Class ;
+  rdfs:label "Letter", "Letter"^^rdf:langString ;
+  rdfs:subClassOf wos:Publication ;
+  vitro:inClassGroup vivo-root:vitroClassGrouppublications .
+
+wos:SubOrganization
+  a owl:Class ;
+  rdfs:label "WoS Sub Organization"^^rdf:langString ;
+  rdfs:subClassOf foaf:Organization .
+
+wos:subOrganizationName
+  a owl:DatatypeProperty ;
+  rdfs:label "WoS sub organization name"^^rdf:langString ;
+  rdfs:range xsd:string .
+
+wos:Note
+  a owl:Class ;
+  rdfs:label "Note" ;
+  rdfs:subClassOf wos:Publication ;
+  vitro:inClassGroup vivo-root:vitroClassGrouppublications .
+
+wos:percentile
+  a owl:DatatypeProperty ;
+  rdfs:label "percentile" ;
+  rdfs:range xsd:decimal .
+
+wos:wikidataId
+  a owl:DatatypeProperty ;
+  rdfs:label "Wikidata ID"^^rdf:langString ;
+  rdfs:range xsd:string ;
+  rdfs:subPropertyOf vivo:identifier .
+
+wos:ScientificFocusArea
+  a owl:Class ;
+  rdfs:label "Scientific Focus Area"^^rdf:langString ;
+  rdfs:subClassOf skos:Concept ;
+  vitro:hiddenFromDisplayBelowRoleLevelAnnot vitro-role:public ;
+  vitro:hiddenFromPublishBelowRoleLevelAnnot vitro-role:public ;
+  vitro:inClassGroup vivo-root:vitroClassGroupresearch, vivo-root:vitroClassGrouppublications ;
+  vitro:prohibitedFromUpdateBelowRoleLevelAnnot vitro-role:public .
+
+wos:AuthorKeyword
+  a owl:Class ;
+  rdfs:label "Author Keyword"^^rdf:langString ;
+  rdfs:subClassOf skos:Concept ;
+  vitro:hiddenFromDisplayBelowRoleLevelAnnot vitro-role:public ;
+  vitro:hiddenFromPublishBelowRoleLevelAnnot vitro-role:public ;
+  vitro:inClassGroup vivo-root:vitroClassGrouppublications ;
+  vitro:prohibitedFromUpdateBelowRoleLevelAnnot vitro-role:public .
+
+wos:MusicPerformanceReview
+  a owl:Class ;
+  rdfs:label "Music Performance Review" ;
+  rdfs:subClassOf wos:Publication ;
+  vitro:inClassGroup vivo-root:vitroClassGrouppublications .
+
+wos:CorrectionAddition
+  a owl:Class ;
+  rdfs:label "Correction Addition"^^rdf:langString ;
+  rdfs:subClassOf wos:Publication ;
+  vitro:inClassGroup vivo-root:vitroClassGrouppublications .
+
+wos:Conference
+  a owl:Class ;
+  rdfs:label "Conference"^^rdf:langString ;
+  rdfs:subClassOf wos:Publication ;
+  vitro:inClassGroup vivo-root:vitroClassGrouppublications .
+
+wos:citeKey
+  a owl:DatatypeProperty ;
+  rdfs:label "cite key"^^rdf:langString ;
+  rdfs:range xsd:string ;
+  vitro:inPropertyGroupAnnot vivo-root:vitroPropertyGroupidentifiers .
+
+wos:authorList
+  a owl:FunctionalProperty, owl:DatatypeProperty ;
+  rdfs:domain bibo:Document ;
+  rdfs:label "cited authors"^^rdf:langString ;
+  rdfs:range xsd:string ;
+  vitro:hiddenFromDisplayBelowRoleLevelAnnot vitro-role:public ;
+  vitro:hiddenFromPublishBelowRoleLevelAnnot vitro-role:public ;
+  vitro:inPropertyGroupAnnot vivo-root:vitroPropertyGroupoverview ;
+  vitro:prohibitedFromUpdateBelowRoleLevelAnnot vitro-role:public .
+
+wos:organizationName
+  a owl:DatatypeProperty ;
+  rdfs:label "WoS organization name"^^rdf:langString ;
+  rdfs:range xsd:string .
+
+wos:Discussion
+  a owl:Class ;
+  rdfs:label "Discussion"^^rdf:langString ;
+  rdfs:subClassOf wos:Publication ;
+  vitro:inClassGroup vivo-root:vitroClassGrouppublications .
+
+wos:ItemAboutAnIndividual
+  a owl:Class ;
+  rdfs:label "Item About An Individual"^^rdf:langString ;
+  rdfs:subClassOf wos:Publication ;
+  vitro:inClassGroup vivo-root:vitroClassGrouppublications .
+
+wos:Reprint
+  a owl:Class ;
+  rdfs:label "Reprint" ;
+  rdfs:subClassOf wos:Publication ;
+  vitro:inClassGroup vivo-root:vitroClassGrouppublications .
+
+wos:Publication
+  a owl:Class ;
+  rdfs:label "WoS Publication"^^rdf:langString ;
+  rdfs:subClassOf bibo:Document ;
+  vitro:customDisplayViewAnnot "individual--bibo-document.ftl" ;
+  vitro:displayLimitAnnot "-1"^^xsd:int ;
+  vitro:displayRankAnnot "-1"^^xsd:int ;
+  vitro:hiddenFromDisplayBelowRoleLevelAnnot vitro-role:public ;
+  vitro:hiddenFromPublishBelowRoleLevelAnnot vitro-role:public ;
+  vitro:inClassGroup vivo-root:vitroClassGrouppublications ;
+  vitro:prohibitedFromUpdateBelowRoleLevelAnnot vitro-role:public .
+
+wos:orcid
+  a owl:DatatypeProperty ;
+  rdfs:label "orcid"^^rdf:langString ;
+  rdfs:range xsd:string ;
+  rdfs:subPropertyOf vivo:identifier ;
+  vitro:displayLimitAnnot 1 ;
+  vitro:displayRankAnnot 3 ;
+  vitro:hiddenFromDisplayBelowRoleLevelAnnot vitro-role:public ;
+  vitro:hiddenFromPublishBelowRoleLevelAnnot vitro-role:public ;
+  vitro:inPropertyGroupAnnot wos:identity, vivo-root:vitroPropertyGroupidentifiers ;
+  vitro:offerCreateNewOptionAnnot true ;
+  vitro:prohibitedFromUpdateBelowRoleLevelAnnot vitro-role:public .
+
+wos:nci
+  a owl:DatatypeProperty ;
+  rdfs:label "normalized citation impact" ;
+  rdfs:range xsd:decimal .
+
+wos:description
+  a owl:DatatypeProperty ;
+  rdfs:label "description"^^rdf:langString ;
+  rdfs:range xsd:string .
+
+wos:Correction
+  a owl:Class ;
+  rdfs:label "Correction"^^rdf:langString ;
+  rdfs:subClassOf wos:Publication ;
+  vitro:inClassGroup vivo-root:vitroClassGrouppublications .
+
+wos:SoftwareReview
+  a owl:Class ;
+  rdfs:label "Software Review" ;
+  rdfs:subClassOf wos:Publication ;
+  vitro:inClassGroup vivo-root:vitroClassGrouppublications .
+
+wos:affiliationFor
+  a owl:ObjectProperty ;
+  rdfs:label "members"^^rdf:langString ;
+  vitro:inPropertyGroupAnnot vivo-root:vitroPropertyGroupaffiliation ;
+  owl:inverseOf wos:hasAffiliation .
+
+wos:MusicScore
+  a owl:Class ;
+  rdfs:label "Music Score" ;
+  rdfs:subClassOf wos:Publication ;
+  vitro:inClassGroup vivo-root:vitroClassGrouppublications .
+
+wos:Grant
+  a owl:Class ;
+  rdfs:label "Grant" ;
+  rdfs:subClassOf vivo:Grant .
+
+wos:grantId
+  a owl:DatatypeProperty ;
+  rdfs:label "Grant Id"^^rdf:langString ;
+  rdfs:range xsd:string .
+
+wos:countryCode
+  a owl:DatatypeProperty ;
+  rdfs:label "Country code"^^rdf:langString ;
+  rdfs:range xsd:string ;
+  rdfs:subPropertyOf vivo:identifier ;
+  vitro:inPropertyGroupAnnot vivo-root:vitroPropertyGroupidentifiers .
+
+wos:HardwareReview
+  a owl:Class ;
+  rdfs:label "Hardware Review"^^rdf:langString ;
+  rdfs:subClassOf wos:Publication ;
+  vitro:inClassGroup vivo-root:vitroClassGrouppublications .
+
+wos:scientificFocusAreaFor
+  a owl:ObjectProperty ;
+  rdfs:label "researchers"^^rdf:langString ;
+  vitro:hiddenFromDisplayBelowRoleLevelAnnot vitro-role:public ;
+  vitro:hiddenFromPublishBelowRoleLevelAnnot vitro-role:public ;
+  vitro:inPropertyGroupAnnot vivo-root:vitroPropertyGroupaffiliation ;
+  vitro:prohibitedFromUpdateBelowRoleLevelAnnot vitro-role:public ;
+  vitro:selectFromExistingAnnot true ;
+  owl:inverseOf wos:hasScientificFocusArea .
+
+wos:ProceedingsPaper
+  a owl:Class ;
+  rdfs:label "Proceedings Paper" ;
+  rdfs:subClassOf wos:Publication ;
+  vitro:inClassGroup vivo-root:vitroClassGrouppublications .
+
+wos:formattedName
+  a owl:DatatypeProperty ;
+  rdfs:label "formatted name"^^rdf:langString ;
+  rdfs:range xsd:string ;
+  vitro:displayLimitAnnot 1 ;
+  vitro:displayRankAnnot 3 ;
+  vitro:hiddenFromDisplayBelowRoleLevelAnnot vitro-role:public ;
+  vitro:hiddenFromPublishBelowRoleLevelAnnot vitro-role:public ;
+  vitro:offerCreateNewOptionAnnot true ;
+  vitro:prohibitedFromUpdateBelowRoleLevelAnnot vitro-role:public .
+
+wos:hasCategory
+  a owl:ObjectProperty ;
+  rdfs:domain wos:Category ;
+  rdfs:label "category"^^rdf:langString ;
+  rdfs:range obo:IAO_0000030 ;
+  rdfs:subPropertyOf vivo:hasResearchArea ;
+  vitro:hiddenFromDisplayBelowRoleLevelAnnot vitro-role:public ;
+  vitro:hiddenFromPublishBelowRoleLevelAnnot vitro-role:public ;
+  vitro:inPropertyGroupAnnot vivo-root:vitroPropertyGroupresearch ;
+  vitro:prohibitedFromUpdateBelowRoleLevelAnnot vitro-role:public ;
+  vitro:selectFromExistingAnnot true ;
+  owl:inverseOf wos:categoryFor .
+
+wos:hasAuthorKeyword
+  a owl:ObjectProperty ;
+  rdfs:label "author keyword"^^rdf:langString ;
+  rdfs:subPropertyOf vivo:hasResearchArea ;
+  vitro:displayLimitAnnot -1 ;
+  vitro:hiddenFromDisplayBelowRoleLevelAnnot vitro-role:public ;
+  vitro:hiddenFromPublishBelowRoleLevelAnnot vitro-role:public ;
+  vitro:inPropertyGroupAnnot vivo-root:vitroPropertyGroupresearch, vivo-root:vitroPropertyGroupbibobscure ;
+  vitro:prohibitedFromUpdateBelowRoleLevelAnnot vitro-role:public ;
+  vitro:selectFromExistingAnnot true ;
+  owl:inverseOf wos:authorKeywordFor .
+
+wos:subOrganizationNameVariant
+  a owl:DatatypeProperty ;
+  rdfs:label "WoS sub organization name variant"^^rdf:langString ;
+  rdfs:range xsd:string .
+
+wos:email
+  a owl:DatatypeProperty ;
+  rdfs:label "WoS email"^^rdf:langString ;
+  rdfs:range xsd:string .
+
+wos:Book
+  a owl:Class ;
+  rdfs:label "Book"^^rdf:langString ;
+  rdfs:subClassOf wos:Publication ;
+  vitro:inClassGroup vivo-root:vitroClassGrouppublications .
+
+wos:openAccess
+  a owl:DatatypeProperty ;
+  rdfs:label "open access" ;
+  rdfs:range xsd:boolean ;
+  vitro:inPropertyGroupAnnot wos-display:metrics .
+
+wos:journalActExpCitations
+  a owl:DatatypeProperty ;
+  rdfs:label "journal normalized citation impact" ;
+  rdfs:range xsd:decimal .
+
+wos:KeywordPlus
+  a owl:Class ;
+  rdfs:label "KeywordPlus"^^rdf:langString ;
+  rdfs:subClassOf skos:Concept ;
+  vitro:inClassGroup wos-display:GroupTopics .
+
+wos:
+  a owl:Ontology ;
+  rdfs:label "Web of Science"^^rdf:langString ;
+  vitro:ontologyPrefixAnnot "wos" .
