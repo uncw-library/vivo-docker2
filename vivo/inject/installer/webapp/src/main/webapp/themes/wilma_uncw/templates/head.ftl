@@ -19,10 +19,12 @@
     </#if>
 </#if>
 
-${headScripts.add('<script type="text/javascript" src="${urls.base}/bootstrap-5.3.2/js/bootstrap.min.js"></script>')}
+${headScripts.add('<script type="text/javascript" src="${urls.base}/webjars/bootstrap/js/bootstrap.min.js"></script>')}
 
 <#include "stylesheets.ftl">
 <link rel="stylesheet" href="${urls.theme}/css/screen.css" />
+<link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
 
 
 <#include "headScripts.ftl">

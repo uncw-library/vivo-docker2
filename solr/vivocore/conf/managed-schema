@@ -504,6 +504,7 @@
   <field name="acNameUntokenized" type="edgengram_untokenized" multiValued="true" indexed="true" stored="false"/>
   <field name="cat" type="string" multiValued="true" indexed="true" stored="true"/>
   <field name="classgroup" type="string" multiValued="true" indexed="true" stored="true"/>
+  <field name="displayLabel" type="string" multiValued="false" indexed="true" stored="true"/>
   <field name="etag" type="string" multiValued="false" indexed="false" stored="true"/>
   <field name="features" type="text_general" multiValued="true" indexed="true" stored="true"/>
   <field name="inStock" type="boolean" indexed="true" stored="true"/>

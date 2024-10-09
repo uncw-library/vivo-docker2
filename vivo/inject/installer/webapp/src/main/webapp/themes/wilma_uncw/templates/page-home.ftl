@@ -53,10 +53,10 @@
 				<div class="row hero">
 					<div class="container theme-container">
 						<div class="theme-showcase">
-									<div class="col-md-12 search">
+									<div class="col-md-12 search-home">
 
 										<!--<h2>${i18n().intro_searchvivo}</h2>-->
-										<h2>Find your next collaborator at the University of North Carolina Wilmington</h2>
+										<h2>Find an Expert at the University of North Carolina Wilmington</h2>
 
 									<form
 										id="search-homepage"
@@ -71,7 +71,7 @@
 												class="form-control"
 												name="querytext"
 												value=""
-												placeholder="Find people, data, or research..."
+												placeholder=""
                         aria-label="Search input field"
 											/>
 											<div class="input-group-btn">
@@ -101,8 +101,8 @@
 								<br><br>
 								Click the Need Assistance button below to request assistance with establishing a collaboration.
 								<br><br>
-								<a href="https://libguides.uncw.edu/scholars_editing"><button class="btn btn-primary">Edit Your Profile</button></a>
-								<a href="https://libguides.uncw.edu/c.php?g=1364187&p=10078464"><button class="btn btn-warning">Need Assistance?</button></a>
+								<a href="https://libguides.uncw.edu/scholars_editing"><button class="btn btn-primary-custom">Edit Your Profile</button></a>
+								<a href="https://libguides.uncw.edu/scholars_editing/help"><button class="btn btn-primary-custom">Need Assistance?</button></a>
 
 							</div>
 
@@ -112,6 +112,43 @@
 					</div>
                     </div>
 				</div>
+
+        <div class="row international">
+          <div class="container">
+            <#--The title row extends the full width -->
+            <div class="col-md-12">
+              <h2><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> International Collaborations</h2>
+            </div>
+
+            <div class="col-md-12">
+              <div class="card-mainbox"></div>
+            </div>
+            <div class="col-md-12 text-center">
+              <a class="small text-uppercase load-more" id="target-international"><span class="glyphicon glyphicon-menu-down">
+</span> Load more</a>
+              <!-- <a class="pull-right small text-uppercase" href="${urls.base}/internationalcollabs">view all</a> -->
+            </div>
+          </div>
+        </div>
+
+          <div class="row highly-cited">
+          <div class="container">
+
+            <#--The title row extends the full width -->
+            <div class="col-md-12">
+              <h2><span class="glyphicon glyphicon-fire" aria-hidden="true"></span> Highly Cited Papers</h2>
+            </div>
+
+            <div class="col-md-12">
+              <div class="card-mainbox"></div>
+            </div>
+            <div class="col-md-12 text-center">
+              <a class="small text-uppercase load-more" id="target-highly-cited"><span class="glyphicon glyphicon-menu-down">
+</span> Load more</a>
+              <!-- <a class="pull-right small text-uppercase" href="${urls.base}/hotpapers">view all</a> -->
+            </div>
+          </div>
+        </div>
 
 
 
@@ -143,6 +180,58 @@
             if  ( $('input.search-homepage').css('text-align') == "right" ) {
                 $('input.search-homepage').attr("placeholder","${i18n().limit_search} \u2192");
             }
+
+
+    numcards = 6;
+    intloffset = hcoffset = oaoffset = indoffset = 0
+
+    getPapers('highly-cited', 0)
+    getPapers('international', 0)
+    getPapers('open-access', 0)
+    getPapers('industry', 0)
+    //fetchSciFocus()
+
+    function getPapers(type, offset) {
+      var apiURL = './vds/featured/' + type + '/' + numcards + '/' + offset;
+      var spot = $("." + type + " .card-mainbox");
+      $.getJSON(apiURL, function (papers) {
+        if (papers.length < 6 || papers.length == 0) {
+          $( "#target-" + type ).remove();
+        }
+        $(papers.slice(0, 6)).each(function (idx) {;
+            //console.debug(papers[idx]);
+            var meta = papers[idx];
+            var url = "./display?uri=" + meta.URI;
+            var dt_chunks = meta.date_dt.split(" ");
+            var year = dt_chunks[5]
+            var month = dt_chunks[1]
+            var venue = meta.venue_s
+            var venue = (venue === undefined) ? '' : venue;
+            $(spot).append("<div class=\"card\"><div class=\"card-content\"><a href=\"" + url + "\">" + meta.displayLabel + "</a>, <span class=\"citation-details\">" + venue + " " + month + ", " + year + "</span></div></div>");
+         });
+        });
+    }
+
+    $( "#target-international" ).click(function() {
+      intloffset = intloffset + 6;
+      getPapers('international', intloffset)
+    });
+
+    $( "#target-highly-cited" ).click(function() {
+      hcoffset = hcoffset + 6;
+      getPapers('highly-cited', hcoffset)
+    });
+
+    $( "#target-open-access" ).click(function() {
+      oaoffset = oaoffset + 6;
+      getPapers('open-access', oaoffset)
+    });
+
+    $( "#target-industry" ).click(function() {
+      indoffset = indoffset + 6;
+      getPapers('industry', indoffset)
+    });
+
         </script>
     </body>
 </html>

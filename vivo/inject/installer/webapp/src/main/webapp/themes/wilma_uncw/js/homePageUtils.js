@@ -6,7 +6,7 @@ $(document).ready(function(){
     // $.extend(this, facultyMemberCount);
     // $.extend(this, i18nStrings);
 
-    var retryCount = 0;
+    // var retryCount = 0;
 
     // this will ensure that the hidden classgroup input is cleared if the back button is used
     // to return to th ehome page from the search results

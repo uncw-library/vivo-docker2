@@ -76,88 +76,88 @@
 <#-- Renders the html for the research section on the home page. -->
 <#-- Works in conjunction with the homePageUtils.js file -->
 <#macro researchClasses classGroups=vClassGroups>
-    <#assign foundClassGroup = false />
-    <section id="home-research" class="home-sections">
-        <h3>${i18n().research_capitalized}</h3>
-        <div id="home-sections-list" class="list-group">
-            <#list classGroups as group>
-                <#if (group.individualCount > 0) && group.uri?contains("publications") >
-                    <#assign foundClassGroup = true />
-                    <#list group.classes?sort_by("individualCount")?reverse as class>
-                    <#--  <#if (class.individualCount > 0) && (class.uri?contains("AcademicArticle") || class.uri?contains("Book") || class.uri?contains("Chapter") ||class.uri?contains("ConferencePaper") || class.uri?contains("Grant") || class.uri?contains("Report")) > -->
-                        <#if (class.individualCount > 0) && (class.uri?contains("wos#Article") || class.uri?contains("Book") || class.uri?contains("wos#Article") || class.uri?contains("Grant") || class.uri?contains("Report") || class.uri?contains("Dataset") || class.uri?contains("Proceedings"))>
-                                <a class="list-group-item" href='${urls.base}/individuallist?vclassId=${class.uri?replace("#","%23")!}'>
-                                    <#if class.name?substring(class.name?length-1) == "s">
-                                        ${class.name}
-                                    <#else>
-                                        ${class.name}s
-                                    </#if>
-                                    <#-- Add bootstrap badge class to individual counts -->
-                                    &nbsp;
-                                    <span class="badge">${class.individualCount!}</span>
-                                </a>
-                        </#if>
-                    </#list>
-                    <a href="${urls.base}/research" alt="${i18n().view_all_research}">${i18n().view_all}</a>
-                </#if>
-            </#list>
-            <#if !foundClassGroup>
-                <p style="padding-left:1.2em">${i18n().no_research_content_found}</p>
+<#assign foundClassGroup = false />
+<section id="home-research" class="home-sections">
+    <h3>${i18n().research_capitalized}</h3>
+    <div id="home-sections-list" class="list-group">
+        <#list classGroups as group>
+            <#if (group.individualCount > 0) && group.uri?contains("publications") >
+                <#assign foundClassGroup = true />
+                <#list group.classes?sort_by("individualCount")?reverse as class>
+                  <#--  <#if (class.individualCount > 0) && (class.uri?contains("AcademicArticle") || class.uri?contains("Book") || class.uri?contains("Chapter") ||class.uri?contains("ConferencePaper") || class.uri?contains("Grant") || class.uri?contains("Report")) > -->
+                    <#if (class.individualCount > 0) && (class.uri?contains("wos#Article") || class.uri?contains("Book") || class.uri?contains("wos#Article") || class.uri?contains("Grant") || class.uri?contains("Report") || class.uri?contains("Dataset") || class.uri?contains("Proceedings"))>
+                            <a class="list-group-item" href='${urls.base}/individuallist?vclassId=${class.uri?replace("#","%23")!}'>
+                                <#if class.name?substring(class.name?length-1) == "s">
+                                    ${class.name}
+                                <#else>
+                                    ${class.name}s
+                                </#if>
+                                <#-- Add bootstrap badge class to individual counts -->
+                                &nbsp;
+                                <span class="badge">${class.individualCount!}</span>
+                            </a>
+                    </#if>
+                </#list>
+                <a href="${urls.base}/research" alt="${i18n().view_all_research}">${i18n().view_all}</a>
             </#if>
-        </div>
-    </section>
+        </#list>
+        <#if !foundClassGroup>
+            <p style="padding-left:1.2em">${i18n().no_research_content_found}</p>
+        </#if>
+    </div>
+</section>
 </#macro>
 
 <#macro featuredFaculty>
-    <#if featuredFacultyDG?has_content>
-        <div id="myCarousel" class="carousel slide" data-interval="10000" data-bs-ride="carousel">
-            <!-- Wrapper for slides -->
-        <div class="carousel-inner">
-            <#list featuredFacultyDG as resultRow>
-                <#assign uri = resultRow["theURI"] />
-                <#assign label = resultRow["label"] />
-                <#assign photo = resultRow["featuredPhoto"] />
-                <#assign caption = resultRow["featuredText"] />
+<#if featuredFacultyDG?has_content>
+<div id="myCarousel" class="carousel slide" data-interval="10000" data-bs-ride="carousel">
+	<!-- Wrapper for slides -->
+  <div class="carousel-inner">
+      <#list featuredFacultyDG as resultRow>
+          <#assign uri = resultRow["theURI"] />
+          <#assign label = resultRow["label"] />
+          <#assign photo = resultRow["featuredPhoto"] />
+          <#assign caption = resultRow["featuredText"] />
 
-                <#if resultRow?is_first>
-                <div class="carousel-item active">
-                        <!-- Left and right controls -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-                    <img src="${photo!}" alt="${label!} featured photo">
-                    <div class="carousel-caption" style="text-align: left; bottom: 0px">
-                        ${caption!}
-                    </div>
-                </div>
-
-                <#else>
-                <div class="carousel-item">
-                        <!-- Left and right controls -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-                    <img src="${photo!}" alt="${label!} featured photo">
-                    <div class="carousel-caption" style="text-align: left; bottom: 0px">
-                        ${caption!}
-                    </div>
-                </div>
-
-                </#if>
-            </#list>
+          <#if resultRow?is_first>
+          <div class="carousel-item active">
+                <!-- Left and right controls -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+            <img src="${photo!}" alt="${label!} featured photo">
+            <div class="carousel-caption" style="text-align: left; bottom: 0px">
+                ${caption!}
             </div>
-        </div>
-    <#else>
-        There are either no featured items or the developer panel is open and triggering a Jena warning.
-    </#if>
+          </div>
+
+          <#else>
+          <div class="carousel-item">
+                <!-- Left and right controls -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+            <img src="${photo!}" alt="${label!} featured photo">
+            <div class="carousel-caption" style="text-align: left; bottom: 0px">
+                ${caption!}
+            </div>
+          </div>
+
+          </#if>
+      </#list>
+    </div>
+</div>
+<#else>
+There are either no featured items or the developer panel is open and triggering a Jena warning.
+</#if>
 </#macro>

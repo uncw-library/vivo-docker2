@@ -22,6 +22,8 @@ RUN git fetch origin pull/3972/head:rwilma && git checkout rwilma
 ## insert customizations to vivo git repo ./installer before maven install
 WORKDIR /usr/local/vivo/
 COPY --chown=root:root ./inject/installer/settings.xml ./installer/settings.xml
+COPY --chown=root:root ./inject/installer/webapp/pom.xml ./installer/webapp/pom.xml
+COPY --chown=root:root ./inject/installer/webapp/src/main/java/com/wokinfo/vivo/dataservice ./installer/webapp/src/main/java/com/wokinfo/vivo/dataservice
 COPY --chown=root:root ./inject/installer/webapp/src/main/webapp/themes/uncw_theme ./installer/webapp/src/main/webapp/themes/uncw_theme
 COPY --chown=root:root ./inject/installer/webapp/src/main/webapp/themes/wilma_uncw ./installer/webapp/src/main/webapp/themes/wilma_uncw
 
@@ -38,6 +40,7 @@ COPY --chown=root:root ./inject/vivo_home/config/runtime.properties ./config/run
 COPY --chown=root:root ./inject/vivo_home/config/applicationSetup.n3 ./config/applicationSetup.n3
 COPY --chown=root:root ./inject/vivo_home/rdf/applicationMetadata/firsttime/initialSiteConfig.rdf ./rdf/applicationMetadata/firsttime/initialSiteConfig.rdf
 COPY --chown=root:root ./inject/vivo_home/rdf/display/everytime/homePageDataGetters.n3 ./rdf/display/everytime/homePageDataGetters.n3
+COPY --chown=root:root ./inject/vivo_home/rdf/display/everytime/searchIndexerConfigurationVivo.n3 ./rdf/display/everytime/searchIndexerConfigurationVivo.n3
 COPY --chown=root:root ./inject/vivo_home/rdf/i18n/en_US/display/firsttime/aboutPage.n3 ./rdf/i18n/en_US/display/firsttime/aboutPage.n3
 COPY --chown=root:root ./inject/vivo_home/rdf/i18n/en_US/interface-i18n/firsttime/vivo_UiLabel_wilma_uncw.ttl ./rdf/i18n/en_US/interface-i18n/firsttime/vivo_UiLable_wilma_uncw.ttl
 COPY --chown=root:root ./inject/vivo_home/rdf/tbox/firsttime/featuredFacultyOntology.n3 ./rdf/tbox/firsttime/featuredFacultyOntology.n3
@@ -49,3 +52,5 @@ COPY --chown=root:root ./inject/api/src/main/java/org/vivoweb/webapp/sitemap/Sit
 
 # move vivo tomcat folder to ROOT tomcat folder
 RUN mv /usr/local/tomcat/webapps/vivo/ /usr/local/tomcat/webapps/ROOT
+
+WORKDIR /usr/local/vivo/home

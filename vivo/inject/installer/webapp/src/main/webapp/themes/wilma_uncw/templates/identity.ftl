@@ -4,12 +4,15 @@
             <header>
                 <nav class="navbar nav_top" style="height: 96px;">
                     <div class="container-fluid">
-                        <div class="top_list px-5 mx-1">
+                        <div class="row top_list px-5 mx-1">
+                            <div class="col-3">
                             <a class="navbar-brand py-0 mx-3" href="https://uncw.edu/index.html">
                                 <img alt="UNCW" src="https://uncw.edu/_global/img/uncw-logo-gold_222x222.svg">
-                            </a>
-                            <div class="top_title">Scholars@UNCW</div>
+                            </a></div>
 
+                                <div class="top_title col-2"><a href="${urls.base}">Scholars@UNCW</a></div>
+                                <div class="col-4"></div>
+                                <div class="col-6">
                                 <section id="search" role="region">
                                     <form
                                         class="d-flex"
@@ -18,7 +21,7 @@
                                         method="post"
                                         name="search">
 
-                                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="querytext">
+                                            <input class="form-control me-2" type="search" placeholder="" aria-label="Search" name="querytext">
 
                                         <#-- Search button for search form in navbar -->
 												<button title="Submit search" type="submit" class="btn btn-light sympl-search submit">
@@ -31,12 +34,15 @@
                                                     <span class="glyphicon glyphicon-search" role="submit"></span>
                                                 </button>
                                     </form>
-                                </section>
+                                </section></div>
 
                         </div>
                 </nav>
+                <div class="container-fluid">
+                <div class="row">
+                <div class="col-3"></div>
+                <div class="col-9">
                 <nav class="navbar nav_bottom navbar-expand-lg">
-                    <div class="container-fluid">
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
@@ -48,9 +54,10 @@
                                         </a></li>
                                 </#list>
                             </ul>
-                        </nav>
+                        </nav></div>                </nav>
+                        </div>
                     </div>
-                </nav>
+
             </header>
         </div>
     </div>
