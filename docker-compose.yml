@@ -1,5 +1,3 @@
-version: '3.7'
-
 services:
   vivo-solr:
     container_name: vivo-solr
