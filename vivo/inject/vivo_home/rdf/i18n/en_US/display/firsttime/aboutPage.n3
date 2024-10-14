@@ -15,7 +15,7 @@ about:ABOUTDG
         </div>
         <h2>How can incomplete or inaccurate faculty profiles be fixed?</h2>
         <div class=\"pageGroupBody\">
-            <p>Because Scholars@UNCW relies on data from <a href="https://uncw.edu/about/university-administration/academic-affairs/division/areas/irp/resources-tools/faculty-success">Watermark Faculty Success</a>, any corrections or additions should be made in that system. The data in Scholars@UNCW refreshes nightly. For information on how to update or correct your data in Digital Measures, please consult <a href="https://libguides.uncw.edu/scholars_editing">this guide</a>.
+            <p>Because Scholars@UNCW relies on data from <a href="https://uncw.edu/about/university-administration/academic-affairs/division/areas/irp/resources-tools/faculty-success">Watermark Faculty Success</a>, any corrections or additions should be made in that system. The data in Scholars@UNCW refreshes nightly. For information on how to update or correct your data in Watermark Faculty Success, please consult <a href="https://libguides.uncw.edu/scholars_editing">this guide</a>.
         </div>"""@en ;
         <http://vitro.mannlib.cornell.edu/ontologies/display/1.1#saveToVar>
                 "aboutPage" .
