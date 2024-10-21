@@ -95,11 +95,9 @@
 <div class="row">
 							<div class="col-sm-12 col-md-6 feature-container">
 								<h2>Welcome to Scholars@UNCW</h2>
-								Scholars@UNCW is the University of North Carolina Wilmington's portal for exploring and connecting with the university’s scholarly community.
-								<br><br>
-								Use the search feature and explore the interconnected results by People, Organizations and Scholarly and Creative Works.
-								<br><br>
-								Click the Need Assistance button below to request assistance with establishing a collaboration.
+                Scholars@UNCW is the University of North Carolina Wilmington’s discovery system featuring the scholarship and creative works of UNCW faculty.
+                <br><br>
+                Use the search feature or explore interconnected data related to individuals, academic departments, and specific scholarly outputs. 
 								<br><br>
 								<a href="https://libguides.uncw.edu/scholars_editing"><button class="btn btn-primary-custom">Edit Your Profile</button></a>
 								<a href="https://libguides.uncw.edu/scholars_editing/help"><button class="btn btn-primary-custom">Need Assistance?</button></a>
