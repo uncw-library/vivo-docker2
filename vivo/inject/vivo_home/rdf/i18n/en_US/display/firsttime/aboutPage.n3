@@ -15,8 +15,13 @@ about:ABOUTDG
         </div>
         <h2>How can incomplete or inaccurate faculty profiles be fixed?</h2>
         <div class=\"pageGroupBody\">
-            <p>Because Scholars@UNCW relies on data from <a href="https://uncw.edu/about/university-administration/academic-affairs/division/areas/irp/resources-tools/faculty-success">Watermark Faculty Success</a>, any corrections or additions should be made in that system. The data in Scholars@UNCW refreshes nightly. For information on how to update or correct your data in Watermark Faculty Success, please consult <a href="https://libguides.uncw.edu/scholars_editing">this guide</a>.
-        </div>"""@en ;
+            <p>Because Scholars@UNCW relies on data from <a href="https://uncw.edu/about/university-administration/academic-affairs/division/areas/irp/resources-tools/faculty-success">Watermark Faculty Success</a>, any corrections or additions should be made in that system. The data in Scholars@UNCW refreshes nightly. For information on how to update or correct your data in Watermark Faculty Success, please consult <a href="https://libguides.uncw.edu/scholars_editing">this guide.</a></p>
+        </div>
+        <h2>Who supports scholarly activity at UNCW?</h2>
+        <div class=\"pageGroupBody\">
+            <p>Along with department- and college-specific services, UNCW Library and UNCW Research & Innovation provide infrastructure and support for scholarship across campus. At the Library, <a href="https://library.uncw.edu/directory/liaisons">Liaison Librarians</a> offer subject expertise to help explore research questions and find relevant materials. UNCW Library’s <a href="https://library.uncw.edu/scholarly_research_services">Scholarly Research Services</a> can support specialized research needs related to data analysis, curation, and management; digital scholarship; physical and virtual making; and scholarly communication and research impact. The UNCW <a href="https://uncw.edu/research/service-team#OrgChart">Research and Innovation Service Team</a> can help with many facets of the research process, including development, institutional review, funding compliance, and commercialization.</p>
+        </div>
+        """@en ;
         <http://vitro.mannlib.cornell.edu/ontologies/display/1.1#saveToVar>
                 "aboutPage" .
 about:ABOUTPAGE
