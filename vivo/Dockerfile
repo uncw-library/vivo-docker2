@@ -7,23 +7,18 @@ ENV TZ="America/New_York"
 ENV CATALINA_OPTS="-Xms1g -Xmx5g -XX:MaxPermSize=2g"
 ENV JAVA_OPTS="${JAVA_OPTS} -Dtdb:fileMode=direct"
 
-ARG GIT_BRANCH=rel-1.14-maint
+ARG GIT_BRANCH=rel-1.15-maint
 
 WORKDIR /usr/local/
 RUN git clone https://github.com/vivo-project/Vitro.git Vitro -b ${GIT_BRANCH} && \
 	git clone https://github.com/vivo-project/VIVO.git vivo -b ${GIT_BRANCH}
-
-#temp checking out milospp's responsive wilma pull request
-WORKDIR /usr/local/Vitro
-RUN git fetch origin pull/460/head:rwilma && git checkout rwilma
-WORKDIR /usr/local/vivo
-RUN git fetch origin pull/3972/head:rwilma && git checkout rwilma
 
 ## insert customizations to vivo git repo ./installer before maven install
 WORKDIR /usr/local/vivo/
 COPY --chown=root:root ./inject/installer/settings.xml ./installer/settings.xml
 COPY --chown=root:root ./inject/installer/webapp/pom.xml ./installer/webapp/pom.xml
 COPY --chown=root:root ./inject/installer/webapp/src/main/java/com/wokinfo/vivo/dataservice ./installer/webapp/src/main/java/com/wokinfo/vivo/dataservice
+COPY --chown=root:root ./inject/installer/webapp/src/main/java/org/vivoweb/webapp/sitemap/SiteMapServlet.java ./installer/webapp/src/main/java/org/vivoweb/webapp/sitemap/SiteMapServlet.java
 COPY --chown=root:root ./inject/installer/webapp/src/main/webapp/themes/uncw_theme ./installer/webapp/src/main/webapp/themes/uncw_theme
 COPY --chown=root:root ./inject/installer/webapp/src/main/webapp/themes/wilma_uncw ./installer/webapp/src/main/webapp/themes/wilma_uncw
 
@@ -46,9 +41,10 @@ COPY --chown=root:root ./inject/vivo_home/rdf/i18n/en_US/interface-i18n/firsttim
 COPY --chown=root:root ./inject/vivo_home/rdf/tbox/firsttime/featuredFacultyOntology.n3 ./rdf/tbox/firsttime/featuredFacultyOntology.n3
 COPY --chown=root:root ./inject/vivo_home/rdf/tbox/firsttime/wos.n3 ./rdf/tbox/firsttime/wos.n3
 
+# PROBABLY NOT NEEDED
 # ugly overwrite of SiteMapServet.java, which makes sitemap.xml
-WORKDIR /usr/local/vivo/api
-COPY --chown=root:root ./inject/api/src/main/java/org/vivoweb/webapp/sitemap/SiteMapServlet.java ./src/main/java/org/vivoweb/webapp/sitemap/SiteMapServlet.java
+# WORKDIR /usr/local/vivo/api
+# COPY --chown=root:root ./inject/api/src/main/java/org/vivoweb/webapp/sitemap/SiteMapServlet.java ./src/main/java/org/vivoweb/webapp/sitemap/SiteMapServlet.java
 
 # move vivo tomcat folder to ROOT tomcat folder
 RUN mv /usr/local/tomcat/webapps/vivo/ /usr/local/tomcat/webapps/ROOT

@@ -26,9 +26,20 @@
     :hasSearchIndexer             :basicSearchIndexer ;
     :hasImageProcessor            :iioImageProcessor ;
     :hasFileStorage               :ptiFileStorage ;
+#    :hasAuditModule               :tdbAuditModule ;
     :hasContentTripleSource       :tdbContentTripleSource ;
     :hasConfigurationTripleSource :tdbConfigurationTripleSource ;
     :hasTBoxReasonerModule        :jfactTBoxReasonerModule .
+
+# ----------------------------
+#
+# Audit module: 
+#
+
+#:tdbAuditModule
+#    a   <java:edu.cornell.mannlib.vitro.webapp.audit.TDBAuditModule> ,
+#        <java:edu.cornell.mannlib.vitro.webapp.audit.AuditModule> ;
+#    :hasTdbDirectory "tdbAuditModels" .
 
 # ----------------------------
 #
@@ -82,10 +93,10 @@
 # ----------------------------
 #
 # Content triples source module: holds data contents
-#    The SDB-based implementation is the default option. It reads its parameters
+#    The TDB-based implementation is the default option. It reads its parameters
 #    from the runtime.properties file, for backward compatibility.
 #
-#    Other implementations are based on a local TDB instance, a "standard" SPARQL
+#    Other implementations are based on an SDB instance, a "standard" SPARQL
 #    endpoint, or a Virtuoso endpoint, with parameters as shown.
 #
 

@@ -149,13 +149,13 @@ vitroDisplay:SearchIndex
     :hasSelectQuery """
         PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
         PREFIX obo: <http://purl.obolibrary.org/obo/>
-		SELECT ?title
-		WHERE {
-			?uri obo:ARG_2000028 ?card .
-			?card a vcard:Individual .
-			?card vcard:hasTitle ?titleHolder .
-			?titleHolder vcard:title ?title .
-		}
+        SELECT ?title
+        WHERE {
+            ?uri obo:ARG_2000028 ?card .
+            ?card a vcard:Individual .
+            ?card vcard:hasTitle ?titleHolder .
+            ?titleHolder vcard:title ?title .
+        }
         """ .
 
 :vivodocumentModifier_EmailAddress
@@ -165,13 +165,13 @@ vitroDisplay:SearchIndex
     :hasSelectQuery """
         PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
         PREFIX obo: <http://purl.obolibrary.org/obo/>
-		SELECT ?email
-		WHERE {
-			?uri obo:ARG_2000028 ?card .
-			?card a vcard:Individual .
-			?card vcard:hasEmail ?emailHolder .
-			?emailHolder vcard:email ?email .
-		}
+        SELECT ?email
+        WHERE {
+            ?uri obo:ARG_2000028 ?card .
+            ?card a vcard:Individual .
+            ?card vcard:hasEmail ?emailHolder .
+            ?emailHolder vcard:email ?email .
+        }
         """ .
 
 :vivodocumentModifier_displayLabel
@@ -181,11 +181,11 @@ vitroDisplay:SearchIndex
     :hasTargetField "displayLabel" ;
     :hasSelectQuery """
         PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-		SELECT ?label
-		WHERE {
-			?uri rdfs:label ?label .
-		}
-		LIMIT 1
+        SELECT ?label
+        WHERE {
+            ?uri rdfs:label ?label .
+        }
+        LIMIT 1
         """ .
 
 :vivodocumentModifier_hotPaper

@@ -5,12 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.vivoweb</groupId>
     <artifactId>vivo-installer-vivo</artifactId>
-    <version>1.14.1-SNAPSHOT</version>
+    <version>1.15.1-SNAPSHOT</version>
     <packaging>war</packaging>
     <parent>
         <groupId>org.vivoweb</groupId>
         <artifactId>vivo-installer</artifactId>
-        <version>1.14.1-SNAPSHOT</version>
+        <version>1.15.1-SNAPSHOT</version>
         <relativePath>..</relativePath>
     </parent>
 
@@ -80,7 +80,41 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-dependency-plugin</artifactId>
+                        <version>3.6.1</version>
                         <executions>
+                            <execution>
+                                <id>unpack-webjars</id>
+                                <phase>prepare-package</phase>
+                                <goals>
+                                    <goal>unpack</goal>
+                                </goals>
+                                <configuration>
+                                    <artifactItems>
+                                        <artifactItem>
+                                            <groupId>org.webjars</groupId>
+                                            <artifactId>bootstrap</artifactId>
+                                            <type>jar</type>
+                                            <includes>
+                                                META-INF/resources/webjars/bootstrap/*/css/*.css,
+                                                META-INF/resources/webjars/bootstrap/*/css/*.map,
+                                                META-INF/resources/webjars/bootstrap/*/js/*.js,
+                                                META-INF/resources/webjars/bootstrap/*/js/*.map
+                                            </includes>
+                                            <fileMappers>
+                                                <org.codehaus.plexus.components.io.filemappers.RegExpFileMapper>
+                                                    <pattern>
+                                                        ^META-INF/resources/webjars/bootstrap/[^/]+/</pattern>
+                                                    <replacement>./</replacement>
+                                                </org.codehaus.plexus.components.io.filemappers.RegExpFileMapper>
+                                            </fileMappers>
+                                            <outputDirectory>
+                                                target/${app-name}/webjars/bootstrap/</outputDirectory>
+                                        </artifactItem>
+                                    </artifactItems>
+                                    <overWriteReleases>true</overWriteReleases>
+                                    <overWriteSnapshots>true</overWriteSnapshots>
+                                </configuration>
+                            </execution>
                             <execution>
                                 <id>install</id>
                                 <phase>install</phase>
@@ -153,6 +187,11 @@
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
             <version>20131018</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>bootstrap</artifactId>
+            <version>5.3.3</version>
         </dependency>
     </dependencies>
 </project>
