@@ -41,11 +41,6 @@ COPY --chown=root:root ./inject/vivo_home/rdf/i18n/en_US/interface-i18n/firsttim
 COPY --chown=root:root ./inject/vivo_home/rdf/tbox/firsttime/featuredFacultyOntology.n3 ./rdf/tbox/firsttime/featuredFacultyOntology.n3
 COPY --chown=root:root ./inject/vivo_home/rdf/tbox/firsttime/wos.n3 ./rdf/tbox/firsttime/wos.n3
 
-# PROBABLY NOT NEEDED
-# ugly overwrite of SiteMapServet.java, which makes sitemap.xml
-# WORKDIR /usr/local/vivo/api
-# COPY --chown=root:root ./inject/api/src/main/java/org/vivoweb/webapp/sitemap/SiteMapServlet.java ./src/main/java/org/vivoweb/webapp/sitemap/SiteMapServlet.java
-
 # move vivo tomcat folder to ROOT tomcat folder
 RUN mv /usr/local/tomcat/webapps/vivo/ /usr/local/tomcat/webapps/ROOT
 
