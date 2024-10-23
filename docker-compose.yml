@@ -1,7 +1,7 @@
 services:
   vivo-solr:
     container_name: vivo-solr
-    image: uncwlibrary/vivo-docker2-solr:rwilma-m1
+    image: uncwlibrary/vivo-docker2-solr:115
     build:
       context: ./solr
     volumes:
@@ -12,7 +12,7 @@ services:
 
   vivo-vivo:
     container_name: vivo-vivo
-    image: uncwlibrary/vivo-docker2-vivo:rwilma-m1
+    image: uncwlibrary/vivo-docker2-vivo:115
     build:
       context: ./vivo
     volumes:
@@ -21,8 +21,8 @@ services:
       - ./instanceData/turtles/userdata.ttl:/usr/local/vivo/home/rdf/abox/filegraph/userdata.ttl
       - ./instanceData/turtles/featuredProfileData.ttl:/usr/local/vivo/home/rdf/abox/filegraph/featuredProfileData.ttl
       - ./instanceData/uploads:/usr/local/vivo/home/uploads
-      - ./vivo/inject/installer/webapp/src/main/webapp/themes/uncw_theme:/usr/local/tomcat/webapps/ROOT/themes/uncw_theme
-      - ./vivo/inject/installer/webapp/src/main/webapp/themes/wilma_uncw:/usr/local/tomcat/webapps/ROOT/themes/wilma_uncw
+      - ./vivo/installer/webapp/src/main/webapp/themes/uncw_theme:/usr/local/tomcat/webapps/ROOT/themes/uncw_theme
+      - ./vivo/installer/webapp/src/main/webapp/themes/wilma_uncw:/usr/local/tomcat/webapps/ROOT/themes/wilma_uncw
     ports:
       - 8080:8080
     restart: unless-stopped
