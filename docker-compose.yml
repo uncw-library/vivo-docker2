@@ -1,7 +1,7 @@
 services:
   vivo-solr:
     container_name: vivo-solr
-    image: uncwlibrary/vivo-docker2-solr:rwilma
+    image: uncwlibrary/vivo-docker2-solr:115
     platform: linux/amd64
     volumes:
       - solr_data:/var/solr
@@ -23,15 +23,13 @@ services:
 
   vivo-vivo:
     container_name: vivo-vivo
-    image: uncwlibrary/vivo-docker2-vivo:rwilma
+    image: uncwlibrary/vivo-docker2-vivo:115
     platform: linux/amd64
     volumes:
       - tdbModels:/usr/local/vivo/home/tdbModels
       - tdbContentModels:/tdbContentModels
       - ./mounted/turtles/userdata.ttl:/usr/local/vivo/home/rdf/abox/filegraph/userdata.ttl
       - ./mounted/turtles/featuredFacultyData.ttl:/usr/local/vivo/home/rdf/abox/filegraph/featuredFacultyData.ttl
-      - ./mounted/turtles/incites.ttl:/usr/local/vivo/home/rdf/abox/filegraph/incites.ttl
-      - ./mounted/turtles/publications_data_backfill.ttl:/usr/local/vivo/home/rdf/abox/filegraph/publications_data_backfill.ttl
       - ./mounted/uploads:/usr/local/vivo/home/uploads
     restart: unless-stopped
     labels:
