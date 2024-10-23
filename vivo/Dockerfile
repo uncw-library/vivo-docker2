@@ -22,24 +22,22 @@ COPY --chown=root:root ./inject/installer/webapp/src/main/java/org/vivoweb/webap
 COPY --chown=root:root ./inject/installer/webapp/src/main/webapp/themes/uncw_theme ./installer/webapp/src/main/webapp/themes/uncw_theme
 COPY --chown=root:root ./inject/installer/webapp/src/main/webapp/themes/wilma_uncw ./installer/webapp/src/main/webapp/themes/wilma_uncw
 
+COPY --chown=root:root ./inject/vivo_home/config/applicationSetup.n3 ./installer/home/src/main/resources/config/applicationSetup.n3
+COPY --chown=root:root ./inject/vivo_home/config/runtime.properties ./installer/home/src/main/resources/config/runtime.properties
+COPY --chown=root:root ./inject/vivo_home/rdf/applicationMetadata/firsttime/initialSiteConfig.rdf ./installer/home/src/main/resources/rdf/applicationMetadata/firsttime/initialSiteConfig.rdf
+COPY --chown=root:root ./inject/vivo_home/rdf/display/everytime/homePageDataGetters.n3 ./installer/home/src/main/resources/rdf/display/everytime/homePageDataGetters.n3
+COPY --chown=root:root ./inject/vivo_home/rdf/display/everytime/searchIndexerConfigurationVivo.n3 ./installer/home/src/main/resources/rdf/display/everytime/searchIndexerConfigurationVivo.n3
+COPY --chown=root:root ./inject/vivo_home/rdf/i18n/en_US/display/firsttime/aboutPage.n3 ./installer/home/src/main/resources/rdf/i18n/en_US/display/firsttime/aboutPage.n3
+COPY --chown=root:root ./inject/vivo_home/rdf/i18n/en_US/interface-i18n/firsttime/vivo_UiLabel_wilma_uncw.ttl ./installer/home/src/main/resources/rdf/i18n/en_US/interface-i18n/firsttime/vivo_UiLable_wilma_uncw.ttl
+COPY --chown=root:root ./inject/vivo_home/rdf/tbox/firsttime/featuredProfileOntology.n3 ./installer/home/src/main/resources/rdf/tbox/firsttime/featuredProfileOntology.n3
+COPY --chown=root:root ./inject/vivo_home/rdf/tbox/firsttime/wos.n3 ./installer/home/src/main/resources/rdf/tbox/firsttime/wos.n3
+
 # maven install
 WORKDIR /usr/local/Vitro
 RUN mvn install
 WORKDIR /usr/local/vivo
 RUN mvn clean package -s installer/settings.xml
 RUN mvn install -s installer/settings.xml
-
-## insert customizations to image $vivo_home after maven install
-WORKDIR /usr/local/vivo/home
-COPY --chown=root:root ./inject/vivo_home/config/runtime.properties ./config/runtime.properties
-COPY --chown=root:root ./inject/vivo_home/config/applicationSetup.n3 ./config/applicationSetup.n3
-COPY --chown=root:root ./inject/vivo_home/rdf/applicationMetadata/firsttime/initialSiteConfig.rdf ./rdf/applicationMetadata/firsttime/initialSiteConfig.rdf
-COPY --chown=root:root ./inject/vivo_home/rdf/display/everytime/homePageDataGetters.n3 ./rdf/display/everytime/homePageDataGetters.n3
-COPY --chown=root:root ./inject/vivo_home/rdf/display/everytime/searchIndexerConfigurationVivo.n3 ./rdf/display/everytime/searchIndexerConfigurationVivo.n3
-COPY --chown=root:root ./inject/vivo_home/rdf/i18n/en_US/display/firsttime/aboutPage.n3 ./rdf/i18n/en_US/display/firsttime/aboutPage.n3
-COPY --chown=root:root ./inject/vivo_home/rdf/i18n/en_US/interface-i18n/firsttime/vivo_UiLabel_wilma_uncw.ttl ./rdf/i18n/en_US/interface-i18n/firsttime/vivo_UiLable_wilma_uncw.ttl
-COPY --chown=root:root ./inject/vivo_home/rdf/tbox/firsttime/featuredProfileOntology.n3 ./rdf/tbox/firsttime/featuredProfileOntology.n3
-COPY --chown=root:root ./inject/vivo_home/rdf/tbox/firsttime/wos.n3 ./rdf/tbox/firsttime/wos.n3
 
 # move vivo tomcat folder to ROOT tomcat folder
 RUN mv /usr/local/tomcat/webapps/vivo/ /usr/local/tomcat/webapps/ROOT
