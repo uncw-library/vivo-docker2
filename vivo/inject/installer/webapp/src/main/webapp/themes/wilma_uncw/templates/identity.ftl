@@ -5,14 +5,14 @@
                 <nav class="navbar nav_top" style="height: 96px;">
                     <div class="container-fluid">
                         <div class="row top_list px-5 mx-1">
-                            <div class="col-3">
+                            <div class="col-3 col-md-4 col-lg-3">
                             <a class="navbar-brand py-0 mx-3" href="https://uncw.edu/index.html">
                                 <img alt="UNCW" src="https://uncw.edu/_global/img/uncw-logo-gold_222x222.svg">
                             </a></div>
 
-                                <div class="top_title col-2"><a href="${urls.base}">Scholars@UNCW</a></div>
-                                <div class="col-4"></div>
-                                <div class="col-6">
+                                <div class="top_title col-2 col-md-3 col-lg-4"><a href="/">Scholars@UNCW</a></div>
+                                <div class=""></div>
+                                <div class="col-6 d-none d-lg-block">
                                 <section id="search" role="region">
                                     <form
                                         class="d-flex"
@@ -40,8 +40,8 @@
                 </nav>
                 <div class="container-fluid">
                 <div class="row">
-                <div class="col-3"></div>
-                <div class="col-9">
+                <div class="col-lg-3 col-12"></div>
+                <div class="col-lg-9 col-12">
                 <nav class="navbar nav_bottom navbar-expand-lg">
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>

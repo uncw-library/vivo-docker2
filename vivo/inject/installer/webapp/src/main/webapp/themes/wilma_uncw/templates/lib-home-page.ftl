@@ -71,6 +71,7 @@
             <p>${i18n().please} <a href="${urls.login}" title="${i18n().login_to_manage_site}">${i18n().log_in}</a> ${i18n().to_manage_content}</p>
         </#if>
     </#if>
+
 </#macro>
 
 <#-- Renders the html for the research section on the home page. -->
@@ -108,16 +109,19 @@
 </section>
 </#macro>
 
-<#macro featuredFaculty>
-<#if featuredFacultyDG?has_content>
-<div id="myCarousel" class="carousel slide" data-interval="10000" data-bs-ride="carousel">
+<#macro featuredProfile>
+<script>
+var urlsBase = "${urls.base}";
+</script>
+<#if featuredProfileDG?has_content>
+<div id="myCarousel" class="carousel slide" data-interval="false">
 	<!-- Wrapper for slides -->
   <div class="carousel-inner">
-      <#list featuredFacultyDG as resultRow>
+      <#list featuredProfileDG as resultRow>
           <#assign uri = resultRow["theURI"] />
-          <#assign label = resultRow["label"] />
-          <#assign photo = resultRow["featuredPhoto"] />
-          <#assign caption = resultRow["featuredText"] />
+          <#assign label = resultRow["name"]! />
+          <#assign photo = resultRow["featuredPhoto"]! />
+          <#assign caption = resultRow["featuredText"]! />
 
           <#if resultRow?is_first>
           <div class="carousel-item active">
@@ -160,4 +164,5 @@
 <#else>
 There are either no featured items or the developer panel is open and triggering a Jena warning.
 </#if>
+
 </#macro>

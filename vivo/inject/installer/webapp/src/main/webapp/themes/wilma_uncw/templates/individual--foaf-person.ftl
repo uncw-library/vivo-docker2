@@ -24,57 +24,9 @@
 <#--add the VIVO-ORCID interface -->
 <#include "individual-orcidInterface.ftl">
 
-<section id="individual-intro" class="vcard person" role="region">
+<div id="individual-intro" class="vcard person row">
 
-    <section id="share-contact" role="region">
-        <!-- Image -->
-        <#assign individualImage>
-            <@p.image individual=individual
-                      propertyGroups=propertyGroups
-                      namespaces=namespaces
-                      editable=editable
-                      showPlaceholder="always" />
-        </#assign>
-
-        <#if ( individualImage?contains('<img class="individual-photo"') )>
-            <#assign infoClass = 'class="withThumb"'/>
-        </#if>
-
-        <div id="photo-wrapper">${individualImage}</div>
-        <!-- Contact Info -->
-        <div id="individual-tools-people">
-            <span id="iconControlsLeftSide">
-                <img id="uriIcon" title="${individual.uri}" src="${urls.images}/individual/uriIcon.gif" alt="${i18n().uri_icon}"/>
-
-            </span>
-        </div>
-        <#include "individual-contactInfo.ftl">
-
-        <!-- Websites -->
-        <#include "individual-webpage.ftl">
-    </section>
-
-    <section id="individual-info" ${infoClass!} role="region">
-    <section id="right-hand-column" role="region">
-        <#include "individual-visualizationFoafPerson.ftl">
-        <#if editable>
-            <#if claimSources?size &gt; 0>
-                <br />${i18n().claim_publications_by}<br />
-                <#if claimSources?seq_contains("doi")>
-                    <form action="${urls.base}/createAndLink/doi" method="get" style="float: left;">
-                        <input type="hidden" name="profileUri" value="${individual.uri}" />
-                        <input type="submit" class="submit" value="${i18n().claim_publications_by_doi}" />
-                    </form>
-                </#if>
-                <#if claimSources?seq_contains("pmid")>
-                    <form action="${urls.base}/createAndLink/pmid" method="get" style="float: right;">
-                        <input type="hidden" name="profileUri" value="${individual.uri}" />
-                        <input type="submit" class="submit" value="${i18n().claim_publications_by_pmid}" />
-                    </form>
-                </#if>
-            </#if>
-        </#if>
-        </section>
+    <div class="col-md-6 col-12 order-md-2" ${infoClass!}>
         <#include "individual-adminPanel.ftl">
 
         <header>
@@ -121,9 +73,61 @@
         <#include "individual-geographicFocus.ftl">
 
 		<#include "individual-openSocial.ftl">
-    </section>
+    </div>
 
-</span></section>
+    <div class="col-md-3 col-6 order-md-1">
+        <!-- Image -->
+        <#assign individualImage>
+            <@p.image individual=individual
+                      propertyGroups=propertyGroups
+                      namespaces=namespaces
+                      editable=editable
+                      showPlaceholder="always" />
+        </#assign>
+
+        <#if ( individualImage?contains('<img class="individual-photo"') )>
+            <#assign infoClass = 'class="withThumb"'/>
+        </#if>
+
+        <div id="photo-wrapper">${individualImage}</div>
+        <!-- Contact Info -->
+
+        <#include "individual-contactInfo.ftl">
+
+        <!-- Websites -->
+        <#include "individual-webpage.ftl">
+
+            <span id="iconControlsLeftSide">
+                <img id="uriIcon" title="${individual.uri}" src="${urls.images}/individual/uriIcon.gif" alt="${i18n().uri_icon}"/>
+
+            </span>
+
+    </div>
+
+
+
+    <div id="" class="col-md-3 col-6 order-md-3">
+    <#include "individual-visualizationFoafPerson.ftl">
+    <#if editable>
+        <#if claimSources?size &gt; 0>
+            <br />${i18n().claim_publications_by}<br />
+            <#if claimSources?seq_contains("doi")>
+                <form action="${urls.base}/createAndLink/doi" method="get" style="float: left;">
+                    <input type="hidden" name="profileUri" value="${individual.uri}" />
+                    <input type="submit" class="submit" value="${i18n().claim_publications_by_doi}" />
+                </form>
+            </#if>
+            <#if claimSources?seq_contains("pmid")>
+                <form action="${urls.base}/createAndLink/pmid" method="get" style="float: right;">
+                    <input type="hidden" name="profileUri" value="${individual.uri}" />
+                    <input type="submit" class="submit" value="${i18n().claim_publications_by_pmid}" />
+                </form>
+            </#if>
+        </#if>
+    </#if>
+    </div>
+
+</span></div>
 
 <#assign nameForOtherGroup = "${i18n().other}">
 

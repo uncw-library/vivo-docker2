@@ -12,7 +12,7 @@
         <div class="container-fluid">
             <#include "identity.ftl">
             <#include "menu.ftl">
-            <div id="wrapper-content" role="main">
+            <div class="container" role="main">
     <#if flash?has_content>
         <#if flash?starts_with(i18n().menu_welcomestart) >
             <section  id="welcome-msg-container" role="container">
@@ -31,18 +31,11 @@
     <![endif]-->
 
 
-            <div class="row" style="margin-top: 2em;">
-                <div class="row-wrapper">
-                <#-- VIVO OpenSocial Extension by UCSF -->
-                <#if openSocial??>
-                    <#if openSocial.visible>
-                        <div id="gadgets-tools" class="gadgets-gadget-parent"></div>
-                    </#if>
-                </#if>
+
 
                 ${body}
-                </div>
-            </div>
+                
+
 
             <#include "footer.ftl">
         </div>

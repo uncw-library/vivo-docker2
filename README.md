@@ -29,9 +29,9 @@ Regardless of the usage, you will need to build the images, which require the fo
 
 ## Development env
 
-1. Ensure ./instanceData/turtles contains a file called `userdata.ttl` and one called `featuredFaculty.ttl`
+1. Ensure ./instanceData/turtles contains a file called `userdata.ttl` and one called `featuredProfile.ttl`
     
-    `touch ./instanceData/turtles/userdata.ttl && touch ./instanceData/turtles/featuredFaculty.ttl`
+    `touch ./instanceData/turtles/userdata.ttl && touch ./instanceData/turtles/featuredProfile.ttl`
     - even empty files with that name is ok.
     - otherwise docker-compose will make empty folders with those names, which may be annoying.
 1. (optional)  Configure & customize your instance as noted in the Lyrasis Vivo wiki.
@@ -107,7 +107,7 @@ We use vivo_data_update app to fetch and organize the person images into ./siteD
 Our use-case is:
 - One userdata.ttl file (turtle fileformat), created outside of Vivo, holding all the site data for profiles.  Place it at ./instanceData/turtles/userdata.ttl.  When starting the vivo instance, userdata.ttl is autoingested into Vivo.
 - One folder with profile images, created outside of Vivo.  Place it at ./instanceData/uploads.  Check that the namespaces file in that folder has your site's namespace.
-- One featuredFaculty.ttl file, created outside of Vivo, holding site data for our custom FeaturedFaculty homepage display.  Place it at ./instanceData/turtles/featuredFaculty.ttl.
+- One featuredProfile.ttl file, created outside of Vivo, holding site data for our custom FeaturedProfile homepage display.  Place it at ./instanceData/turtles/featuredProfile.ttl.
 
 To do a data refresh, replace some files in ./instanceData with a new version.  Restarting Vivo autoupdates any changes.
 
