@@ -29,7 +29,7 @@ services:
       - tdbModels:/usr/local/vivo/home/tdbModels
       - tdbContentModels:/tdbContentModels
       - ./mounted/turtles/userdata.ttl:/usr/local/vivo/home/rdf/abox/filegraph/userdata.ttl
-      - ./mounted/turtles/featuredFacultyData.ttl:/usr/local/vivo/home/rdf/abox/filegraph/featuredFacultyData.ttl
+      - ./mounted/turtles/featuredProfileData.ttl:/usr/local/vivo/home/rdf/abox/filegraph/featuredProfileData.ttl
       - ./mounted/uploads:/usr/local/vivo/home/uploads
     restart: unless-stopped
     labels:
