@@ -1,5 +1,8 @@
-*~
+instanceData/*
+!instanceData/turtles/.gitignore
+!instanceData/uploads/file_storage_namespaces.properties
 
+*~
 datastore/
 .DS_STORE
 instanceData/

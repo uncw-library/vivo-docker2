@@ -1,0 +1,995 @@
+@prefix ocrer: <http://purl.org/net/OCRe/research.owl#> .
+@prefix ns:    <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix scires: <http://vivoweb.org/ontology/scientific-research#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ocresd: <http://purl.org/net/OCRe/study_design.owl#> .
+@prefix swo:   <http://www.ebi.ac.uk/efo/swo/> .
+@prefix geopolitical: <http://aims.fao.org/aos/geopolitical.owl#> .
+@prefix cito:  <http://purl.org/spar/cito/> .
+@prefix geo:   <http://aims.fao.org/aos/geopolitical.owl#> .
+@prefix fiu:   <https://scholars.fiu.edu/ontology/> .
+@prefix ocresst: <http://purl.org/net/OCRe/statistics.owl#> .
+@prefix terms: <http://purl.org/dc/terms/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix wos:   <http://webofscience.com/ontology/wos#> .
+@prefix vivo:  <http://vivoweb.org/ontology/core#> .
+@prefix event: <http://purl.org/NET/c4dm/event.owl#> .
+@prefix vann:  <http://purl.org/vocab/vann/> .
+@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
+@prefix c4o:   <http://purl.org/spar/c4o/> .
+@prefix study_protocol: <http://purl.org/net/OCRe/study_protocol.owl#> .
+@prefix e:     <https://scholars.fiu.edu/elements/> .
+@prefix fabio: <http://purl.org/spar/fabio/> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix vitro: <http://vitro.mannlib.cornell.edu/ns/vitro/0.7#> .
+@prefix skos2: <http://www.w3.org/2008/05/skos#> .
+@prefix vitro-public: <http://vitro.mannlib.cornell.edu/ns/vitro/public#> .
+@prefix core:  <http://vivoweb.org/ontology/core#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ocresp: <http://purl.org/net/OCRe/study_protocol.owl#> .
+@prefix bibo:  <http://purl.org/ontology/bibo/> .
+@prefix obo:   <http://purl.obolibrary.org/obo/> .
+@prefix ro:    <http://purl.obolibrary.org/obo/ro.owl#> .
+@prefix statistics: <http://purl.org/net/OCRe/statistics.owl#> .
+@prefix dc:    <http://purl.org/dc/elements/1.1/> .
+
+wos:sdg15LifeOnLand  a  owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:label  "SDG 15: Life On Land"^^rdf:langString ;
+        vitro:hiddenFromDisplayBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:hiddenFromPublishBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:prohibitedFromUpdateBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> .
+
+wos:FilmReview  a           owl:Class ;
+        rdfs:label          "Film Review" , "Film Review"^^rdf:langString ;
+        rdfs:subClassOf     wos:Publication ;
+        vitro:inClassGroup  <http://vivoweb.org/ontology#vitroClassGrouppublications> .
+
+wos:impactFactor  a  owl:DatatypeProperty ;
+        rdfs:label  "impact factor" ;
+        rdfs:range  xsd:decimal .
+
+wos:sequenceNumber  a  owl:DatatypeProperty ;
+        rdfs:label  "WoS sequence number" , "WoS sequence number"^^rdf:langString ;
+        rdfs:range  xsd:string .
+
+wos:sdg06CleanWater  a  owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:label  "SDG 06: Clean Water and Sanitation"^^rdf:langString ;
+        vitro:hiddenFromDisplayBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:hiddenFromPublishBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:prohibitedFromUpdateBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> .
+
+wos:BookChapter  a          owl:Class ;
+        rdfs:label          "Book Chapter" , "Book Chapter"^^rdf:langString ;
+        rdfs:subClassOf     wos:Publication ;
+        vitro:inClassGroup  <http://vivoweb.org/ontology#vitroClassGrouppublications> .
+
+wos:sdg04QualityEducation
+        a           owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:label  "SDG 04: Quality Education"^^rdf:langString ;
+        vitro:hiddenFromDisplayBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:hiddenFromPublishBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:prohibitedFromUpdateBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> .
+
+wos:isni  a                         owl:DatatypeProperty ;
+        rdfs:label                  "isni" , "isni"^^rdf:langString ;
+        rdfs:range                  xsd:string ;
+        vitro:displayLimitAnnot     1 ;
+        vitro:displayRankAnnot      3 ;
+        vitro:hiddenFromDisplayBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:hiddenFromPublishBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:inPropertyGroupAnnot  <http://vivoweb.org/ontology#vitroPropertyGroupidentifiers> , wos:identity ;
+        vitro:offerCreateNewOptionAnnot
+                true ;
+        vitro:prohibitedFromUpdateBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#editor> , <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> .
+
+wos:waanId  a               owl:DatatypeProperty ;
+        rdfs:label          "WoS WAAN id" , "WoS WAAN id"^^rdf:langString ;
+        rdfs:range          xsd:string ;
+        rdfs:subPropertyOf  core:identifier .
+
+wos:daisNg  a                       owl:DatatypeProperty ;
+        rdfs:label                  "WoS dais ng" , "WoS dais ng"^^rdf:langString ;
+        rdfs:range                  xsd:string ;
+        rdfs:subPropertyOf          core:identifier ;
+        vitro:inPropertyGroupAnnot  <http://vivoweb.org/ontology#vitroPropertyGroupidentifiers> .
+
+wos:year  a         owl:DatatypeProperty ;
+        rdfs:label  "year" ;
+        rdfs:range  xsd:integer .
+
+wos:industryCollaboration
+        a                           owl:DatatypeProperty ;
+        rdfs:label                  "industry collaboration" ;
+        rdfs:range                  xsd:boolean ;
+        vitro:inPropertyGroupAnnot  <http://webofscience.com/ontology/rap/display/#metrics> .
+
+wos:ExternalResearcher
+        a                owl:Class ;
+        rdfs:label       "External Researcher" , "External Researcher"^^rdf:langString ;
+        rdfs:subClassOf  foaf:Person .
+
+wos:journalAbbr  a  owl:DatatypeProperty ;
+        rdfs:label  "journal abbreviation" , "journal abbreviation"^^rdf:langString ;
+        rdfs:range  xsd:string .
+
+wos:Article  a              owl:Class ;
+        rdfs:label          "Article" , "Article"^^rdf:langString ;
+        rdfs:subClassOf     wos:Publication ;
+        vitro:inClassGroup  <http://vivoweb.org/ontology#vitroClassGrouppublications> .
+
+wos:fundingText  a                  owl:DatatypeProperty ;
+        rdfs:label                  "funding text" , "funding text"^^rdf:langString ;
+        rdfs:range                  xsd:string ;
+        vitro:inPropertyGroupAnnot  <http://vivoweb.org/ontology#vitroPropertyGroupoverview> .
+
+wos:sdg01NoPoverty  a  owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:domain  bibo:Document ;
+        rdfs:label   "SDG 01: No Poverty"^^rdf:langString ;
+        vitro:hiddenFromDisplayBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:hiddenFromPublishBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:prohibitedFromUpdateBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> .
+
+wos:BroadDiscipline  a   owl:Class ;
+        rdfs:label       "Broad Discipline" , "Web of Science Broad Discipline"^^rdf:langString ;
+        rdfs:subClassOf  skos:Concept .
+
+wos:InCitesCount  a      owl:Class ;
+        rdfs:label       "InCites Doc Count" ;
+        rdfs:subClassOf  owl:Thing .
+
+wos:MeetingAbstract  a           owl:Class ;
+        rdfs:label               "Meeting Abstract"^^rdf:langString , "Meeting Abstract" ;
+        rdfs:subClassOf          wos:Publication ;
+        vitro:displayLimitAnnot  "-1"^^xsd:int , -1 ;
+        vitro:displayRankAnnot   "-1"^^xsd:int , -1 ;
+        vitro:hiddenFromDisplayBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:hiddenFromPublishBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:inClassGroup       <http://vivoweb.org/ontology#vitroClassGrouppublications> ;
+        vitro:prohibitedFromUpdateBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#editor> , <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> .
+
+wos:hasResearchArea  a           owl:ObjectProperty ;
+        rdfs:domain              wos:ResearchArea ;
+        rdfs:label               "research area" , "research area"^^rdf:langString ;
+        rdfs:range               obo:IAO_0000030 ;
+        rdfs:subPropertyOf       core:hasResearchArea ;
+        vitro:displayLimitAnnot  "-1"^^xsd:int , -1 ;
+        owl:inverseOf            wos:researchAreaFor .
+
+wos:sdg09Industry  a  owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:label  "SDG 09: Industry, Innovation and Infrastructure"^^rdf:langString ;
+        vitro:hiddenFromDisplayBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:hiddenFromPublishBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:prohibitedFromUpdateBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> .
+
+wos:referenceCount  a               owl:DatatypeProperty ;
+        rdfs:label                  "WoS References" , "WoS References"^^rdf:langString ;
+        rdfs:range                  xsd:integer ;
+        vitro:inPropertyGroupAnnot  <http://webofscience.com/ontology/rap/display/#metrics> .
+
+wos:ArtExhibitReview  a     owl:Class ;
+        rdfs:label          "Art Exhibit Review" , "Art Exhibit Review"^^rdf:langString ;
+        rdfs:subClassOf     wos:Publication ;
+        vitro:inClassGroup  <http://vivoweb.org/ontology#vitroClassGrouppublications> .
+
+wos:TheaterReview  a        owl:Class ;
+        rdfs:label          "Theater Review" ;
+        rdfs:subClassOf     wos:Publication ;
+        vitro:inClassGroup  <http://vivoweb.org/ontology#vitroClassGrouppublications> .
+
+wos:Chronology  a           owl:Class ;
+        rdfs:label          "Chronology" , "Chronology"^^rdf:langString ;
+        rdfs:subClassOf     wos:Publication ;
+        vitro:inClassGroup  <http://vivoweb.org/ontology#vitroClassGrouppublications> .
+
+wos:sdg05GenderEquality
+        a           owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:label  "SDG 05: Gender Equality"^^rdf:langString ;
+        vitro:hiddenFromDisplayBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:hiddenFromPublishBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:prohibitedFromUpdateBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> .
+
+wos:wosId  a                        owl:DatatypeProperty ;
+        rdfs:domain                 bibo:Document ;
+        rdfs:label                  "WoS ID" , "WoS ID"^^rdf:langString ;
+        rdfs:range                  xsd:string ;
+        rdfs:subPropertyOf          core:identifier ;
+        vitro:hiddenFromDisplayBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:hiddenFromPublishBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:inPropertyGroupAnnot  <http://vivoweb.org/ontology#vitroPropertyGroupidentifiers> ;
+        vitro:prohibitedFromUpdateBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> , <http://vitro.mannlib.cornell.edu/ns/vitro/role#editor> .
+
+wos:avgExpectedRate  a  owl:DatatypeProperty ;
+        rdfs:label  "average expected rate" ;
+        rdfs:range  xsd:decimal .
+
+wos:sdg16Peace  a   owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:label  "SDG 16: Peace, Justice, and Strong Institutions"^^rdf:langString ;
+        vitro:hiddenFromDisplayBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:hiddenFromPublishBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:prohibitedFromUpdateBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> .
+
+wos:hasAffiliation  a               owl:ObjectProperty ;
+        rdfs:label                  "has affilation" , "has affilation"^^rdf:langString ;
+        vitro:inPropertyGroupAnnot  <http://vivoweb.org/ontology#vitroPropertyGroupoverview> ;
+        owl:inverseOf               wos:affiliationFor .
+
+wos:lastName  a     owl:DatatypeProperty ;
+        rdfs:label  "WoS last name" , "WoS last name"^^rdf:langString ;
+        rdfs:range  xsd:string .
+
+wos:keywordPlus  a                  owl:DatatypeProperty ;
+        rdfs:label                  "keyword plus" , "keyword plus"^^rdf:langString ;
+        rdfs:range                  xsd:string ;
+        vitro:inPropertyGroupAnnot  <http://vivoweb.org/ontology#vitroPropertyGroupresearch> .
+
+wos:InCitesPubPerYear
+        a                owl:Class ;
+        rdfs:label       "InCites Pubs Per Year" ;
+        rdfs:subClassOf  wos:InCitesCount .
+
+wos:hotPaper  a                     owl:DatatypeProperty ;
+        rdfs:label                  "hot paper" ;
+        rdfs:range                  xsd:boolean ;
+        vitro:inPropertyGroupAnnot  <http://webofscience.com/ontology/rap/display/#metrics> .
+
+wos:FictionCreativeProse
+        a                   owl:Class ;
+        rdfs:label          "Fiction Creative Prose" , "Fiction Creative Prose"^^rdf:langString ;
+        rdfs:subClassOf     wos:Publication ;
+        vitro:inClassGroup  <http://vivoweb.org/ontology#vitroClassGrouppublications> .
+
+wos:BookReview  a           owl:Class ;
+        rdfs:label          "Book Review" , "Book Review"^^rdf:langString ;
+        rdfs:subClassOf     wos:Publication ;
+        vitro:inClassGroup  <http://vivoweb.org/ontology#vitroClassGrouppublications> .
+
+wos:firstName  a    owl:DatatypeProperty ;
+        rdfs:label  "WoS first name" , "WoS first name"^^rdf:langString ;
+        rdfs:range  xsd:string .
+
+wos:researchAreaFor  a                 owl:ObjectProperty ;
+        rdfs:domain                    obo:IAO_0000030 ;
+        rdfs:label                     "research area" , "research area"^^rdf:langString ;
+        rdfs:range                     wos:ResearchArea ;
+        rdfs:subPropertyOf             core:researchAreaOf ;
+        vitro:hiddenFromDisplayBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:hiddenFromPublishBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:inPropertyGroupAnnot     <http://vivoweb.org/ontology#vitroPropertyGroupresearch> ;
+        vitro:prohibitedFromUpdateBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:selectFromExistingAnnot  true ;
+        owl:inverseOf                  wos:hasResearchArea .
+
+wos:RecordReview  a         owl:Class ;
+        rdfs:label          "Record Review" ;
+        rdfs:subClassOf     wos:Publication ;
+        vitro:inClassGroup  <http://vivoweb.org/ontology#vitroClassGrouppublications> .
+
+wos:Poetry  a               owl:Class ;
+        rdfs:label          "Poetry" ;
+        rdfs:subClassOf     wos:Publication ;
+        vitro:inClassGroup  <http://vivoweb.org/ontology#vitroClassGrouppublications> .
+
+wos:InCitesCitesPerYear
+        a                owl:Class ;
+        rdfs:label       "InCites Cites Per Year" ;
+        rdfs:subClassOf  wos:InCitesCount .
+
+wos:sdg07AffordableCleanEnergy
+        a           owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:label  "SDG 07: Affordable and Clean Energy"^^rdf:langString ;
+        vitro:hiddenFromDisplayBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:hiddenFromPublishBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:prohibitedFromUpdateBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> .
+
+wos:Abstract  a             owl:Class ;
+        rdfs:label          "Abstract of Published Item" , "Abstract of Published Item"^^rdf:langString ;
+        rdfs:subClassOf     wos:Publication ;
+        vitro:inClassGroup  <http://vivoweb.org/ontology#vitroClassGrouppublications> .
+
+wos:hasKeywordPlus  a               owl:ObjectProperty ;
+        rdfs:label                  "keyword plus" , "keyword plus"^^rdf:langString ;
+        rdfs:subPropertyOf          core:hasResearchArea ;
+        vitro:inPropertyGroupAnnot  <http://vivoweb.org/ontology#vitroPropertyGroupresearch> , <http://vivoweb.org/ontology#vitroPropertyGroupoverview> ;
+        owl:inverseOf               wos:keywordPlusFor .
+
+wos:Excerpt  a              owl:Class ;
+        rdfs:label          "Excerpt" , "Excerpt"^^rdf:langString ;
+        rdfs:subClassOf     wos:Publication ;
+        vitro:inClassGroup  <http://vivoweb.org/ontology#vitroClassGrouppublications> .
+
+wos:esiMostCited  a                 owl:DatatypeProperty ;
+        rdfs:label                  "ESI most cited" ;
+        rdfs:range                  xsd:boolean ;
+        vitro:inPropertyGroupAnnot  <http://webofscience.com/ontology/rap/display/#metrics> .
+
+wos:Organization  a         owl:Class ;
+        rdfs:label          "WoS Organization" , "WoS Organization"^^rdf:langString ;
+        rdfs:subClassOf     foaf:Organization ;
+        vitro:inClassGroup  <http://vivoweb.org/ontology#vitroClassGrouporganizations> .
+
+wos:totalCites  a   owl:DatatypeProperty ;
+        rdfs:label  "total cites" ;
+        rdfs:range  xsd:integer .
+
+wos:displayName  a  owl:DatatypeProperty ;
+        rdfs:label  "WoS display name" , "WoS display name"^^rdf:langString ;
+        rdfs:range  xsd:string .
+
+wos:DancePerformanceReview
+        a                   owl:Class ;
+        rdfs:label          "Dance Performance Review" , "Dance Performance Review"^^rdf:langString ;
+        rdfs:subClassOf     wos:Publication ;
+        vitro:inClassGroup  <http://vivoweb.org/ontology#vitroClassGrouppublications> .
+
+wos:Review  a               owl:Class ;
+        rdfs:label          "Review Article" , "Review"^^rdf:langString ;
+        rdfs:subClassOf     wos:Publication ;
+        vitro:hiddenFromDisplayBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:hiddenFromPublishBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:inClassGroup  <http://vivoweb.org/ontology#vitroClassGrouppublications> ;
+        vitro:prohibitedFromUpdateBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#editor> , <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> .
+
+wos:Funder  a            owl:Class ;
+        rdfs:label       "Funder" , "Funder"^^rdf:langString ;
+        rdfs:subClassOf  foaf:Organization .
+
+wos:sdgOf  a                           owl:ObjectProperty ;
+        rdfs:domain                    wos:SDG ;
+        rdfs:label                     "documents"@en-US ;
+        rdfs:range                     obo:IAO_0000030 ;
+        obo:IAO_0000112                ""@en-US ;
+        vitro:descriptionAnnot         ""@en-US ;
+        vitro:displayLimitAnnot        100 ;
+        vitro:hiddenFromDisplayBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:hiddenFromPublishBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:inPropertyGroupAnnot     <http://vivoweb.org/ontology#vitroPropertyGroupbibliographiconline> ;
+        vitro:prohibitedFromUpdateBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:publicDescriptionAnnot   ""@en-US ;
+        vitro:selectFromExistingAnnot  true ;
+        owl:inverseOf                  wos:hasSDG .
+
+wos:hasScientificFocusArea
+        a                              owl:ObjectProperty ;
+        rdfs:label                     "scientific focus area" , "scientific focus area"^^rdf:langString ;
+        rdfs:subPropertyOf             core:hasResearchArea ;
+        vitro:displayLimitAnnot        -1 ;
+        vitro:hiddenFromDisplayBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:hiddenFromPublishBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:inPropertyGroupAnnot     <http://vivoweb.org/ontology#vitroPropertyGroupresearch> ;
+        vitro:prohibitedFromUpdateBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:selectFromExistingAnnot  true ;
+        owl:inverseOf                  wos:scientificFocusAreaFor .
+
+wos:EditorialMaterial
+        a                   owl:Class ;
+        rdfs:label          "Editorial Material" ;
+        rdfs:subClassOf     wos:Publication ;
+        vitro:inClassGroup  <http://vivoweb.org/ontology#vitroClassGrouppublications> .
+
+wos:Script  a               owl:Class ;
+        rdfs:label          "Script" ;
+        rdfs:subClassOf     wos:Publication ;
+        vitro:inClassGroup  <http://vivoweb.org/ontology#vitroClassGrouppublications> .
+
+wos:Category  a             owl:Class ;
+        rdfs:label          "Category" , "Web of Science Category"^^rdf:langString ;
+        rdfs:subClassOf     skos:Concept ;
+        vitro:hiddenFromDisplayBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:hiddenFromPublishBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:inClassGroup  <http://vivoweb.org/ontology#vitroClassGrouppublications> ;
+        vitro:prohibitedFromUpdateBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> .
+
+wos:Researcher  a           owl:Class ;
+        rdfs:label          "Researcher" , "Researcher"^^rdf:langString ;
+        rdfs:subClassOf     foaf:Person ;
+        vitro:inClassGroup  <http://vivoweb.org/ontology#vitroClassGrouppeople> .
+
+wos:MusicScoreReview  a     owl:Class ;
+        rdfs:label          "Music Score Review" ;
+        rdfs:subClassOf     wos:Publication ;
+        vitro:inClassGroup  <http://vivoweb.org/ontology#vitroClassGrouppublications> .
+
+wos:sdg10ReducedInequalities
+        a           owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:label  "SDG 10: Reduced Inequality"^^rdf:langString ;
+        vitro:hiddenFromDisplayBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:hiddenFromPublishBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:prohibitedFromUpdateBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> .
+
+wos:categoryFor  a                     owl:ObjectProperty ;
+        rdfs:domain                    obo:IAO_0000030 ;
+        rdfs:label                     "category" , "category"^^rdf:langString ;
+        rdfs:range                     wos:Category ;
+        vitro:displayLimitAnnot        -1 ;
+        vitro:hiddenFromDisplayBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:hiddenFromPublishBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:inPropertyGroupAnnot     <http://vivoweb.org/ontology#vitroPropertyGroupresearch> ;
+        vitro:prohibitedFromUpdateBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:selectFromExistingAnnot  true ;
+        owl:inverseOf                  wos:hasCategory .
+
+wos:sdg03GoodHealth  a  owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:label  "SDG 03: Good Health and Well-being"^^rdf:langString ;
+        vitro:hiddenFromDisplayBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:hiddenFromPublishBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:prohibitedFromUpdateBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> .
+
+wos:standardName  a  owl:DatatypeProperty ;
+        rdfs:label  "WoS standard name" , "WoS standard name"^^rdf:langString ;
+        rdfs:range  xsd:string .
+
+wos:fullName  a     owl:DatatypeProperty ;
+        rdfs:label  "WoS full name" , "WoS full name"^^rdf:langString ;
+        rdfs:range  xsd:string .
+
+wos:journalExpectedCitations
+        a           owl:DatatypeProperty ;
+        rdfs:label  "journal expected citations" ;
+        rdfs:range  xsd:decimal .
+
+wos:birth  a        owl:DatatypeProperty ;
+        rdfs:label  "birth" , "birth"^^rdf:langString ;
+        rdfs:range  xsd:dateTime .
+
+wos:number  a       owl:DatatypeProperty ;
+        rdfs:label  "number" ;
+        rdfs:range  xsd:integer .
+
+wos:BiographicalItem  a     owl:Class ;
+        rdfs:label          "Biographical Item" , "Biographical Item"^^rdf:langString ;
+        rdfs:subClassOf     wos:Publication ;
+        vitro:inClassGroup  <http://vivoweb.org/ontology#vitroClassGrouppublications> .
+
+wos:Address  a           owl:Class ;
+        rdfs:label       "WoS Address" , "WoS Address"^^rdf:langString ;
+        rdfs:subClassOf  owl:Thing .
+
+wos:TVRadioReview  a        owl:Class ;
+        rdfs:label          "TV Review, Radio Review" ;
+        rdfs:subClassOf     wos:Publication ;
+        vitro:inClassGroup  <http://vivoweb.org/ontology#vitroClassGrouppublications> .
+
+wos:ResearchArea  a         owl:Class ;
+        rdfs:label          "Web of Science Research Area" , "Web of Science Research Area"^^rdf:langString ;
+        rdfs:subClassOf     skos:Concept ;
+        vitro:hiddenFromDisplayBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:hiddenFromPublishBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:inClassGroup  <http://vivoweb.org/ontology#vitroClassGrouppublications> ;
+        vitro:prohibitedFromUpdateBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> .
+
+wos:authorKeyword  a                owl:DatatypeProperty ;
+        rdfs:label                  "author keyword" , "author keyword"^^rdf:langString ;
+        rdfs:range                  xsd:string ;
+        vitro:inPropertyGroupAnnot  <http://vivoweb.org/ontology#vitroPropertyGroupresearch> .
+
+wos:TVRadioVideoReview
+        a                   owl:Class ;
+        rdfs:label          "TV Review, Radio Review, Video Review" ;
+        rdfs:subClassOf     wos:Publication ;
+        vitro:inClassGroup  <http://vivoweb.org/ontology#vitroClassGrouppublications> .
+
+wos:internationalCollaboration
+        a                           owl:DatatypeProperty ;
+        rdfs:label                  "international collaboration" ;
+        rdfs:range                  xsd:boolean ;
+        vitro:inPropertyGroupAnnot  <http://webofscience.com/ontology/rap/display/#metrics> .
+
+wos:citationCount  a                owl:DatatypeProperty ;
+        rdfs:label                  "WoS Citations" , "WoS Citations"^^rdf:langString ;
+        rdfs:range                  xsd:integer ;
+        vitro:inPropertyGroupAnnot  <http://webofscience.com/ontology/rap/display/#metrics> .
+
+wos:hasSDG  a                          owl:ObjectProperty ;
+        rdfs:domain                    obo:IAO_0000030 ;
+        rdfs:label                     "sustainable development goals"@en-US ;
+        rdfs:range                     wos:SDG ;
+        obo:IAO_0000112                ""@en-US ;
+        vitro:descriptionAnnot         ""@en-US ;
+        vitro:displayLimitAnnot        -1 ;
+        vitro:hiddenFromDisplayBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:hiddenFromPublishBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:inPropertyGroupAnnot     <http://vivoweb.org/ontology#vitroPropertyGroupoverview> ;
+        vitro:prohibitedFromUpdateBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:publicDescriptionAnnot   ""@en-US ;
+        vitro:selectFromExistingAnnot  true ;
+        owl:inverseOf                  wos:sdgOf .
+
+wos:NewsItem  a             owl:Class ;
+        rdfs:label          "News Item" ;
+        rdfs:subClassOf     wos:Publication ;
+        vitro:inClassGroup  <http://vivoweb.org/ontology#vitroClassGrouppublications> .
+
+wos:sdg02ZeroHunger  a  owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:label  "SDG 02: Zero Hunger"^^rdf:langString ;
+        vitro:hiddenFromDisplayBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:hiddenFromPublishBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:prohibitedFromUpdateBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> .
+
+wos:keywordPlusFor  a               owl:ObjectProperty ;
+        rdfs:label                  "papers" , "papers"^^rdf:langString ;
+        vitro:inPropertyGroupAnnot  <http://vivoweb.org/ontology#vitroPropertyGroupresearch> ;
+        owl:inverseOf               wos:authorKeyword .
+
+wos:authorKeywordFor  a                owl:ObjectProperty ;
+        rdfs:label                     "author keyword" , "author keyword"^^rdf:langString , "publications "^^rdf:langString ;
+        vitro:hiddenFromDisplayBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:hiddenFromPublishBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:inPropertyGroupAnnot     <http://vivoweb.org/ontology#vitroPropertyGroupresearch> ;
+        vitro:prohibitedFromUpdateBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> , <http://vitro.mannlib.cornell.edu/ns/vitro/role#editor> ;
+        vitro:selectFromExistingAnnot  true ;
+        owl:inverseOf                  wos:hasAuthorKeyword .
+
+wos:MeetingSummary  a       owl:Class ;
+        rdfs:label          "Meeting Summary" ;
+        rdfs:subClassOf     wos:Publication ;
+        vitro:inClassGroup  <http://vivoweb.org/ontology#vitroClassGrouppublications> .
+
+wos:UnifiedOrganization
+        a                   owl:Class ;
+        rdfs:label          "WoS Unified Organization" , "WoS Unified Organization"^^rdf:langString ;
+        rdfs:subClassOf     foaf:Organization ;
+        vitro:inClassGroup  <http://vivoweb.org/ontology#vitroClassGrouporganizations> .
+
+wos:photo  a                        owl:DatatypeProperty ;
+        rdfs:label                  "image" ;
+        rdfs:range                  xsd:string ;
+        vitro:displayLimitAnnot     1 ;
+        vitro:displayRankAnnot      3 ;
+        vitro:hiddenFromDisplayBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:hiddenFromPublishBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:inPropertyGroupAnnot  wos:identity , <http://vivoweb.org/ontology#vitroPropertyGroupidentifiers> ;
+        vitro:offerCreateNewOptionAnnot
+                true ;
+        vitro:prohibitedFromUpdateBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> .
+
+wos:InCitesTopCategory
+        a                owl:Class ;
+        rdfs:label       "InCites Top Category" ;
+        rdfs:subClassOf  wos:InCitesCount .
+
+wos:Letter  a               owl:Class ;
+        rdfs:label          "Letter" , "Letter"^^rdf:langString ;
+        rdfs:subClassOf     wos:Publication ;
+        vitro:inClassGroup  <http://vivoweb.org/ontology#vitroClassGrouppublications> .
+
+wos:SubOrganization  a   owl:Class ;
+        rdfs:label       "WoS Sub Organization" , "WoS Sub Organization"^^rdf:langString ;
+        rdfs:subClassOf  foaf:Organization .
+
+wos:sdg12ResponsibleConsumption
+        a           owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:label  "SDG 12: Responsible Consumption and Production"^^rdf:langString ;
+        vitro:hiddenFromDisplayBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:hiddenFromPublishBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:prohibitedFromUpdateBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> .
+
+wos:subOrganizationName
+        a           owl:DatatypeProperty ;
+        rdfs:label  "WoS sub organization name" , "WoS sub organization name"^^rdf:langString ;
+        rdfs:range  xsd:string .
+
+wos:internalAuthors  a              owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:domain                 bibo:Document ;
+        rdfs:label                  "Internal Authors"^^rdf:langString ;
+        vitro:hiddenFromDisplayBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#editor> ;
+        vitro:hiddenFromPublishBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#editor> ;
+        vitro:inPropertyGroupAnnot  <http://vivoweb.org/ontology#vitroPropertyGroupoverview> ;
+        vitro:prohibitedFromUpdateBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#editor> .
+
+wos:Note  a                 owl:Class ;
+        rdfs:label          "Note" ;
+        rdfs:subClassOf     wos:Publication ;
+        vitro:inClassGroup  <http://vivoweb.org/ontology#vitroClassGrouppublications> .
+
+wos:percentile  a   owl:DatatypeProperty ;
+        rdfs:label  "percentile" ;
+        rdfs:range  xsd:decimal .
+
+wos:wikidataId  a           owl:DatatypeProperty ;
+        rdfs:label          "Wikidata ID" , "Wikidata ID"^^rdf:langString ;
+        rdfs:range          xsd:string ;
+        rdfs:subPropertyOf  core:identifier .
+
+wos:ScientificFocusArea
+        a                   owl:Class ;
+        rdfs:label          "Scientific Focus Area" , "Scientific Focus Area"^^rdf:langString ;
+        rdfs:subClassOf     skos:Concept ;
+        vitro:hiddenFromDisplayBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:hiddenFromPublishBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:inClassGroup  <http://vivoweb.org/ontology#vitroClassGrouppublications> , <http://vivoweb.org/ontology#vitroClassGroupresearch> ;
+        vitro:prohibitedFromUpdateBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> .
+
+wos:AuthorKeyword  a        owl:Class ;
+        rdfs:label          "Author Keyword" , "Author Keyword"^^rdf:langString ;
+        rdfs:subClassOf     skos:Concept ;
+        vitro:hiddenFromDisplayBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:hiddenFromPublishBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:inClassGroup  <http://vivoweb.org/ontology#vitroClassGrouppublications> ;
+        vitro:prohibitedFromUpdateBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> .
+
+wos:MusicPerformanceReview
+        a                   owl:Class ;
+        rdfs:label          "Music Performance Review" ;
+        rdfs:subClassOf     wos:Publication ;
+        vitro:inClassGroup  <http://vivoweb.org/ontology#vitroClassGrouppublications> .
+
+wos:CorrectionAddition
+        a                   owl:Class ;
+        rdfs:label          "Correction Addition" , "Correction Addition"^^rdf:langString ;
+        rdfs:subClassOf     wos:Publication ;
+        vitro:inClassGroup  <http://vivoweb.org/ontology#vitroClassGrouppublications> .
+
+wos:Conference  a           owl:Class ;
+        rdfs:label          "Conference" , "Conference"^^rdf:langString ;
+        rdfs:subClassOf     wos:Publication ;
+        vitro:inClassGroup  <http://vivoweb.org/ontology#vitroClassGrouppublications> .
+
+wos:citeKey  a                      owl:DatatypeProperty ;
+        rdfs:label                  "cite key" , "cite key"^^rdf:langString ;
+        rdfs:range                  xsd:string ;
+        vitro:inPropertyGroupAnnot  <http://vivoweb.org/ontology#vitroPropertyGroupidentifiers> .
+
+wos:authorList  a                   owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:domain                 bibo:Document ;
+        rdfs:label                  "cited authors" , "cited authors"^^rdf:langString ;
+        rdfs:range                  xsd:string ;
+        vitro:hiddenFromDisplayBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:hiddenFromPublishBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:inPropertyGroupAnnot  <http://vivoweb.org/ontology#vitroPropertyGroupoverview> ;
+        vitro:prohibitedFromUpdateBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#editor> , <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> .
+
+wos:organizationName  a  owl:DatatypeProperty ;
+        rdfs:label  "WoS organization name" , "WoS organization name"^^rdf:langString ;
+        rdfs:range  xsd:string .
+
+wos:Discussion  a           owl:Class ;
+        rdfs:label          "Discussion" , "Discussion"^^rdf:langString ;
+        rdfs:subClassOf     wos:Publication ;
+        vitro:inClassGroup  <http://vivoweb.org/ontology#vitroClassGrouppublications> .
+
+wos:ItemAboutAnIndividual
+        a                   owl:Class ;
+        rdfs:label          "Item About An Individual" , "Item About An Individual"^^rdf:langString ;
+        rdfs:subClassOf     wos:Publication ;
+        vitro:inClassGroup  <http://vivoweb.org/ontology#vitroClassGrouppublications> .
+
+wos:Reprint  a              owl:Class ;
+        rdfs:label          "Reprint" ;
+        rdfs:subClassOf     wos:Publication ;
+        vitro:inClassGroup  <http://vivoweb.org/ontology#vitroClassGrouppublications> .
+
+wos:Publication  a                    owl:Class ;
+        rdfs:label                    "WoS Publication" , "Publication"@en-US ;
+        rdfs:subClassOf               bibo:Document ;
+        vitro:displayLimitAnnot       "-1"^^xsd:int ;
+        vitro:displayRankAnnot        "-1"^^xsd:int ;
+        vitro:hiddenFromDisplayBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:hiddenFromPublishBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:inClassGroup            <http://vivoweb.org/ontology#vitroClassGrouppublications> ;
+        vitro:prohibitedFromUpdateBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> , <http://vitro.mannlib.cornell.edu/ns/vitro/role#editor> .
+
+wos:SDG  a                       owl:Class ;
+        rdfs:label               "Sustainable Development Goal"@en-US ;
+        obo:IAO_0000112          ""@en-US ;
+        obo:IAO_0000115          ""@en-US ;
+        vitro:descriptionAnnot   ""@en-US ;
+        vitro:displayLimitAnnot  -1 ;
+        vitro:displayRankAnnot   -1 ;
+        vitro:hiddenFromDisplayBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:hiddenFromPublishBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:prohibitedFromUpdateBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> .
+
+wos:orcid  a                        owl:DatatypeProperty ;
+        rdfs:label                  "orcid" , "orcid"^^rdf:langString ;
+        rdfs:range                  xsd:string ;
+        rdfs:subPropertyOf          core:identifier ;
+        vitro:displayLimitAnnot     1 ;
+        vitro:displayRankAnnot      3 ;
+        vitro:hiddenFromDisplayBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:hiddenFromPublishBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:inPropertyGroupAnnot  wos:identity , <http://vivoweb.org/ontology#vitroPropertyGroupidentifiers> ;
+        vitro:offerCreateNewOptionAnnot
+                true ;
+        vitro:prohibitedFromUpdateBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> .
+
+wos:sdg11SustainableCities
+        a           owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:label  "SDG 11: Sustainable Cities and Communities"^^rdf:langString ;
+        vitro:hiddenFromDisplayBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:hiddenFromPublishBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:prohibitedFromUpdateBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> .
+
+wos:nci  a          owl:DatatypeProperty ;
+        rdfs:label  "normalized citation impact" ;
+        rdfs:range  xsd:decimal .
+
+wos:description  a  owl:DatatypeProperty ;
+        rdfs:label  "description" , "description"^^rdf:langString ;
+        rdfs:range  xsd:string .
+
+wos:Correction  a           owl:Class ;
+        rdfs:label          "Correction" , "Correction"^^rdf:langString ;
+        rdfs:subClassOf     wos:Publication ;
+        vitro:inClassGroup  <http://vivoweb.org/ontology#vitroClassGrouppublications> .
+
+wos:sdg14LifeBelowWater
+        a           owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:label  "SDG 14: Life Below Water"^^rdf:langString ;
+        vitro:hiddenFromDisplayBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:hiddenFromPublishBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:prohibitedFromUpdateBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> .
+
+wos:SoftwareReview  a       owl:Class ;
+        rdfs:label          "Software Review" ;
+        rdfs:subClassOf     wos:Publication ;
+        vitro:inClassGroup  <http://vivoweb.org/ontology#vitroClassGrouppublications> .
+
+wos:sdg17Partnerships
+        a           owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:label  "SDG 17: Partnerships for the Goals"^^rdf:langString ;
+        vitro:hiddenFromDisplayBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:hiddenFromPublishBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:prohibitedFromUpdateBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> .
+
+wos:affiliationFor  a               owl:ObjectProperty ;
+        rdfs:label                  "members" , "members"^^rdf:langString ;
+        vitro:inPropertyGroupAnnot  <http://vivoweb.org/ontology#vitroPropertyGroupaffiliation> ;
+        owl:inverseOf               wos:hasAffiliation .
+
+wos:MusicScore  a           owl:Class ;
+        rdfs:label          "Music Score" ;
+        rdfs:subClassOf     wos:Publication ;
+        vitro:inClassGroup  <http://vivoweb.org/ontology#vitroClassGrouppublications> .
+
+wos:Grant  a             owl:Class ;
+        rdfs:label       "Grant" ;
+        rdfs:subClassOf  core:Grant .
+
+wos:grantId  a      owl:DatatypeProperty ;
+        rdfs:label  "Grant Id" , "Grant Id"^^rdf:langString ;
+        rdfs:range  xsd:string .
+
+wos:countryCode  a                  owl:DatatypeProperty ;
+        rdfs:label                  "Country code" , "Country code"^^rdf:langString ;
+        rdfs:range                  xsd:string ;
+        rdfs:subPropertyOf          core:identifier ;
+        vitro:inPropertyGroupAnnot  <http://vivoweb.org/ontology#vitroPropertyGroupidentifiers> .
+
+wos:HardwareReview  a       owl:Class ;
+        rdfs:label          "Hardware Review" , "Hardware Review"^^rdf:langString ;
+        rdfs:subClassOf     wos:Publication ;
+        vitro:inClassGroup  <http://vivoweb.org/ontology#vitroClassGrouppublications> .
+
+wos:scientificFocusAreaFor
+        a                              owl:ObjectProperty ;
+        rdfs:label                     "researchers" , "researchers"^^rdf:langString ;
+        vitro:hiddenFromDisplayBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:hiddenFromPublishBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:inPropertyGroupAnnot     <http://vivoweb.org/ontology#vitroPropertyGroupaffiliation> ;
+        vitro:prohibitedFromUpdateBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:selectFromExistingAnnot  true ;
+        owl:inverseOf                  wos:hasScientificFocusArea .
+
+wos:ProceedingsPaper  a     owl:Class ;
+        rdfs:label          "Proceedings Paper" ;
+        rdfs:subClassOf     wos:Publication ;
+        vitro:inClassGroup  <http://vivoweb.org/ontology#vitroClassGrouppublications> .
+
+wos:sdg13ClimateAction
+        a           owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:label  "SDG 13: Climate Action"^^rdf:langString ;
+        vitro:hiddenFromDisplayBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:hiddenFromPublishBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:prohibitedFromUpdateBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> .
+
+wos:formattedName  a             owl:DatatypeProperty ;
+        rdfs:label               "formatted name"^^rdf:langString , "formatted name" ;
+        rdfs:range               xsd:string ;
+        vitro:displayLimitAnnot  1 ;
+        vitro:displayRankAnnot   3 ;
+        vitro:hiddenFromDisplayBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:hiddenFromPublishBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:offerCreateNewOptionAnnot
+                true ;
+        vitro:prohibitedFromUpdateBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> .
+
+wos:hasCategory  a                     owl:ObjectProperty ;
+        rdfs:domain                    wos:Category ;
+        rdfs:label                     "category" , "category"^^rdf:langString ;
+        rdfs:range                     obo:IAO_0000030 ;
+        rdfs:subPropertyOf             core:hasResearchArea ;
+        vitro:hiddenFromDisplayBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:hiddenFromPublishBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:inPropertyGroupAnnot     <http://vivoweb.org/ontology#vitroPropertyGroupresearch> ;
+        vitro:prohibitedFromUpdateBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> , <http://vitro.mannlib.cornell.edu/ns/vitro/role#editor> ;
+        vitro:selectFromExistingAnnot  true ;
+        owl:inverseOf                  wos:categoryFor .
+
+wos:hasAuthorKeyword  a                owl:ObjectProperty ;
+        rdfs:label                     "author keyword" , "author keyword"^^rdf:langString ;
+        rdfs:subPropertyOf             core:hasResearchArea ;
+        vitro:displayLimitAnnot        -1 ;
+        vitro:hiddenFromDisplayBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:hiddenFromPublishBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:inPropertyGroupAnnot     <http://vivoweb.org/ontology#vitroPropertyGroupresearch> , <http://vivoweb.org/ontology#vitroPropertyGroupbibobscure> ;
+        vitro:prohibitedFromUpdateBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:selectFromExistingAnnot  true ;
+        owl:inverseOf                  wos:authorKeywordFor .
+
+wos:subOrganizationNameVariant
+        a           owl:DatatypeProperty ;
+        rdfs:label  "WoS sub organization name variant" , "WoS sub organization name variant"^^rdf:langString ;
+        rdfs:range  xsd:string .
+
+wos:email  a        owl:DatatypeProperty ;
+        rdfs:label  "WoS email" , "WoS email"^^rdf:langString ;
+        rdfs:range  xsd:string .
+
+wos:Book  a                 owl:Class ;
+        rdfs:label          "Book" , "Book"^^rdf:langString ;
+        rdfs:subClassOf     wos:Publication ;
+        vitro:inClassGroup  <http://vivoweb.org/ontology#vitroClassGrouppublications> .
+
+wos:sdg08DecentWork  a  owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:label  "SDG 08: Decent Work and Economic Growth"^^rdf:langString ;
+        vitro:hiddenFromDisplayBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:hiddenFromPublishBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:prohibitedFromUpdateBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> .
+
+wos:openAccess  a                   owl:DatatypeProperty ;
+        rdfs:label                  "open access" ;
+        rdfs:range                  xsd:boolean ;
+        vitro:inPropertyGroupAnnot  <http://webofscience.com/ontology/rap/display/#metrics> .
+
+wos:journalActExpCitations
+        a           owl:DatatypeProperty ;
+        rdfs:label  "impact factor" ;
+        rdfs:range  xsd:decimal .
+
+wos:KeywordPlus  a          owl:Class ;
+        rdfs:label          "KeywordPlus" , "KeywordPlus"^^rdf:langString ;
+        rdfs:subClassOf     skos:Concept ;
+        vitro:inClassGroup  <http://webofscience.com/ontology/rap/display/#GroupTopics> .
+
+wos:EarlyAccess  a               owl:Class ;
+        rdfs:label               "Early Access"@en-US ;
+        rdfs:subClassOf          wos:Publication ;
+        vitro:displayLimitAnnot  -1 ;
+        vitro:displayRankAnnot   -1 ;
+        vitro:hiddenFromDisplayBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:hiddenFromPublishBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:inClassGroup       <http://vivoweb.org/ontology#vitroClassGrouppublications> ;
+        vitro:prohibitedFromUpdateBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> .
+
+wos:    a                          owl:Ontology ;
+        rdfs:label                 "Web of Science" , "Web of Science"^^rdf:langString ;
+        vitro:ontologyPrefixAnnot  "wos" .

@@ -1,0 +1,41 @@
+@prefix obo:   <http://purl.obolibrary.org/obo/> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix uncw:  <http://scholars.uncw.edu/ontology/> .
+@prefix vitro: <http://vitro.mannlib.cornell.edu/ns/vitro/0.7#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+
+uncw:featuredText  a                  owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:domain                   uncw:featuredProfile ;
+        rdfs:label                    "featured profile text"@en-US ;
+        obo:IAO_0000112               ""@en-US ;
+        vitro:descriptionAnnot        ""@en-US ;
+        vitro:publicDescriptionAnnot  ""@en-US .
+
+uncw:featuredProfile  a          owl:Class ;
+        rdfs:label               "Featured Faculty"@en-US ;
+        obo:IAO_0000112          ""@en-US ;
+        obo:IAO_0000115          ""@en-US ;
+        vitro:descriptionAnnot   ""@en-US ;
+        vitro:displayLimitAnnot  -1 ;
+        vitro:displayRankAnnot   -1 ;
+        vitro:inClassGroup       <http://vivoweb.org/ontology#vitroClassGroupactivities> .
+
+uncw:featuredPhoto  a                 owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:domain                   uncw:featuredProfile ;
+        rdfs:label                    "featured photo url "@en-US ;
+        obo:IAO_0000112               ""@en-US ;
+        vitro:descriptionAnnot        ""@en-US ;
+        vitro:publicDescriptionAnnot  ""@en-US .
+
+uncw:   a                          owl:Ontology ;
+        rdfs:label                 "UNCW"@en-US ;
+        vitro:ontologyPrefixAnnot  "uncw" .
+
+uncw:featured  a                      owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:domain                   uncw:featuredProfile ;
+        rdfs:label                    "featured"@en-US ;
+        rdfs:range                    xsd:boolean ;
+        obo:IAO_0000112               ""@en-US ;
+        vitro:descriptionAnnot        ""@en-US ;
+        vitro:publicDescriptionAnnot  ""@en-US .

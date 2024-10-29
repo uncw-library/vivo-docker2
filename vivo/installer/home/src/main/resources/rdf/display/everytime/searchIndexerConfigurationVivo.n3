@@ -1,0 +1,294 @@
+@prefix : <http://vitro.mannlib.cornell.edu/ns/vitro/ApplicationSetup#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix searchIndex: <java:edu.cornell.mannlib.vitro.webapp.searchindex#> .
+@prefix vitroDisplay: <http://vitro.mannlib.cornell.edu/ontologies/display/1.1#> .
+
+
+#
+# Specify the SearchIndexExcluders, DocumentModifiers and IndexingUriFinders for VIVO.
+# These are in addition to the ones specified for VIVO.
+#
+
+vitroDisplay:SearchIndex
+    vitroDisplay:excludeClass <http://www.w3.org/2006/vcard/ns#Name> ,
+    <http://www.w3.org/2006/vcard/ns#Individual> .
+
+
+:vivoSearchExcluder_namespaceExcluder
+    a   searchIndex:exclusions.ExcludeBasedOnNamespace ,
+        searchIndex:exclusions.SearchIndexExcluder ;
+    :excludes
+        "http://purl.obolibrary.org/obo/" .
+
+# ------------------------------------
+
+# Most context nodes look like this: relatedBy ==> node ==> relates
+#                                      relates <== node <== relatedBy
+:extension_forContextNodes
+    a   searchIndex:indexing.IndexingUriFinder ,
+        searchIndex:documentBuilding.DocumentModifier ,
+        searchIndex:extensions.LabelsAcrossContextNodes ;
+    rdfs:label "Labels across relatedBy/relates" ;
+    :appliesToContextNodeType "http://vivoweb.org/ontology/core#Relationship" ;
+    :hasIncomingProperty "http://vivoweb.org/ontology/core#relatedBy" ;
+    :hasOutgoingProperty "http://vivoweb.org/ontology/core#relates" .
+
+# Some roles look like this:  bearerOf ==> role ==> roleContributesTo
+#                            inheresIn <== role <== contributingRole
+:extension_forContextNodes_role_contributes_1
+    a   searchIndex:indexing.IndexingUriFinder ,
+        searchIndex:documentBuilding.DocumentModifier ,
+        searchIndex:extensions.LabelsAcrossContextNodes ;
+    rdfs:label "Labels across bearerOf/contributesTo" ;
+    :hasIncomingProperty "http://purl.obolibrary.org/obo/RO_0000053" ;
+    :hasOutgoingProperty "http://vivoweb.org/ontology/core#roleContributesTo" .
+
+:extension_forContextNodes_role_contributes_2
+    a   searchIndex:indexing.IndexingUriFinder ,
+        searchIndex:documentBuilding.DocumentModifier ,
+        searchIndex:extensions.LabelsAcrossContextNodes ;
+    rdfs:label "Labels across contributor/inheresIn" ;
+    :hasIncomingProperty "http://vivoweb.org/ontology/core#contributingRole" ;
+    :hasOutgoingProperty "http://purl.obolibrary.org/obo/RO_0000052" .
+
+# Other roles look like this:  bearerOf ==> role ==> realizedIn
+#                             inheresIn <== role <== realizes
+:extension_forContextNodes_role_realizedIn_1
+    a   searchIndex:indexing.IndexingUriFinder ,
+        searchIndex:documentBuilding.DocumentModifier ,
+        searchIndex:extensions.LabelsAcrossContextNodes ;
+    rdfs:label "Labels across bearerOf/realizedIn" ;
+    :hasIncomingProperty "http://purl.obolibrary.org/obo/RO_0000053" ;
+    :hasOutgoingProperty "http://purl.obolibrary.org/obo/BFO_0000054" .
+
+:extension_forContextNodes_role_realizedIn_2
+    a   searchIndex:indexing.IndexingUriFinder ,
+        searchIndex:documentBuilding.DocumentModifier ,
+        searchIndex:extensions.LabelsAcrossContextNodes ;
+    rdfs:label "Labels across realizes/inheresIn" ;
+    :hasIncomingProperty "http://purl.obolibrary.org/obo/BFO_0000055" ;
+    :hasOutgoingProperty "http://purl.obolibrary.org/obo/RO_0000052" .
+
+# Roles on grants look like this:  bearerOf ==> role ==> relatedBy
+#                                 inheresIn <== role <== relates
+:extension_forContextNodes_roles_on_grants_1
+    a   searchIndex:indexing.IndexingUriFinder ,
+        searchIndex:documentBuilding.DocumentModifier ,
+        searchIndex:extensions.LabelsAcrossContextNodes ;
+    rdfs:label "Labels across bearerOf/relates" ;
+    :hasIncomingProperty "http://purl.obolibrary.org/obo/RO_0000053" ;
+    :hasOutgoingProperty "http://vivoweb.org/ontology/core#relatedBy" .
+
+:extension_forContextNodes_roles_on_grants_2
+    a   searchIndex:indexing.IndexingUriFinder ,
+        searchIndex:documentBuilding.DocumentModifier ,
+        searchIndex:extensions.LabelsAcrossContextNodes ;
+    rdfs:label "Labels across contributor/relatedBy" ;
+    :hasIncomingProperty "http://vivoweb.org/ontology/core#relates" ;
+    :hasOutgoingProperty "http://purl.obolibrary.org/obo/RO_0000052" .
+
+
+# ------------------------------------
+
+:vivodocumentModifier_calculateParameters
+    a   searchIndex:documentBuilding.CalculateParameters ,
+        searchIndex:documentBuilding.DocumentModifier .
+
+# ------------------------------------
+
+:vivoUriFinder_VCard
+    a   searchIndex:indexing.IndexingUriFinder ,
+        searchIndex:indexing.SelectQueryUriFinder ;
+    rdfs:label "Preferred title" ;
+    :hasPredicateRestriction "http://www.w3.org/2006/vcard/ns#title" ;
+    :hasPredicateRestriction "http://www.w3.org/2006/vcard/ns#email" ;
+    :hasSelectQuery """
+        PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+        PREFIX obo: <http://purl.obolibrary.org/obo/>
+        SELECT ?uri
+        WHERE {
+            ?uri obo:ARG_2000028 ?card .
+            ?card a vcard:Individual .
+            ?card vcard:hasTitle ?subject .
+        }
+        """ ;
+    :hasSelectQuery """
+        PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+        PREFIX obo: <http://purl.obolibrary.org/obo/>
+        SELECT ?uri
+        WHERE {
+            ?uri obo:ARG_2000028 ?card .
+            ?card a vcard:Individual .
+            ?card vcard:hasEmail ?subject .
+        }
+        """ .
+
+# URI finder that will find the relevant person to update when the 
+# property linking to the email or preferred title resource is removed
+:vivoUriFinder_VCard_2
+    a   searchIndex:indexing.IndexingUriFinder ,
+        searchIndex:indexing.SelectQueryUriFinder ;
+    rdfs:label "Preferred title / email person URI finder #2" ;
+    :hasPredicateRestriction "http://www.w3.org/2006/vcard/ns#hasTitle" ;
+    :hasPredicateRestriction "http://www.w3.org/2006/vcard/ns#hasEmail" ;
+    :hasSelectQuery """
+        PREFIX obo: <http://purl.obolibrary.org/obo/>
+        SELECT ?uri
+        WHERE {
+            ?uri obo:ARG_2000028 ?subject .
+        }
+        """ .
+
+:vivodocumentModifier_PreferredTitle
+    a   searchIndex:documentBuilding.SelectQueryDocumentModifier ,
+        searchIndex:documentBuilding.DocumentModifier ;
+    rdfs:label "Preferred title" ;
+    :hasTargetField "ALLTEXT" ;
+    :hasTargetField "ALLTEXTUNSTEMMED" ;
+    :hasTargetField "PREFERRED_TITLE" ;
+    :hasSelectQuery """
+        PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+        PREFIX obo: <http://purl.obolibrary.org/obo/>
+        SELECT ?title
+        WHERE {
+            ?uri obo:ARG_2000028 ?card .
+            ?card a vcard:Individual .
+            ?card vcard:hasTitle ?titleHolder .
+            ?titleHolder vcard:title ?title .
+        }
+        """ .
+
+:vivodocumentModifier_EmailAddress
+    a   searchIndex:documentBuilding.SelectQueryDocumentModifier ,
+        searchIndex:documentBuilding.DocumentModifier ;
+    rdfs:label "Email address" ;
+    :hasSelectQuery """
+        PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+        PREFIX obo: <http://purl.obolibrary.org/obo/>
+        SELECT ?email
+        WHERE {
+            ?uri obo:ARG_2000028 ?card .
+            ?card a vcard:Individual .
+            ?card vcard:hasEmail ?emailHolder .
+            ?emailHolder vcard:email ?email .
+        }
+        """ .
+
+:vivodocumentModifier_displayLabel
+    a   <java:edu.cornell.mannlib.vitro.webapp.searchindex.documentBuilding.SelectQueryDocumentModifier> ,
+        <java:edu.cornell.mannlib.vitro.webapp.searchindex.documentBuilding.DocumentModifier> ;
+    rdfs:label "primary class group" ;
+    :hasTargetField "displayLabel" ;
+    :hasSelectQuery """
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+        SELECT ?label
+        WHERE {
+            ?uri rdfs:label ?label .
+        }
+        LIMIT 1
+        """ .
+
+:vivodocumentModifier_hotPaper
+    a   <java:edu.cornell.mannlib.vitro.webapp.searchindex.documentBuilding.SelectQueryDocumentModifier> ,
+        <java:edu.cornell.mannlib.vitro.webapp.searchindex.documentBuilding.DocumentModifier> ;
+    rdfs:label "hot paper" ;
+    :hasTargetField "hot_paper_s" ;
+    :hasSelectQuery """
+        PREFIX wos: <http://webofscience.com/ontology/wos#>
+        SELECT ?status
+        WHERE {
+            ?uri wos:hotPaper ?status .
+        }
+        LIMIT 1
+        """ .
+
+
+:vivodocumentModifier_esiMostCited
+    a   <java:edu.cornell.mannlib.vitro.webapp.searchindex.documentBuilding.SelectQueryDocumentModifier> ,
+        <java:edu.cornell.mannlib.vitro.webapp.searchindex.documentBuilding.DocumentModifier> ;
+    rdfs:label "most cited" ;
+    :hasTargetField "most_cited_s" ;
+    :hasSelectQuery """
+        PREFIX wos: <http://webofscience.com/ontology/wos#>
+        SELECT ?status
+        WHERE {
+            ?uri wos:esiMostCited ?status .
+        }
+        LIMIT 1
+        """ .
+
+:vivodocumentModifier_openAccess
+    a   <java:edu.cornell.mannlib.vitro.webapp.searchindex.documentBuilding.SelectQueryDocumentModifier> ,
+        <java:edu.cornell.mannlib.vitro.webapp.searchindex.documentBuilding.DocumentModifier> ;
+    rdfs:label "open access" ;
+    :hasTargetField "open_access_s" ;
+    :hasSelectQuery """
+        PREFIX wos: <http://webofscience.com/ontology/wos#>
+        SELECT ?status
+        WHERE {
+            ?uri wos:openAccess ?status .
+        }
+        LIMIT 1
+        """ .
+
+:vivodocumentModifier_industryCollab
+    a   <java:edu.cornell.mannlib.vitro.webapp.searchindex.documentBuilding.SelectQueryDocumentModifier> ,
+        <java:edu.cornell.mannlib.vitro.webapp.searchindex.documentBuilding.DocumentModifier> ;
+    rdfs:label "industry collaboration" ;
+    :hasTargetField "industry_collaboration_s" ;
+    :hasSelectQuery """
+        PREFIX wos: <http://webofscience.com/ontology/wos#>
+        SELECT ?status
+        WHERE {
+            ?uri wos:industryCollaboration ?status .
+        }
+        LIMIT 1
+        """ .
+
+:vivodocumentModifier_internationalCollab
+    a   <java:edu.cornell.mannlib.vitro.webapp.searchindex.documentBuilding.SelectQueryDocumentModifier> ,
+        <java:edu.cornell.mannlib.vitro.webapp.searchindex.documentBuilding.DocumentModifier> ;
+    rdfs:label "international collaboration" ;
+    :hasTargetField "international_collaboration_s" ;
+    :hasSelectQuery """
+        PREFIX wos: <http://webofscience.com/ontology/wos#>
+        SELECT ?status
+        WHERE {
+            ?uri wos:internationalCollaboration ?status .
+        }
+        LIMIT 1
+        """ .
+
+:vivodocumentModifier_venue
+    a   <java:edu.cornell.mannlib.vitro.webapp.searchindex.documentBuilding.SelectQueryDocumentModifier> ,
+        <java:edu.cornell.mannlib.vitro.webapp.searchindex.documentBuilding.DocumentModifier> ;
+    rdfs:label "venue" ;
+    :hasTargetField "venue_s" ;
+    :hasSelectQuery """
+        PREFIX rdfs:  <http://www.w3.org/2000/01/rdf-schema#>
+        PREFIX core: <http://vivoweb.org/ontology/core#>
+        SELECT ?venueName
+        WHERE {
+            ?uri core:hasPublicationVenue ?venue .
+            ?venue rdfs:label ?venueName .
+        }
+        LIMIT 1
+        """ .
+
+
+:vivodocumentModifier_date
+    a   <java:edu.cornell.mannlib.vitro.webapp.searchindex.documentBuilding.SelectQueryDocumentModifier> ,
+        <java:edu.cornell.mannlib.vitro.webapp.searchindex.documentBuilding.DocumentModifier> ;
+    rdfs:label "date" ;
+    :hasTargetField "date_dt" ;
+    :hasSelectQuery """
+        PREFIX xsd:      <http://www.w3.org/2001/XMLSchema#>
+        PREFIX core: <http://vivoweb.org/ontology/core#>
+        SELECT ?sdate
+        WHERE {
+            ?uri core:dateTimeValue ?dateTimeValue .
+            ?dateTimeValue core:dateTime ?date .
+            BIND (CONCAT(STR(xsd:dateTime(?date)), "Z") as ?sdate)
+        }
+        LIMIT 1
+        """ .

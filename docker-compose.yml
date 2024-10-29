@@ -1,32 +1,36 @@
-version: '3.7'
-
 services:
   vivo-solr:
     container_name: vivo-solr
-    image: uncwlibrary/vivo-docker2/solr
+    image: uncwlibrary/vivo-docker2-solr
     build:
       context: ./solr
     volumes:
-      - solr_data:/var/solr
-    # ports:
-    #   - 8983:8983
-    restart: always
+      - solr-data:/var/solr
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8983/solr/vivocore/admin/ping || exit 1"]
 
   vivo-vivo:
     container_name: vivo-vivo
-    image: uncwlibrary/vivo-docker2/vivo:like-stock
+    image: uncwlibrary/vivo-docker2-vivo
     build:
       context: ./vivo
     volumes:
-      - ./tdbModels:/usr/local/vivo/home/tdbModels
-      - ./tdbContentModels:/tdbContentModels
-      - ./current_turtle/userdata.ttl:/usr/local/vivo/home/rdf/abox/filegraph/userdata.ttl
-      - ./uploads:/usr/local/vivo/home/uploads
-      # only uncomment theme dir if doing theme work & after your computer has already done `docker compose up` with it commented out
-      # - ./vivo/uncw_theme:/usr/local/tomcat/webapps/ROOT/themes/uncw_theme
+      - tdbModels:/usr/local/vivo/home/tdbModels
+      - tdbContentModels:/tdbContentModels
+      - ./instanceData/turtles/userdata.ttl:/usr/local/vivo/home/rdf/abox/filegraph/userdata.ttl
+      - ./instanceData/turtles/featuredProfileData.ttl:/usr/local/vivo/home/rdf/abox/filegraph/featuredProfileData.ttl
+      - ./instanceData/uploads:/usr/local/vivo/home/uploads
+      - ./vivo/installer/webapp/src/main/webapp/themes/uncw_theme:/usr/local/tomcat/webapps/ROOT/themes/uncw_theme
+      - ./vivo/installer/webapp/src/main/webapp/themes/wilma_uncw:/usr/local/tomcat/webapps/ROOT/themes/wilma_uncw
     ports:
       - 8080:8080
-    restart: always
+    restart: unless-stopped
+    depends_on:
+      vivo-solr:
+        condition: service_healthy
 
 volumes:
-  solr_data:
+  solr-data:
+  tdbModels:
+  tdbContentModels:
