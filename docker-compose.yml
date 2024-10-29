@@ -1,7 +1,7 @@
 services:
   vivo-solr:
     container_name: vivo-solr
-    image: uncwlibrary/vivo-docker2-solr:115
+    image: uncwlibrary/vivo-docker2-solr
     build:
       context: ./solr
     volumes:
@@ -12,7 +12,7 @@ services:
 
   vivo-vivo:
     container_name: vivo-vivo
-    image: uncwlibrary/vivo-docker2-vivo:115
+    image: uncwlibrary/vivo-docker2-vivo
     build:
       context: ./vivo
     volumes:
