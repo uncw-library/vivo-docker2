@@ -23,8 +23,7 @@ about:ABOUTDG
         </div>
         <h2>Media Inquires</h2>
         <div class=\"pageGroupBody\">
-            <p>For media inquiries to UNCW faculty and staff, please contact the <a href="https://uncw.edu/about/university-administration/administrative-units/university-relations/">Office of University Relations</a>. Please visit UNCW’s <a href="https://uncw.edu/about/">About page</a> for more information about the institution.
-            </p>
+            <p>For media inquiries to UNCW faculty and staff, please contact the <a href="https://uncw.edu/about/university-administration/administrative-units/university-relations/">Office of University Relations</a>. Please visit UNCW’s <a href="https://uncw.edu/about/">About page</a> for more information about the institution.</p>
         </div>
         """@en ;
         <http://vitro.mannlib.cornell.edu/ontologies/display/1.1#saveToVar>
