@@ -7,11 +7,11 @@ about:ABOUTDG
     <http://vitro.mannlib.cornell.edu/ontologies/display/1.1#htmlValue>
         """<h2>About Scholars@UNCW</h2>
         <div class=\"pageGroupBody\" id=\"aboutText\">
-            <p>Scholars@UNCW is a scholarly profile platform designed to showcase the research, creative, and teaching activities of current UNCW faculty. It also allows faculty to share areas of research expertise and to connect people with common scholarly interests across campus. The system is an implementation of <a href="https://duraspace.org/vivo/">VIVO</a>, a member-supported, open source software and an ontology for representing scholarship. <a href="https://library.uncw.edu">UNCW Library</a> developed and maintains the implementation for UNCW, in collaboration with other offices including <a href="https://uncw.edu/irp/ir/index.html">Institutional Research and Planning</a> and the <a href="https://uncw.edu/research/">Office of Research and Innovation</a>. Scholars@UNCW draws directly on data entered into <a href="https://uncw.edu/about/university-administration/academic-affairs/division/areas/irp/resources-tools/faculty-success">Watermark Faculty Success</a>.</p>
+            <p>Scholars@UNCW is a scholarly profile platform designed to showcase the research, creative, and teaching activities of current University of North Carolina Wilmington faculty. It also allows faculty to share areas of research expertise and to connect people with common scholarly interests across campus. The system is an implementation of <a href="https://duraspace.org/vivo/">VIVO</a>, a member-supported, open source software and an ontology for representing scholarship. <a href="https://library.uncw.edu">UNCW Library</a> developed and maintains the implementation for UNCW, in collaboration with other offices including <a href="https://uncw.edu/irp/ir/index.html">Institutional Research and Planning</a> and the <a href="https://uncw.edu/research/">Office of Research and Innovation</a>. Scholars@UNCW draws directly on data entered into <a href="https://uncw.edu/about/university-administration/academic-affairs/division/areas/irp/resources-tools/faculty-success">Watermark Faculty Success</a>.</p>
         </div>
         <h2>Who is included in Scholars@UNCW?</h2>
         <div class=\"pageGroupBody\">
-            <p>Profiles are automatically generated for faculty from all UNCW departments, colleges, and centers, as long as those faculty have data in <a href="https://uncw.edu/about/university-administration/academic-affairs/division/areas/irp/resources-tools/faculty-success">Watermark Faculty Success</a>. Faculty from all ranks are included.</p>
+            <p>Profiles are automatically generated for faculty from all UNCW departments, colleges, and centers. Faculty from all ranks are included.</p>
         </div>
         <h2>How can incomplete or inaccurate faculty profiles be fixed?</h2>
         <div class=\"pageGroupBody\">
@@ -20,6 +20,11 @@ about:ABOUTDG
         <h2>Who supports scholarly activity at UNCW?</h2>
         <div class=\"pageGroupBody\">
             <p>Along with department- and college-specific services, UNCW Library and UNCW Research & Innovation provide infrastructure and support for scholarship across campus. At the Library, <a href="https://library.uncw.edu/directory/liaisons">Liaison Librarians</a> offer subject expertise to help explore research questions and find relevant materials. UNCW Library’s <a href="https://library.uncw.edu/scholarly_research_services">Scholarly Research Services</a> can support specialized research needs related to data analysis, curation, and management; digital scholarship; physical and virtual making; and scholarly communication and research impact. The UNCW <a href="https://uncw.edu/research/service-team#OrgChart">Research and Innovation Service Team</a> can help with many facets of the research process, including development, institutional review, funding compliance, and commercialization.</p>
+        </div>
+        <h2>Media Inquires</h2>
+        <div class=\"pageGroupBody\">
+            <p>For media inquiries to UNCW faculty and staff, please contact the <a href="https://uncw.edu/about/university-administration/administrative-units/university-relations/">Office of University Relations</a>. Please visit UNCW’s <a href="https://uncw.edu/about/">About page</a> for more information about the institution.
+            </p>
         </div>
         """@en ;
         <http://vitro.mannlib.cornell.edu/ontologies/display/1.1#saveToVar>
