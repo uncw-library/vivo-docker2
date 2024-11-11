@@ -5,7 +5,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap");
 
 .hero {
-    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('../images/banner-image.jpg');
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('https://scholars.uncw.edu/themes/uncw_theme/images/hero-background-20230301.jpg');
     background-size: cover;
     background-position: 50% 50%;
     background-repeat: no-repeat;
@@ -18,7 +18,7 @@
     color: #fff;
 }
  .theme-container, .feature-container {
-    padding-left: 1.5
+    padding-left: 1.5em;
     padding-right: 1.5em;
  }
 .search-home {
@@ -62,7 +62,7 @@
    position: relative;
    right: auto;
    left: auto;
-   color: #313535;
+   color: #595b5b;
    text-shadow: none;
  }
  .feature-container {
@@ -320,6 +320,7 @@ img {
 }
 a {
     text-decoration: none !important;
+    color: #007073;
 }
 a:hover {
     color: #1f2756;
@@ -2891,14 +2892,17 @@ body.loggedIn #intro {
 p.forgot-password a,
 ul#individual-personInPosition li a,
 ul.individual-urls li a,
-ul.individual-urls-people li a {
+ul.individual-urls-people li a,
+ul#webpages li, ul#primary-email li, ul#additional-emails li a {
     color: #007073;
 }
 ul#individual-personInPosition li a:hover,
 ul.individual-urls-people li a:hover,
-ul.individual-urls li a:hover {
+ul.individual-urls li a:hover,
+ul#webpages li, ul#primary-email li, ul#additional-emails li a:hover {
     color: #1f2756;
 }
+
 /* LOG IN------>  */
 #login {
     /* float: right; */
@@ -3623,12 +3627,12 @@ ul#find-filters a.selected {
     clear: both;
     display: table;
 } */
-
 #browse-by h2 {
     background: #5e6363;
     font-size: 1.375em;
     color: #fff;
 }
+
 /* BROWSE CLASSES ------>  */
 ul#browse-classes {
     border: 1px solid #dde4e3;
@@ -4739,10 +4743,13 @@ form li {
   .international a, .sdg-row a {
     color: #fff;
   }
-  .card-content a, li > h1 > a, .collaboratorship-link a {
+  .international a:hover, .sdg-row a:hover {
+    color: #ffd483;
+  }
+  .card-content a, li > h1 > a, .collaboratorship-link a, .highly-cited a {
     color: #007073;
   }
-  .card-content a:hover, .collaboratorship-link a:hover, ul.individual-urls li a:hover {
+  .card-content a:hover, .collaboratorship-link a:hover, ul.individual-urls li a:hover, .highly-cited a:hover {
     color: #1f2756;
   }
   .load-more {

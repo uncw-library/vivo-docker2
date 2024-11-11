@@ -1,6 +1,7 @@
 <#-- $This file is distributed under the terms of the license in LICENSE$ -->
 
 <#import "lib-list.ftl" as l>
+${scripts.add('<script type="text/javascript" src="${urls.theme}/js/logoHover.js"></script>')}
 
 <!DOCTYPE html>
 <html lang="${country}">

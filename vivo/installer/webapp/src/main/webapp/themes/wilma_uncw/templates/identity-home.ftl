@@ -7,7 +7,7 @@
                         <div class="row top_list px-5 mx-1">
                             <div class="col-3 col-md-4 col-lg-3">
                             <a class="navbar-brand py-0 mx-3" href="https://uncw.edu/index.html">
-                                <img alt="UNCW" src="https://uncw.edu/_global/img/uncw-logo-gold_222x222.svg">
+                                <img alt="UNCW" src="https://uncw.edu/_global/img/uncw-logo-teal_222x222.svg">
                             </a></div>
 
                                 <div class="top_title col-2 col-md-3 col-lg-4"><a href="/">Scholars@UNCW</a></div>
