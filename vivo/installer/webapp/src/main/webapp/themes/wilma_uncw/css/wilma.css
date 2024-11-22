@@ -4655,21 +4655,21 @@ form li {
 /*---------------------------------------------
  * InCites cards
  * ----------------------------------------------*/
- .highly-cited, .industry {
+ .highly-cited, .international {
     padding-top: 1em;
     padding-bottom: 2em;
     background-color: #fff;
     color: #000;
   }
-  .highly-cited .btn-default {
+  .highly-cited .btn-default, .international .btn-default {
     margin-top: 8px;
   }
   
-  .international h2, .open-access h2, .sdg-row h2 {
+  .industry h2, .institution h2, .open-access h2, .sdg-row h2 {
     color: white;
   }
   
-  .international, .open-access, .sdg-row {
+  .industry, .institution, .open-access, .sdg-row {
     padding-top: 1em;
     padding-bottom: 2em;
     background-color: #071f40;
@@ -4740,16 +4740,16 @@ form li {
     padding-bottom: 1em;
     justify-content: center;
   }
-  .international a, .sdg-row a {
+  .industry a, .institution a, .sdg-row a {
     color: #fff;
   }
-  .international a:hover, .sdg-row a:hover {
+  .industry a:hover, .institution a:hover, .sdg-row a:hover {
     color: #ffd483;
   }
-  .card-content a, li > h1 > a, .collaboratorship-link a, .highly-cited a {
+  .card-content a, li > h1 > a, .collaboratorship-link a, .highly-cited a, .international a {
     color: #007073;
   }
-  .card-content a:hover, .collaboratorship-link a:hover, ul.individual-urls li a:hover, .highly-cited a:hover {
+  .card-content a:hover, .collaboratorship-link a:hover, ul.individual-urls li a:hover, .highly-cited a:hover, .international a:hover {
     color: #1f2756;
   }
   .load-more {
@@ -4757,7 +4757,7 @@ form li {
   }
   @media only screen and (max-width: 768px) {
   /* For mobile phones: */
-    .industry {
+    .international {
       padding-bottom: 4em!important;
     }
   }

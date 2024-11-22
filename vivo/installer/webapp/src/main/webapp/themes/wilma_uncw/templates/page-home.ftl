@@ -104,9 +104,25 @@ ${i18n().intro_searchvivo}
                     </div>
                   </div>
                 </div>
+
+                <!-- Featured papers -->
+                <#--  <div class="row industry feature-container">
+                  <div class="container">
+                      <div class="col-md-12">
+                        <h2><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Industry Collaborations</h2>
+                      </div>
+                      <div class="col-md-12">
+                        <div class="card-mainbox"></div>
+                      </div>
+                      <div class="col-md-12 text-center">
+                        <a class="small text-uppercase load-more" id="target-industry"><span class="glyphicon glyphicon-menu-down">
+                          </span> Load more</a>
+                      </div>
+                  </div>
+                </div>
+
                 <div class="row international feature-container">
                   <div class="container">
-                    <#--The title row extends the full width -->
                       <div class="col-md-12">
                         <h2><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> International Collaborations</h2>
                       </div>
@@ -116,13 +132,28 @@ ${i18n().intro_searchvivo}
                       <div class="col-md-12 text-center">
                         <a class="small text-uppercase load-more" id="target-international"><span class="glyphicon glyphicon-menu-down">
                           </span> Load more</a>
-                        <!-- <a class="pull-right small text-uppercase" href="${urls.base}/internationalcollabs">view all</a> -->
+                      </div>
+                  </div>
+                </div>  -->
+
+                <div class="row institution feature-container">
+                  <div class="container">
+                    <#--The title row extends the full width -->
+                      <div class="col-md-12">
+                        <h2><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Institutional Collaborations</h2>
+                      </div>
+                      <div class="col-md-12">
+                        <div class="card-mainbox"></div>
+                      </div>
+                      <div class="col-md-12 text-center">
+                        <a class="small text-uppercase load-more" id="target-institution"><span class="glyphicon glyphicon-menu-down">
+                          </span> Load more</a>
                       </div>
                   </div>
                 </div>
+
                 <div class="row highly-cited feature-container">
                   <div class="container">
-                    <#--The title row extends the full width -->
                       <div class="col-md-12">
                         <h2><span class="glyphicon glyphicon-fire" aria-hidden="true"></span> Highly Cited Papers</h2>
                       </div>
@@ -132,9 +163,9 @@ ${i18n().intro_searchvivo}
                       <div class="col-md-12 text-center">
                         <a class="small text-uppercase load-more" id="target-highly-cited"><span class="glyphicon glyphicon-menu-down">
                           </span> Load more</a>
-                        <!-- <a class="pull-right small text-uppercase" href="${urls.base}/hotpapers">view all</a> -->
                       </div>
                   </div>
+
                   <#include "footer.ftl">
                     <#-- builds a json object that is used by js to render the academic departments section -->
                       <#-- <@lh.listAcademicDepartments /> -->
@@ -164,11 +195,12 @@ ${i18n().intro_searchvivo}
                   $('input.search-homepage').attr("placeholder", "${i18n().limit_search} \u2192");
                 }
                 numcards = 6;
-                intloffset = hcoffset = oaoffset = indoffset = 0
+                intloffset = hcoffset = oaoffset = indoffset = instoffset = 0
                 getPapers('highly-cited', 0)
                 getPapers('international', 0)
                 getPapers('open-access', 0)
                 getPapers('industry', 0)
+                getPapers('institution', 0)
                 //fetchSciFocus()
                 function getPapers(type, offset) {
                   var apiURL = './vds/featured/' + type + '/' + numcards + '/' + offset;
@@ -205,6 +237,10 @@ ${i18n().intro_searchvivo}
                 $( "#target-industry" ).click(function() {
                   indoffset = indoffset + 6;
                   getPapers('industry', indoffset)
+                });
+                $( "#target-institution" ).click(function() {
+                  instoffset = instoffset + 6;
+                  getPapers('institution', instoffset)
                 });
                 </script>
       </body>

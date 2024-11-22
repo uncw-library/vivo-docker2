@@ -259,6 +259,20 @@ vitroDisplay:SearchIndex
         LIMIT 1
         """ .
 
+:vivodocumentModifier_institutionCollab
+    a   <java:edu.cornell.mannlib.vitro.webapp.searchindex.documentBuilding.SelectQueryDocumentModifier> ,
+        <java:edu.cornell.mannlib.vitro.webapp.searchindex.documentBuilding.DocumentModifier> ;
+    rdfs:label "institution collaboration" ;
+    :hasTargetField "institution_collaboration_s" ;
+    :hasSelectQuery """
+        PREFIX wos: <http://webofscience.com/ontology/wos#>
+        SELECT ?status
+        WHERE {
+            ?uri wos:institutionCollaboration ?status .
+        }
+        LIMIT 1
+        """ .
+
 :vivodocumentModifier_venue
     a   <java:edu.cornell.mannlib.vitro.webapp.searchindex.documentBuilding.SelectQueryDocumentModifier> ,
         <java:edu.cornell.mannlib.vitro.webapp.searchindex.documentBuilding.DocumentModifier> ;

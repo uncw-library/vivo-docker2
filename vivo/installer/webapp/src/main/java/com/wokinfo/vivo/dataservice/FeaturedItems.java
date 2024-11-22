@@ -71,6 +71,8 @@ public class FeaturedItems extends HttpServlet {
                 queryField = "international_collaboration_s";
             } else if (requestType.equals("highly-cited")){
                 queryField = "most_cited_s";
+            } else if (requestType.equals("institution")){
+                queryField = "institution_collaboration_s";
             } else {
                 //default
                 queryField = "hot_paper_s";
