@@ -140,7 +140,7 @@ ${i18n().intro_searchvivo}
                   <div class="container">
                     <#--The title row extends the full width -->
                       <div class="col-md-12">
-                        <h2><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Institutional Collaborations</h2>
+                        <h2><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Institutional Collaboration</h2>
                       </div>
                       <div class="col-md-12">
                         <div class="card-mainbox"></div>
