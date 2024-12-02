@@ -4488,14 +4488,6 @@ span.subclassExpandMinus {
         margin-bottom: 15px;
     }
 }
-
-#graphContainer {
-    width: 100%;
-    position: relative;
-    overflow-x: auto;
-    height: 100%;
-}
-
 #leftblock {
     width: 100%;
 }
@@ -4518,6 +4510,10 @@ span.subclassExpandMinus {
 #temporal-graph {
     height: 100%;
     overflow-x: auto;
+}
+
+#temporal-graph-response {
+    margin-top: 1em;
 }
 
 #temporal-graph-response > .blockUI  {
