@@ -25,9 +25,9 @@
 
             <#assign googleJSAPI = "https://www.gstatic.com/charts/loader.js">
 
-            <span id="sparklineHeading">${i18n().publications_in_vivo}</span>
-
-            <div id="vis_container_coauthor">&nbsp;</div>
+            <#--  Line Graph of coauthorship over time.  Faculty requested it be not displayed.  -->
+            <#--  <span id="sparklineHeading">${i18n().publications_in_vivo}</span>  -->
+            <#--  <div id="vis_container_coauthor">&nbsp;</div>  -->
 
             <div class="collaboratorship-link-separator"></div>
 
