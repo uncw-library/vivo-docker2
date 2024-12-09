@@ -92,15 +92,13 @@ public class FeaturedItems extends HttpServlet {
 
     private static JSONArray getSolrResponse(String solrUrl, String queryField, int requestSize, int requestIndex) {
         //pull data from solr and sort randomly
-        // random number for sorting
-        Random rand = new Random();
-        int sortNum = rand.nextInt(100000) + 1;
         SolrClient solrServer = new HttpSolrClient.Builder(solrUrl).build();
         SolrQuery query = new SolrQuery();
         query.setQuery(queryField + ":true");
         query.setFields("URI", "displayLabel", "venue_s", "date_dt");
-        // query.setSort("random_v"+ sortNum, SolrQuery.ORDER.desc);
-		query.setSort("date_dt", SolrQuery.ORDER.desc);
+        long seed = System.currentTimeMillis();
+        query.setSort("random_" + seed, SolrQuery.ORDER.asc); // Randomize results
+		// query.setSort("date_dt", SolrQuery.ORDER.desc);  // alt if random isn't working
         query.setRows(requestSize);
 		query.setStart(requestIndex);
         QueryResponse result = null;
