@@ -5,6 +5,8 @@ services:
     platform: linux/amd64
     volumes:
       - solr_data:/var/solr
+    networks:
+      - vivo_net
     restart: unless-stopped
     healthcheck:
       test: ["CMD-SHELL", "curl -f http://localhost:8983/solr/vivocore/admin/ping || exit 1"]
@@ -24,21 +26,24 @@ services:
   vivo-vivo:
     container_name: vivo-vivo
     image: uncwlibrary/vivo-docker2-vivo
-    platform: linux/amd64
     volumes:
       - tdbModels:/usr/local/vivo/home/tdbModels
       - tdbContentModels:/tdbContentModels
       - ./mounted/turtles/userdata.ttl:/usr/local/vivo/home/rdf/abox/filegraph/userdata.ttl
       - ./mounted/turtles/featuredProfileData.ttl:/usr/local/vivo/home/rdf/abox/filegraph/featuredProfileData.ttl
       - ./mounted/uploads:/usr/local/vivo/home/uploads
+    networks:
+      - default
+      - vivo_net
     restart: unless-stopped
     labels:
       - traefik.enable=true
-      - traefik.http.routers.vivo-vivo.entrypoints=websecure
+      - traefik.docker.network=traefik_net
       - traefik.http.routers.vivo-vivo.rule=Host(`scholars.libapps-dev.uncw.edu`)
       - traefik.http.routers.vivo-vivo.tls=true
       - traefik.http.routers.vivo-vivo.priority=99
       - traefik.http.services.vivo-vivo.loadbalancer.server.port=8080
+
     depends_on:
       vivo-solr:
         condition: service_healthy
@@ -52,3 +57,6 @@ networks:
   default:
     name: traefik_net
     external: true
+  vivo_net:
+    internal: true
+    driver: bridge
