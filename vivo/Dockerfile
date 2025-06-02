@@ -30,7 +30,6 @@ COPY --chown=root:root ./installer/home/src/main/resources/rdf/tbox/firsttime/fe
 COPY --chown=root:root ./installer/home/src/main/resources/rdf/tbox/firsttime/wos.n3 ./installer/home/src/main/resources/rdf/tbox/firsttime/wos.n3
 
 COPY --chown=root:root ./installer/webapp/src/main/java/com/wokinfo/vivo/dataservice ./installer/webapp/src/main/java/com/wokinfo/vivo/dataservice
-COPY --chown=root:root ./installer/webapp/src/main/java/org/vivoweb/webapp/sitemap/SiteMapServlet.java ./installer/webapp/src/main/java/org/vivoweb/webapp/sitemap/SiteMapServlet.java
 COPY --chown=root:root ./installer/webapp/src/main/webapp/themes/uncw_theme ./installer/webapp/src/main/webapp/themes/uncw_theme
 COPY --chown=root:root ./installer/webapp/src/main/webapp/themes/wilma_uncw ./installer/webapp/src/main/webapp/themes/wilma_uncw
 
