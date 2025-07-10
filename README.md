@@ -24,7 +24,7 @@ Regardless of the usage, you will need to build the images, which require the fo
 
 ## Build the docker images
 
-1. Your custom theme, config files, and custom rdfs are baked into the vivo-vivo image.  See our examples in the ./vivo/inject/ folder.
+1. Your custom theme, config files, and custom rdfs are baked into the vivo-vivo image.  See our examples in the ./vivo/installer/ folder.
 1. `docker compose build`
 
 ## Development env
@@ -35,7 +35,7 @@ Regardless of the usage, you will need to build the images, which require the fo
     - even empty files with that name is ok.
     - otherwise docker-compose will make empty folders with those names, which may be annoying.
 1. (optional)  Configure & customize your instance as noted in the Lyrasis Vivo wiki.
-1. (optional)  Create a custom theme, following the uncw_theme or wilma_uncw in ./vivo/inject.  
+1. (optional)  Create a custom theme, following the uncw_theme or wilma_uncw in ./vivo/installer.  
 Revise ./vivo/Dockerfile and docker-compose.yml lines to add the theme folder.
 1. Build the images:
     ```bash
@@ -60,7 +60,7 @@ Revise ./vivo/Dockerfile and docker-compose.yml lines to add the theme folder.
 
 1. When satisfied with your dev box, rebuild the images and push to production.  
 
-## Production env
+## Production env (using docker compose + traefik)
 
 Assumes the docker images are already built/pushed.
 
@@ -69,12 +69,10 @@ UNCW's servers are 'libapps' and 'libapps-dev'.  git clone this repo onto your s
 Otherwise, same steps as above #Development env.
 
 
-
-
 ## VIVO app admin
 
-1. On first startup, log in with the user named in ./vivo/inject/vivo_home/config/runtime.properties
-1. Any vivo users/instance data is preserved in docker volumes: vivo-docker2_tdbModels and vivo-docker2_tdbContentModels.
+1. On first startup, log in with the user named in ./vivo/installer/home/src/main/resources/config/runtime.properties
+1. Any vivo users + instance data is preserved in docker volumes: vivo-docker2_tdbModels and vivo-docker2_tdbContentModels.
 1. Solr data is preserved in docker volume: vivo-docker2_solr-data.
 1. Subsequent `docker compose down` and `docker compose up` will preserve the tdb data and solr data.
 1. If you wish to start clean, `docker volume rm vivo-docker2_solr-data` will delete the volume holding solr data.  And `docker volume rm tdbContentModels tdbModels` will clear that data.  Start from step 1 after  the next `docker compose up`
@@ -86,7 +84,7 @@ In the docker-compose.yml, adding a `ports: 8983:8983` will expose the solr inst
 
 ## Revising the Theme
 
-A custom theme lives at ./vivo/uncw_theme  It is included in the docker container during 'docker build'
+A custom theme lives at ./vivo/installer/webapp/src/main/webapp/themes.  It is mounted into the vivo dev container during 'docker compose up`
 You can copy another theme into a sister folder, then tell docker-compose.yml and Dockerfile about it.
 
 You can disable the theme caching in the Site Admin page: "Activate developer Panel" / "Defeat the template cache".  Then, you can edit files in the theme folder to see the changes in real time at localhost:8080.  On the next `docker build` the changes will be baked into your vivo image.
@@ -100,12 +98,12 @@ The spliting of the large integer into groups of 3 is important.
 
 So, a file in this repo's ./instanceData/uploads/file_storage_root/a~n/123/456/789/0/personImage.jpg maps to the two locations above.
 
-We use vivo_data_update app to fetch and organize the person images into ./siteData/uploads/
+We use our custom vivo_data_update ETL app to fetch and organize the person images into ./instanceData/uploads/
 
 ## Automatic import/refresh
 
 Our use-case is:
-- One userdata.ttl file (turtle fileformat), created outside of Vivo, holding all the site data for profiles.  Place it at ./instanceData/turtles/userdata.ttl.  When starting the vivo instance, userdata.ttl is autoingested into Vivo.
+- One userdata.ttl file (turtle file format), created outside of Vivo, holding all the site data for profiles.  Place it at ./instanceData/turtles/userdata.ttl.  When starting the vivo instance, userdata.ttl is auto-ingested into Vivo.
 - One folder with profile images, created outside of Vivo.  Place it at ./instanceData/uploads.  Check that the namespaces file in that folder has your site's namespace.
 - One featuredProfile.ttl file, created outside of Vivo, holding site data for our custom FeaturedProfile homepage display.  Place it at ./instanceData/turtles/featuredProfile.ttl.
 
@@ -116,3 +114,4 @@ To do a data refresh, replace some files in ./instanceData with a new version.  
 Thank you to the developers of earlier dockerized VIVO releases who laid the groundwork,
  - [vivo-docker](https://github.com/gwu-libraries/vivo-docker)
  - [vivo-docker2](https://github.com/vivo-community/vivo-docker2)
+ 
