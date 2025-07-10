@@ -16,7 +16,6 @@ RUN git clone https://github.com/vivo-project/Vitro.git Vitro -b ${GIT_BRANCH} &
 ## insert customizations to vivo git repo ./installer before maven install
 WORKDIR /usr/local/vivo/
 COPY --chown=root:root ./installer/settings.xml ./installer/settings.xml
-COPY --chown=root:root ./installer/webapp/pom.xml ./installer/webapp/pom.xml
 
 COPY --chown=root:root ./installer/home/src/main/resources/config/applicationSetup.n3 ./installer/home/src/main/resources/config/applicationSetup.n3
 COPY --chown=root:root ./installer/home/src/main/resources/config/runtime.properties ./installer/home/src/main/resources/config/runtime.properties
@@ -29,10 +28,11 @@ COPY --chown=root:root ./installer/home/src/main/resources/rdf/i18n/en_US/interf
 COPY --chown=root:root ./installer/home/src/main/resources/rdf/tbox/firsttime/featuredProfileOntology.n3 ./installer/home/src/main/resources/rdf/tbox/firsttime/featuredProfileOntology.n3
 COPY --chown=root:root ./installer/home/src/main/resources/rdf/tbox/firsttime/wos.n3 ./installer/home/src/main/resources/rdf/tbox/firsttime/wos.n3
 
+COPY --chown=root:root ./installer/webapp/pom.xml ./installer/webapp/pom.xml
 COPY --chown=root:root ./installer/webapp/src/main/java/com/wokinfo/vivo/dataservice ./installer/webapp/src/main/java/com/wokinfo/vivo/dataservice
 COPY --chown=root:root ./installer/webapp/src/main/webapp/themes/uncw_theme ./installer/webapp/src/main/webapp/themes/uncw_theme
 COPY --chown=root:root ./installer/webapp/src/main/webapp/themes/wilma_uncw ./installer/webapp/src/main/webapp/themes/wilma_uncw
-
+COPY --chown=root:root ./installer/webapp/src/main/webResources/WEB-INF/classes/log4j.properties ./installer/webapp/src/main/webResources/WEB-INF/classes/log4j.properties
 
 # maven install
 WORKDIR /usr/local/Vitro
