@@ -2,7 +2,6 @@ services:
   vivo-solr:
     container_name: vivo-solr
     image: uncwlibrary/vivo-docker2-solr
-    platform: linux/amd64
     volumes:
       - solr_data:/var/solr
     networks:
@@ -11,17 +10,17 @@ services:
     healthcheck:
       test: ["CMD-SHELL", "curl -f http://localhost:8983/solr/vivocore/admin/ping || exit 1"]
 
-  # vivo-data-update:
-  #   container_name: vivo-data-update
-  #   image: uncwlibrary/vivo-data-update:latest
-  #   env_file: .env
-  #   platform: linux/amd64
-  #   volumes:
-  #     - ./mounted/uploads/file_storage_root/a~n:/output/person_images/a~n
-  #     - ./mounted/current_turtle/userdata.ttl:/output/turtles/userdata.ttl
-  #     - ./mounted/incites_store.json:/output/incites_store.json
-  #     - ./mounted/wos_starter_store.json:/output/wos_starter_store.json
-  #   restart: unless-stopped
+  vivo-data-update:
+    container_name: vivo-data-update
+    image: uncwlibrary/vivo-data-update
+    env_file: .env
+    volumes:
+      - ./mounted/uploads/file_storage_root/a~n:/output/person_images/a~n
+      - ./mounted/turtles/userdata.ttl:/output/turtles/userdata.ttl
+      - ./mounted/incites_store.json:/output/incites_store.json
+      - ./mounted/wos_starter_store.json:/output/wos_starter_store.json
+      - ./mounted/openalex_store.json:/output/openalex_store.json
+    restart: unless-stopped
 
   vivo-vivo:
     container_name: vivo-vivo
@@ -43,7 +42,6 @@ services:
       - traefik.http.routers.vivo-vivo.tls=true
       - traefik.http.routers.vivo-vivo.priority=99
       - traefik.http.services.vivo-vivo.loadbalancer.server.port=8080
-
     depends_on:
       vivo-solr:
         condition: service_healthy
