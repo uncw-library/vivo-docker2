@@ -1,8 +1,7 @@
-instanceData/*
-!instanceData/turtles/.gitignore
-!instanceData/uploads/file_storage_namespaces.properties
+mounted/*
+!mounted/turtles/.gitignore
+!mounted/uploads/file_storage_namespaces.properties
 
 *~
 datastore/
 .DS_STORE
-instanceData/

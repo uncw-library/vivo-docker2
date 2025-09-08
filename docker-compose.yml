@@ -18,9 +18,9 @@ services:
     volumes:
       - tdbModels:/usr/local/vivo/home/tdbModels
       - tdbContentModels:/tdbContentModels
-      - ./instanceData/turtles/userdata.ttl:/usr/local/vivo/home/rdf/abox/filegraph/userdata.ttl
-      - ./instanceData/turtles/featuredProfileData.ttl:/usr/local/vivo/home/rdf/abox/filegraph/featuredProfileData.ttl
-      - ./instanceData/uploads:/usr/local/vivo/home/uploads
+      - ./mounted/turtles/userdata.ttl:/usr/local/vivo/home/rdf/abox/filegraph/userdata.ttl
+      - ./mounted/turtles/featuredProfileData.ttl:/usr/local/vivo/home/rdf/abox/filegraph/featuredProfileData.ttl
+      - ./mounted/uploads:/usr/local/vivo/home/uploads
       - ./vivo/installer/webapp/src/main/webapp/themes/uncw_theme:/usr/local/tomcat/webapps/ROOT/themes/uncw_theme
       - ./vivo/installer/webapp/src/main/webapp/themes/wilma_uncw:/usr/local/tomcat/webapps/ROOT/themes/wilma_uncw
     ports:
