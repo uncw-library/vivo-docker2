@@ -38,10 +38,12 @@ services:
     labels:
       - traefik.enable=true
       - traefik.docker.network=traefik_net
-      - traefik.http.routers.vivo-vivo.rule=Host(`scholars.libapps-dev.uncw.edu`)
+      - traefik.http.routers.vivo-vivo.rule=Host(`scholars.localhost`)
       - traefik.http.routers.vivo-vivo.tls=true
       - traefik.http.routers.vivo-vivo.priority=99
       - traefik.http.services.vivo-vivo.loadbalancer.server.port=8080
+      - traefik.http.routers.vivo-vivo.middlewares=myplugindemo@file,botblocker@file,bot-wrangler@file,inflightreq@file,ratelimit@file
+
     depends_on:
       vivo-solr:
         condition: service_healthy
