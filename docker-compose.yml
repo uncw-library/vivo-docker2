@@ -10,17 +10,17 @@ services:
     healthcheck:
       test: ["CMD-SHELL", "curl -f http://localhost:8983/solr/vivocore/admin/ping || exit 1"]
 
-  #vivo-data-update:
-  #  container_name: vivo-data-update
-  #  image: uncwlibrary/vivo-data-update
-  #  env_file: .env
-  #  volumes:
-  #    - ./mounted/uploads/file_storage_root/a~n:/output/person_images/a~n
-  #    - ./mounted/turtles/userdata.ttl:/output/turtles/userdata.ttl
-  #    - ./mounted/incites_store.json:/output/incites_store.json
-  #    - ./mounted/wos_starter_store.json:/output/wos_starter_store.json
-  #    - ./mounted/openalex_store.json:/output/openalex_store.json
-  #  restart: unless-stopped
+  vivo-data-update:
+    container_name: vivo-data-update
+    image: uncwlibrary/vivo-data-update
+    env_file: .env
+    volumes:
+      - ./mounted/uploads/file_storage_root/a~n:/output/person_images/a~n
+      - ./mounted/turtles/userdata.ttl:/output/turtles/userdata.ttl
+      - ./mounted/incites_store.json:/output/incites_store.json
+      - ./mounted/wos_starter_store.json:/output/wos_starter_store.json
+      - ./mounted/openalex_store.json:/output/openalex_store.json
+    restart: unless-stopped
 
   vivo-vivo:
     container_name: vivo-vivo
@@ -38,12 +38,22 @@ services:
     labels:
       - traefik.enable=true
       - traefik.docker.network=traefik_net
+      - traefik.http.services.vivo-vivo.loadbalancer.server.port=8080
+
+      - traefik.http.routers.vivo-vivo-trusted.entrypoints=websecure
+      - traefik.http.routers.vivo-vivo-trusted.rule=Host(`scholars.uncw.edu`) && (ClientIP("127.0.0.1/32") || ClientIP("10.0.0.0/8") || ClientIP("152.20.0.0/16") || ClientIP("65.184.232.0/24")  || ClientIP("136.56.33.0/24"))
+      - traefik.http.routers.vivo-vivo-trusted.tls=true
+      - traefik.http.routers.vivo-vivo-trusted.priority=999
+      - traefik.http.routers.vivo-vivo-trusted.middlewares=myplugindemo@file,mydenyip@file
+      - traefik.http.routers.vivo-vivo-trusted.service=vivo-vivo
+
       - traefik.http.routers.vivo-vivo.entrypoints=websecure
       - traefik.http.routers.vivo-vivo.rule=Host(`scholars.uncw.edu`)
       - traefik.http.routers.vivo-vivo.tls=true
       - traefik.http.routers.vivo-vivo.priority=99
+      - traefik.http.routers.vivo-vivo.middlewares=myplugindemo@file,inflightreq@file,ratelimit@file,clearstyle@file,botblocker@file,bot-wrangler@file,mydenyip@file
       - traefik.http.routers.vivo-vivo.service=vivo-vivo
-      - traefik.http.services.vivo-vivo.loadbalancer.server.port=8080
+
     depends_on:
       vivo-solr:
         condition: service_healthy
