@@ -7,6 +7,11 @@ services:
     networks:
       - vivo_net
     restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 1024m
+          cpus: "1"
     healthcheck:
       test: ["CMD-SHELL", "curl -f http://localhost:8983/solr/vivocore/admin/ping || exit 1"]
 
@@ -35,6 +40,11 @@ services:
       - vivo_net
       - default
     restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 4g
+          cpus: "1"
     labels:
       - traefik.enable=true
       - traefik.docker.network=traefik_net
