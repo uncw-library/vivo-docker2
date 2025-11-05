@@ -4666,11 +4666,11 @@ form li {
     margin-top: 8px;
   }
   
-  .industry h2, .institution h2, .open-access h2, .sdg-row h2 {
+  .industry h2, .institution h2, .open-access h2, .sdg-row h2, .sustainable-development-goals h2 {
     color: white;
   }
   
-  .industry, .institution, .open-access, .sdg-row {
+  .industry, .institution, .open-access, .sdg-row, .sustainable-development-goals {
     padding-top: 1em;
     padding-bottom: 2em;
     background-color: #071f40;
@@ -4741,10 +4741,10 @@ form li {
     padding-bottom: 1em;
     justify-content: center;
   }
-  .industry a, .institution a, .sdg-row a {
+  .industry a, .institution a, .sdg-row a, .sustainable-development-goals a {
     color: #fff;
   }
-  .industry a:hover, .institution a:hover, .sdg-row a:hover {
+  .industry a:hover, .institution a:hover, .sdg-row a:hover, .sustainable-development-goals a:hover {
     color: #ffd483;
   }
   .card-content a, li > h1 > a, .collaboratorship-link a, .highly-cited a, .international a {

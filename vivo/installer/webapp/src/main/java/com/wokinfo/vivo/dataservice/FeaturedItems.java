@@ -45,6 +45,7 @@ public class FeaturedItems extends HttpServlet {
             log.debug("Featured items service: " + pathParts[1]);
 
             String queryField;
+            String queryValue;
 			int requestIndex;
             int requestSize;
             if (pathParts.length == 3) {
@@ -63,21 +64,31 @@ public class FeaturedItems extends HttpServlet {
             String requestType = pathParts[1];
             if (requestType.equals("hot")) {
                 queryField = "hot_paper_s";
+                queryValue = ":true";
             } else if (requestType.equals("open-access")) {
                 queryField = "open_access_s";
+                queryValue = ":true";
             } else if (requestType.equals("industry")){
                 queryField = "industry_collaboration_s";
+                queryValue = ":true";
             } else if (requestType.equals("international")){
                 queryField = "international_collaboration_s";
+                queryValue = ":true";
             } else if (requestType.equals("highly-cited")){
                 queryField = "most_cited_s";
+                queryValue = ":true";
             } else if (requestType.equals("institution")){
                 queryField = "institution_collaboration_s";
+                queryValue = ":true";
+            } else if (requestType.equals("sustainable-development-goals")){
+                queryField = "sustainable_development_goals_ss";
+                queryValue = ":*";
             } else {
                 //default
                 queryField = "hot_paper_s";
+                queryValue = ":true";
             }
-            JSONArray jArray = getSolrResponse(solrUrl, queryField, requestSize, requestIndex);
+            JSONArray jArray = getSolrResponse(solrUrl, queryField, queryValue, requestSize, requestIndex);
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
 	        response.addHeader("Access-Control-Allow-Origin", "*");
@@ -90,11 +101,11 @@ public class FeaturedItems extends HttpServlet {
 
     }
 
-    private static JSONArray getSolrResponse(String solrUrl, String queryField, int requestSize, int requestIndex) {
+    private static JSONArray getSolrResponse(String solrUrl, String queryField, String queryValue, int requestSize, int requestIndex) {
         //pull data from solr and sort randomly
         SolrClient solrServer = new HttpSolrClient.Builder(solrUrl).build();
         SolrQuery query = new SolrQuery();
-        query.setQuery(queryField + ":true");
+        query.setQuery(queryField + queryValue);
         query.setFields("URI", "displayLabel", "venue_s", "date_dt");
         long seed = System.currentTimeMillis();
         query.setSort("random_" + seed, SolrQuery.ORDER.asc); // Randomize results

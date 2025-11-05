@@ -134,11 +134,10 @@ ${i18n().intro_searchvivo}
                           </span> Load more</a>
                       </div>
                   </div>
-                </div>  -->
+                </div>
 
                 <div class="row institution feature-container">
                   <div class="container">
-                    <#--The title row extends the full width -->
                       <div class="col-md-12">
                         <h2><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Institutional Collaboration</h2>
                       </div>
@@ -147,6 +146,21 @@ ${i18n().intro_searchvivo}
                       </div>
                       <div class="col-md-12 text-center">
                         <a class="small text-uppercase load-more" id="target-institution"><span class="glyphicon glyphicon-menu-down">
+                          </span> Load more</a>
+                      </div>
+                  </div>
+                </div>  -->
+
+                <div class="row sustainable-development-goals feature-container">
+                  <div class="container">
+                      <div class="col-md-12">
+                        <h2><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Sustainable Development Goals</h2>
+                      </div>
+                      <div class="col-md-12">
+                        <div class="card-mainbox"></div>
+                      </div>
+                      <div class="col-md-12 text-center">
+                        <a class="small text-uppercase load-more" id="target-sustainable-development-goals"><span class="glyphicon glyphicon-menu-down">
                           </span> Load more</a>
                       </div>
                   </div>
@@ -201,6 +215,7 @@ ${i18n().intro_searchvivo}
                 getPapers('open-access', 0)
                 getPapers('industry', 0)
                 getPapers('institution', 0)
+                getPapers('sustainable-development-goals', 0)
                 //fetchSciFocus()
                 function getPapers(type, offset) {
                   var apiURL = './vds/featured/' + type + '/' + numcards + '/' + offset;
@@ -241,6 +256,10 @@ ${i18n().intro_searchvivo}
                 $( "#target-institution" ).click(function() {
                   instoffset = instoffset + 6;
                   getPapers('institution', instoffset)
+                });
+                $( "#target-sustainable-development-goals" ).click(function() {
+                  instoffset = instoffset + 6;
+                  getPapers('sustainable-development-goals', instoffset)
                 });
                 </script>
       </body>
