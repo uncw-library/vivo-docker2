@@ -2,9 +2,20 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta charset="utf-8" />
-<!-- Google Chrome Frame open source plug-in brings Google Chrome's open web technologies and speedy JavaScript engine to Internet Explorer-->
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="generator" content="VIVO ${version.label}" />
+
+<!-- Google Search Console verification -->
+<meta name="google-site-verification" content="zlcHHwZQsHw1jEyFdyBXda8j4HLikUdxJpE0HOmfq3c" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4N7WGX6PZF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4N7WGX6PZF');
+</script>
 
 <title>${(title?html)!siteName!}</title>
 
