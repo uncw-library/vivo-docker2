@@ -211,12 +211,12 @@ ${i18n().intro_searchvivo}
                 numcards = 6;
                 intloffset = hcoffset = oaoffset = indoffset = instoffset = 0
                 getPapers('highly-cited', 0)
-                getPapers('international', 0)
-                getPapers('open-access', 0)
-                getPapers('industry', 0)
-                getPapers('institution', 0)
                 getPapers('sustainable-development-goals', 0)
-                //fetchSciFocus()
+                <#--  getPapers('international', 0)  -->
+                <#--  getPapers('open-access', 0)  -->
+                <#--  getPapers('industry', 0)  -->
+                <#--  getPapers('institution', 0)  -->
+                <#--  fetchSciFocus()  -->
                 function getPapers(type, offset) {
                   var apiURL = './vds/featured/' + type + '/' + numcards + '/' + offset;
                   var spot = $("." + type + " .card-mainbox");
@@ -233,7 +233,13 @@ ${i18n().intro_searchvivo}
                       var month = dt_chunks[1]
                       var venue = meta.venue_s
                       var venue = (venue === undefined) ? '' : venue;
-                      $(spot).append("<div class=\"card\"><div class=\"card-content\"><a href=\"" + url + "\">" + meta.displayLabel + "</a>, <span class=\"citation-details\">" + venue + " " + month + ", " + year + "</span></div></div>");
+                      if (type === 'sustainable-development-goals') {
+                        var sdgLabels = meta.sustainable_development_goals_labels
+                        var sdgHtml = sdgLabels.length > 0 ? '<br><br>' + sdgLabels.join('<br>'): '';
+                        $(spot).append("<div class=\"card\"><div class=\"card-content\"><a href=\"" + url + "\">" + meta.displayLabel + "</a>, <span class=\"citation-details\">" + venue + " " + month + ", " + year + sdgHtml + "</span></div></div>");
+                      } else {
+                        $(spot).append("<div class=\"card\"><div class=\"card-content\"><a href=\"" + url + "\">" + meta.displayLabel + "</a>, <span class=\"citation-details\">" + venue + " " + month + ", " + year + "</span></div></div>");
+                      }
                     });
                   });
                 }
