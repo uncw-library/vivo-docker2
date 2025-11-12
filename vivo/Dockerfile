@@ -15,6 +15,8 @@ RUN git clone https://github.com/vivo-project/Vitro.git Vitro -b ${GIT_BRANCH} &
 
 ## insert customizations to vivo git repo ./installer before maven install
 WORKDIR /usr/local/vivo/
+COPY --chown=root:root ./api/src/main/java/org/vivoweb/webapp/sitemap/SiteMapServlet.java ./api/src/main/java/org/vivoweb/webapp/sitemap/SiteMapServlet.java
+
 COPY --chown=root:root ./installer/settings.xml ./installer/settings.xml
 
 COPY --chown=root:root ./installer/home/src/main/resources/config/applicationSetup.n3 ./installer/home/src/main/resources/config/applicationSetup.n3
