@@ -169,7 +169,7 @@ ${i18n().intro_searchvivo}
                 <div class="row highly-cited feature-container">
                   <div class="container">
                       <div class="col-md-12">
-                        <h2><span class="glyphicon glyphicon-fire" aria-hidden="true"></span> Highly Cited Papers</h2>
+                        <h2><span class="glyphicon glyphicon-fire" aria-hidden="true"></span> Highly Cited in Field</h2>
                       </div>
                       <div class="col-md-12">
                         <div class="card-mainbox"></div>
