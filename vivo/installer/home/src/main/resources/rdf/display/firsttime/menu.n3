@@ -35,6 +35,7 @@ display:PeopleMenuItem
 
 display:OrganizationsMenuItem
     a display:NavigationElement ;
+    display:linkText "Departments" ;
     display:menuPosition 3 ;
     display:toPage display:Organizations .
 
@@ -45,7 +46,7 @@ display:ResearchMenuItem
 
 display:AboutMenuItem
     a display:NavigationElement ;
-    display:linkText "About";
+    display:linkText "About" ;
     display:menuPosition 5 ;
     display:toPage display:AboutPage .
 
@@ -65,21 +66,22 @@ display:Events
 
 display:Organizations
     a display:Page ;
-    a display:ClassGroupPage;
+    a display:ClassGroupPage ;
+    display:title "Departments" ;
     display:forClassGroup vivoweb:vitroClassGrouporganizations ;
-    display:urlMapping "/organizations";
+    display:urlMapping "/departments";
     display:hasDataGetter display:organizationsDataGetter .
 
 display:People
     a display:Page ;
-    a display:ClassGroupPage;
+    a display:ClassGroupPage ;
     display:forClassGroup vivoweb:vitroClassGrouppeople ;
     display:urlMapping "/people" ;
    	display:hasDataGetter display:peopleDataGetter .
 
 display:Research
     a display:Page ;
-    a display:ClassGroupPage;
+    a display:ClassGroupPage ;
     display:forClassGroup vivoweb:vitroClassGrouppublications ;
     display:urlMapping "/research" ;
     display:hasDataGetter display:researchDataGetter .
