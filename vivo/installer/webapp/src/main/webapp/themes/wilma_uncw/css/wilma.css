@@ -4676,6 +4676,38 @@ form li {
     background-color: #071f40;
     color: white;
   }
+
+  .feature-tooltip-link {
+    text-decoration: none;
+    color: inherit;
+    margin-left: 8px;
+  }
+
+  .feature-tooltip-icon {
+   display: inline-block;
+   width: 20px;
+   height: 20px;
+   border-radius: 50%;
+   text-align: center;
+   line-height: 16px;
+   font-size: 14px;
+   font-weight: bold;
+   cursor: help;
+   vertical-align: baseline;
+  }
+
+  #sdg-tooltip-icon {
+   border: 2px solid white;
+   color: white; 
+   border-bottom: 0;
+  }
+
+  #highly-cited-tooltip-icon {
+   border: 2px solid #007073;
+   color: #007073;
+   border-bottom: 0;
+  }
+
   .card {
     background: #fff;
     border-radius: 6px;
@@ -4727,12 +4759,12 @@ form li {
   .card-content {
     margin-left: 1em;
     font-weight: 500;
-    line-height: 1.1;
-    font-size: smaller;
+    line-height: 1.5;
+    font-size: .9em;
     margin: 10px;
   }
   .card .citation-details {
-      font-size: .85em;
+      font-size: .9em;
   }
   .card-mainbox{
     box-sizing: border-box;

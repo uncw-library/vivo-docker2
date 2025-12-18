@@ -134,6 +134,17 @@ public class FeaturedItems extends HttpServlet {
 
         for (int i = 0; i < list.size(); i++) {
             JSONObject json = new JSONObject(list.get(i));
+            
+            // Truncate displayLabel to 100 characters
+            int displayLabelLength = 100;
+            if (json.has("displayLabel")) {
+                String displayLabel = json.getString("displayLabel");
+                if (displayLabel.length() > displayLabelLength) {
+                    displayLabel = displayLabel.substring(0, displayLabelLength) + "...";
+                    json.put("displayLabel", displayLabel);
+                }
+            }
+            
             jArray.put(json);
         }
         return jArray;
