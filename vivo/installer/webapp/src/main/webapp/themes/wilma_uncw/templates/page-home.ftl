@@ -120,7 +120,7 @@
                   <div class="col-md-12">
                     <h2>
                       Highly Cited in Field
-                      <a href="#" id="highly-cited-tooltip-link" class="feature-tooltip-link" data-toggle="tooltip" data-placement="top" title="Scholarship positioned in the top 10% of Field Weighted Citation Impact has received noteworthy attention within an academic discipline." onclick="return false;">
+                      <a href="#" id="highly-cited-tooltip-link" class="feature-tooltip-link" data-toggle="tooltip" data-placement="top" title="Scholarships' position in the top 10% of OpenAlex's Field Weighted Citation Impact metric indicates noteworthy attention within an academic discipline." onclick="return false;">
                         <span id="highly-cited-tooltip-icon" class="feature-tooltip-icon">?</span>
                       </a>
                     </h2>
