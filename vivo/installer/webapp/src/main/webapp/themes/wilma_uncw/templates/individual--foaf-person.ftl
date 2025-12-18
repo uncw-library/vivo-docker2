@@ -98,7 +98,7 @@
         <#include "individual-webpage.ftl">
 
             <span id="iconControlsLeftSide">
-                <img id="uriIcon" title="${individual.uri}" src="${urls.images}/individual/uriIcon.gif" alt="${i18n().uri_icon}"/>
+                <#--  <img id="uriIcon" title="${individual.uri}" src="${urls.images}/individual/uriIcon.gif" alt="${i18n().uri_icon}"/>  -->
 
             </span>
 
@@ -190,7 +190,7 @@ ${headScripts.add('<script type="text/javascript" src="${urls.base}/js/tiny_mce/
 
 ${scripts.add('<script type="text/javascript" src="${urls.base}/js/individual/individualUtils.js"></script>',
               '<script type="text/javascript" src="${urls.base}/js/individual/individualQtipBubble.js"></script>',
-              '<script type="text/javascript" src="${urls.base}/js/individual/individualUriRdf.js"></script>',
+              <#--  '<script type="text/javascript" src="${urls.base}/js/individual/individualUriRdf.js"></script>',  -->
 			  '<script type="text/javascript" src="${urls.base}/js/individual/moreLessController.js"></script>',
               '<script type="text/javascript" src="${urls.base}/js/jquery-ui/js/jquery-ui-1.12.1.min.js"></script>',
               '<script type="text/javascript" src="${urls.base}/js/imageUpload/imageUploadUtils.js"></script>',

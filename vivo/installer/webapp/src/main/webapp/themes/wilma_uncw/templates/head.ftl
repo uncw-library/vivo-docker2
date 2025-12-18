@@ -13,7 +13,6 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-4N7WGX6PZF');
 </script>
 
@@ -43,10 +42,6 @@ ${headScripts.add('<script type="text/javascript" src="${urls.base}/webjars/boot
 <#if metaTags??>
     ${metaTags.list()}
 </#if>
-
-<!--[if (gte IE 6)&(lte IE 8)]>
-<script type="text/javascript" src="${urls.base}/js/selectivizr.js"></script>
-<![endif]-->
 
 <#-- Inject head content specified in the controller. Currently this is used only to generate an rdf link on
 an individual profile page. -->

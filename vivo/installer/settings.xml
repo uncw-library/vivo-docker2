@@ -11,7 +11,7 @@
                 <vivo-dir>/usr/local/vivo/home</vivo-dir>
                 <tomcat-dir>/usr/local/tomcat</tomcat-dir>
 
-                <default-theme>wilma</default-theme>
+                <default-theme>wilma_uncw</default-theme>
             </properties>
         </profile>
     </profiles>

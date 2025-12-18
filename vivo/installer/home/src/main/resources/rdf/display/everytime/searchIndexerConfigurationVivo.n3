@@ -217,6 +217,19 @@ vitroDisplay:SearchIndex
         LIMIT 1
         """ .
 
+:vivodocumentModifier_hasSDG
+    a   <java:edu.cornell.mannlib.vitro.webapp.searchindex.documentBuilding.SelectQueryDocumentModifier> ,
+        <java:edu.cornell.mannlib.vitro.webapp.searchindex.documentBuilding.DocumentModifier> ;
+    rdfs:label "sustainable development goals" ;
+    :hasTargetField "sustainable_development_goals_ss" ;
+    :hasSelectQuery """
+        PREFIX wos: <http://webofscience.com/ontology/wos#>
+        SELECT ?sdg
+        WHERE {
+            ?uri wos:hasSDG ?sdg .
+        }
+        """ .
+
 :vivodocumentModifier_openAccess
     a   <java:edu.cornell.mannlib.vitro.webapp.searchindex.documentBuilding.SelectQueryDocumentModifier> ,
         <java:edu.cornell.mannlib.vitro.webapp.searchindex.documentBuilding.DocumentModifier> ;
