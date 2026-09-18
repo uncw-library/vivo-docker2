@@ -49,12 +49,12 @@ services:
       - traefik.enable=true
       - traefik.docker.network=traefik_net
       - traefik.http.services.vivo-vivo.loadbalancer.server.port=8080
-
       - traefik.http.routers.vivo-vivo.entrypoints=websecure
       - traefik.http.routers.vivo-vivo.rule=Host(`scholars.uncw.edu`)
       - traefik.http.routers.vivo-vivo.tls=true
       - traefik.http.routers.vivo-vivo.priority=99
       - traefik.http.routers.vivo-vivo.service=vivo-vivo
+      - traefik.http.routers.vivo-vivo.middlewares=robots-txt-maker@file,uncw-botblocker@file,ratelimit@file,inflightreq@file
 
     depends_on:
       vivo-solr:
