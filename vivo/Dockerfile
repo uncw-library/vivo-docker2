@@ -33,6 +33,7 @@ COPY --chown=root:root ./installer/home/src/main/resources/rdf/tbox/firsttime/wo
 
 COPY --chown=root:root ./installer/webapp/pom.xml ./installer/webapp/pom.xml
 COPY --chown=root:root ./installer/webapp/src/main/java/com/wokinfo/vivo/dataservice ./installer/webapp/src/main/java/com/wokinfo/vivo/dataservice
+COPY --chown=root:root ./installer/webapp/src/main/java/com/wokinfo/vivo/auth ./installer/webapp/src/main/java/com/wokinfo/vivo/auth
 COPY --chown=root:root ./installer/webapp/src/main/webapp/themes/uncw_theme ./installer/webapp/src/main/webapp/themes/uncw_theme
 COPY --chown=root:root ./installer/webapp/src/main/webapp/themes/wilma_uncw ./installer/webapp/src/main/webapp/themes/wilma_uncw
 COPY --chown=root:root ./installer/webapp/src/main/webResources/WEB-INF/classes/log4j.properties ./installer/webapp/src/main/webResources/WEB-INF/classes/log4j.properties

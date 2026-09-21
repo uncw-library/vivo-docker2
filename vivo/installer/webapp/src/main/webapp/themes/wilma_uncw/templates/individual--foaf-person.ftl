@@ -21,9 +21,6 @@
 </#if>
 <#assign visRequestingTemplate = "foaf-person-wilma">
 
-<#--add the VIVO-ORCID interface -->
-<#include "individual-orcidInterface.ftl">
-
 <div id="individual-intro" class="vcard person row">
 
     <div class="col-md-6 col-12 order-md-2" ${infoClass!}>
