@@ -1,11 +1,11 @@
-FROM tomcat:9-jdk11-openjdk
+FROM tomcat:9-jdk11-temurin-noble
 
 RUN apt update && \
-	apt install -y ca-certificates-java maven git tzdata
+	apt install -y ca-certificates-java maven git tzdata gettext-base
 
+# defaults; override at runtime via .env
 ENV TZ="America/New_York"
-ENV CATALINA_OPTS="-Xms1g -Xmx5g -XX:MaxPermSize=2g"
-ENV JAVA_OPTS="${JAVA_OPTS} -Dtdb:fileMode=direct"
+ENV CATALINA_OPTS="-Xms1g -Xmx5g -XX:MaxMetaspaceSize=512m"
 
 ARG GIT_BRANCH=rel-1.15-maint
 
@@ -20,7 +20,6 @@ COPY --chown=root:root ./api/src/main/java/org/vivoweb/webapp/sitemap/SiteMapSer
 COPY --chown=root:root ./installer/settings.xml ./installer/settings.xml
 
 COPY --chown=root:root ./installer/home/src/main/resources/config/applicationSetup.n3 ./installer/home/src/main/resources/config/applicationSetup.n3
-COPY --chown=root:root ./installer/home/src/main/resources/config/runtime.properties ./installer/home/src/main/resources/config/runtime.properties
 
 COPY --chown=root:root ./installer/home/src/main/resources/rdf/applicationMetadata/firsttime/initialSiteConfig.rdf ./installer/home/src/main/resources/rdf/applicationMetadata/firsttime/initialSiteConfig.rdf
 COPY --chown=root:root ./installer/home/src/main/resources/rdf/display/everytime/homePageDataGetters.n3 ./installer/home/src/main/resources/rdf/display/everytime/homePageDataGetters.n3
@@ -46,4 +45,12 @@ RUN mvn clean install -s installer/settings.xml
 # move vivo tomcat folder to ROOT tomcat folder
 RUN mv /usr/local/tomcat/webapps/vivo/ /usr/local/tomcat/webapps/ROOT
 
+# runtime.properties is rendered from this template + env vars at container start
+COPY --chown=root:root ./installer/home/src/main/resources/config/runtime.properties.template /usr/local/vivo/home/config/runtime.properties.template
+COPY --chown=root:root ./setenv.sh /usr/local/tomcat/bin/setenv.sh
+COPY --chown=root:root --chmod=755 ./docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+
 WORKDIR /usr/local/vivo/home
+
+ENTRYPOINT ["docker-entrypoint.sh"]
+CMD ["catalina.sh", "run"]

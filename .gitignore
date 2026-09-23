@@ -5,3 +5,4 @@ mounted/*
 *~
 datastore/
 .DS_STORE
+.env

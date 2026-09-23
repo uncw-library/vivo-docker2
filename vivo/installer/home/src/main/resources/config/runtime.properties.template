@@ -2,6 +2,12 @@
 #
 # VIVO runtime properties
 #
+# DOCKER: this is a template. docker-entrypoint.sh renders it to
+# /usr/local/vivo/home/config/runtime.properties at container start,
+# substituting ${VARS} from the environment (see .env.example). Optional
+# properties (email, ORCID, ...) are appended by the entrypoint only when
+# their variable is set.
+#
 # This file is provided as example.runtime.properties.
 #
 # Save a copy of this file as runtime.properties in your VIVO home directory,
@@ -30,14 +36,14 @@
   #
   # http://vivo.cornell.edu/individual/
   #
-Vitro.defaultNamespace = https://scholars.uncw.edu/individual/
+Vitro.defaultNamespace = ${VIVO_DEFAULT_NAMESPACE}
 
   #
   # The email address of the root user for the VIVO application. The password
   # for this user is initially set to "rootPassword", but you will be asked to
   # change the password the first time you log in.
   #
-rootUser.emailAddress = libsystems@uncw.edu
+rootUser.emailAddress = ${VIVO_ROOT_EMAIL}
 
 
 #
@@ -88,7 +94,7 @@ argon2.time = 1000
   #   Example:
   #     vitro.local.solr.url = http://localhost:8983/solr/vivocore
   #
-vitro.local.solr.url = http://vivo-solr:8983/solr/vivocore
+vitro.local.solr.url = ${SOLR_URL}
 
 
 # -----------------------------------------------------------------------------

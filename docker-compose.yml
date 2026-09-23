@@ -15,6 +15,7 @@ services:
     image: uncwlibrary/vivo-docker2-vivo
     build:
       context: ./vivo
+    env_file: .env
     volumes:
       - tdbModels:/usr/local/vivo/home/tdbModels
       - tdbContentModels:/tdbContentModels
