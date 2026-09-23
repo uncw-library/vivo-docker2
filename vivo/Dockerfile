@@ -50,7 +50,7 @@ RUN apt-get update && \
 	apt-get install -y --no-install-recommends tzdata gettext-base && \
 	rm -rf /var/lib/apt/lists/*
 
-# defaults; override at runtime via .env
+# defaults; override at runtime via vivo.env
 ENV TZ="America/New_York"
 ENV CATALINA_OPTS="-Xms1g -Xmx5g -XX:MaxMetaspaceSize=512m"
 
