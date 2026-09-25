@@ -1,0 +1,40 @@
+# VIVO 1.15 access control for the "performances" profile section.
+#
+# Since 1.15, whether a role can see a faux property or class is decided by these
+# allow-lists (value sets), not by hiddenFromDisplayBelowRoleLevelAnnot. Adds
+# local:hasPerformerRoleConfig (display/everytime/performancesPropertyConfig.n3) and
+# uncw:PerformerRole (tbox/firsttime/performerRole.n3) to the same display and publish
+# lists that list hasPresenterRoleConfig and vivo:PresenterRole in the stock
+# allowed_entities_*.n3 files. Add/edit/drop are left out on purpose: this data
+# comes from the WFS ingest, and UI edits would be overwritten.
+
+@prefix access: <https://vivoweb.org/ontology/vitro-application/auth/vocabulary/> .
+@prefix prop: <https://vivoweb.org/ontology/vitro-application/auth/individual/access-allowed-property/> .
+@prefix relprop: <https://vivoweb.org/ontology/vitro-application/auth/individual/related-allowed-property/> .
+@prefix cls: <https://vivoweb.org/ontology/vitro-application/auth/individual/access-allowed-class/> .
+
+# faux property: display
+prop:PublicDisplayFauxObjectPropertyValueSet access:value <http://vitro.mannlib.cornell.edu/ns/vitro/siteConfig/hasPerformerRoleConfig> .
+relprop:SelfEditorDisplayFauxObjectPropertyValueSet access:value <http://vitro.mannlib.cornell.edu/ns/vitro/siteConfig/hasPerformerRoleConfig> .
+prop:EditorDisplayFauxObjectPropertyValueSet access:value <http://vitro.mannlib.cornell.edu/ns/vitro/siteConfig/hasPerformerRoleConfig> .
+prop:CuratorDisplayFauxObjectPropertyValueSet access:value <http://vitro.mannlib.cornell.edu/ns/vitro/siteConfig/hasPerformerRoleConfig> .
+prop:AdminDisplayFauxObjectPropertyValueSet access:value <http://vitro.mannlib.cornell.edu/ns/vitro/siteConfig/hasPerformerRoleConfig> .
+
+# faux property: publish (linked data / RDF output)
+relprop:SelfEditorPublishFauxObjectPropertyValueSet access:value <http://vitro.mannlib.cornell.edu/ns/vitro/siteConfig/hasPerformerRoleConfig> .
+prop:EditorPublishFauxObjectPropertyValueSet access:value <http://vitro.mannlib.cornell.edu/ns/vitro/siteConfig/hasPerformerRoleConfig> .
+prop:CuratorPublishFauxObjectPropertyValueSet access:value <http://vitro.mannlib.cornell.edu/ns/vitro/siteConfig/hasPerformerRoleConfig> .
+prop:AdminPublishFauxObjectPropertyValueSet access:value <http://vitro.mannlib.cornell.edu/ns/vitro/siteConfig/hasPerformerRoleConfig> .
+
+# class: display
+cls:PublicDisplayClassValueSet access:value <https://scholars.uncw.edu/ontology/PerformerRole> .
+cls:SelfEditorDisplayClassValueSet access:value <https://scholars.uncw.edu/ontology/PerformerRole> .
+cls:EditorDisplayClassValueSet access:value <https://scholars.uncw.edu/ontology/PerformerRole> .
+cls:CuratorDisplayClassValueSet access:value <https://scholars.uncw.edu/ontology/PerformerRole> .
+cls:AdminDisplayClassValueSet access:value <https://scholars.uncw.edu/ontology/PerformerRole> .
+
+# class: publish
+cls:SelfEditorPublishClassValueSet access:value <https://scholars.uncw.edu/ontology/PerformerRole> .
+cls:EditorPublishClassValueSet access:value <https://scholars.uncw.edu/ontology/PerformerRole> .
+cls:CuratorPublishClassValueSet access:value <https://scholars.uncw.edu/ontology/PerformerRole> .
+cls:AdminPublishClassValueSet access:value <https://scholars.uncw.edu/ontology/PerformerRole> .

@@ -1,0 +1,8 @@
+# Files never sent to the docker build context, so whole-folder COPYs
+# (e.g. COPY ./api ./api) can't bake them into the image.
+
+# macOS Finder metadata
+**/.DS_Store
+
+# editor backup files (also in the repo .gitignore)
+**/*~

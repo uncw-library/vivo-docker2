@@ -1,0 +1,16 @@
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix vitro: <http://vitro.mannlib.cornell.edu/ns/vitro/0.7#> .
+
+# UNCW property groups (profile page tabs), alongside VIVO's propertygroups.rdf.
+# displayRank orders the tabs: publications 40, research 50, teaching 60.
+# Labels are lowercase like VIVO's; the tab template capitalizes the first letter.
+
+# "Creative Works" tab: performances, exhibits, and competitions
+# (see display/everytime/performancesPropertyConfig.n3)
+<https://scholars.uncw.edu/ontology/propertyGroupCreativeWorks>
+    a vitro:PropertyGroup , owl:Thing ;
+    rdfs:label "creative works"@en-US ;
+    vitro:displayRank "45"^^xsd:int ;
+    vitro:publicDescriptionAnnot "performances, exhibits, and competitions"^^xsd:string .
