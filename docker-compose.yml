@@ -17,14 +17,13 @@ services:
     volumes:
       - ./mounted/uploads/file_storage_root/a~n:/output/person_images/a~n
       - ./mounted/turtles/userdata.ttl:/output/turtles/userdata.ttl
-      - ./mounted/incites_store.json:/output/incites_store.json
-      - ./mounted/wos_starter_store.json:/output/wos_starter_store.json
       - ./mounted/openalex_store.json:/output/openalex_store.json
     restart: unless-stopped
 
   vivo-vivo:
     container_name: vivo-vivo
     image: uncwlibrary/vivo-docker2-vivo
+    env_file: vivo.env
     volumes:
       - tdbModels:/usr/local/vivo/home/tdbModels
       - tdbContentModels:/tdbContentModels
