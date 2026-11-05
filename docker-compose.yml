@@ -53,7 +53,7 @@ services:
       - traefik.http.routers.vivo-vivo.tls=true
       - traefik.http.routers.vivo-vivo.priority=99
       - traefik.http.routers.vivo-vivo.service=vivo-vivo
-      - traefik.http.routers.vivo-vivo.middlewares=robots-txt-maker@file,uncw-botblocker@file,ratelimit@file,inflightreq@file
+      - traefik.http.routers.vivo-vivo.middlewares=crowdsec@file,robots-txt-maker@file,uncw-botblocker@file,ratelimit@file,inflightreq@file
 
     depends_on:
       vivo-solr:
