@@ -22,7 +22,7 @@ services:
 
   vivo-vivo:
     container_name: vivo-vivo
-    image: uncwlibrary/vivo-docker2-vivo
+    image: uncwlibrary/vivo-docker2-vivo:latest
     env_file: vivo.env
     volumes:
       - tdbModels:/usr/local/vivo/home/tdbModels
